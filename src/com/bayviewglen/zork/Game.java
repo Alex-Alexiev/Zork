@@ -27,7 +27,8 @@ import java.util.Scanner;
 class Game 
 {
     private Parser parser;
-    private Room currentRoom;
+    
+    private Player player;
     // This is a MASTER object that contains all of the rooms and is easily accessible.
     // The key will be the name of the room -> no spaces (Use all caps and underscore -> Great Room would have a key of GREAT_ROOM
     // In a hashmap keys are case sensitive.
@@ -95,7 +96,7 @@ class Game
     public Game() {
         try {
 			initRooms("data/Rooms.dat");
-			currentRoom = masterRoomMap.get("ROOM_1");
+			player = new Player(masterRoomMap.get("ROOM_1"));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -134,7 +135,7 @@ class Game
         System.out.println("Zork is a new, incredibly boring adventure game.");
         System.out.println("Type 'help' if you need help.");
         System.out.println();
-        System.out.println(currentRoom.longDescription());
+        player.printLocation();
     }
 
     /**
@@ -197,17 +198,10 @@ class Game
         }
 
         String direction = command.getSecondWord();
-
+        
         // Try to leave current room.
-        Room nextRoom = currentRoom.nextRoom(direction);
-
-        if (nextRoom == null)
-            System.out.println("There is no door!");
-        else 
-        {
-            currentRoom = nextRoom;
-            System.out.println(currentRoom.longDescription());
-        }
+        player.move(direction);
+        
     }
   
 }
