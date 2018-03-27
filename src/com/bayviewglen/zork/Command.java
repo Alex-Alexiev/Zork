@@ -14,7 +14,8 @@ package com.bayviewglen.zork;
  * 
  * 
  * hehehehe
- * 
+ *  
+ *  j 
  * The way this is used is: Commands are already checked for being valid
  * command words. If the user entered an invalid command (a word that is not
  * known) then the command word is <null>.
