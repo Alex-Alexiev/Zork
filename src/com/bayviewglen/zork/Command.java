@@ -24,7 +24,7 @@ package com.bayviewglen.zork;
 
 class Command
 {
-    private String commandWord;	// test
+    private String commandWord;	
     private String secondWord;
 
     /**
