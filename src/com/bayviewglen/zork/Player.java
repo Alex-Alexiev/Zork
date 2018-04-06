@@ -17,8 +17,9 @@ public class Player {
 	public void move(String direction) {
 		Room nextRoom = currentRoom.nextRoom(direction);
 
-        if (nextRoom == null)
+        if (nextRoom == null) {
             System.out.println("There is no door!");
+        }
         else 
         {
             currentRoom = nextRoom;
