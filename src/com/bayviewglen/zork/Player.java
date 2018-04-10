@@ -4,7 +4,7 @@ public class Player {
 	
 	private Room currentRoom;
 	private Parser parser;
-	
+		
 	public Player(Room startingRoom) {
 		currentRoom = startingRoom;
 		parser = new Parser();
