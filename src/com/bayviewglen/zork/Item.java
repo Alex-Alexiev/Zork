@@ -12,4 +12,19 @@ public class Item {
 	
 	public Item() {}
 	
+	public String getId() {
+		return this.id;
+	}
+	
+	public boolean compareId(Item item) {
+		if (this.id.equals(item.getId())) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isConsummable() {
+		return this.consummable;
+	}
+	
 }
