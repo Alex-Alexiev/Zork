@@ -1,4 +1,3 @@
-
 package com.bayviewglen.zork;
 /**
  * Class Command - Part of the "Zork" game.
@@ -12,10 +11,6 @@ package com.bayviewglen.zork;
  * word (for example, if the command was "take map", then the two strings
  * obviously are "take" and "map").
  * 
- * 
- * hehehehe
- *  
- *  j 
  * The way this is used is: Commands are already checked for being valid
  * command words. If the user entered an invalid command (a word that is not
  * known) then the command word is <null>.
