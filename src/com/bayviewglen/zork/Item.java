@@ -1,21 +1,33 @@
 package com.bayviewglen.zork;
 
+/* 
+ * Item class that contains the following:
+ *     - id that describes what it is (apple, sword, shield)
+ *     - consumable that describes whether the item is consumable
+ */
+
 public class Item {
 	
 	private String id;
-	private boolean consummable;
+	private boolean consumable;
 	
-	public Item(String id, boolean consummable) {
+	public Item(String id, boolean consumable) {
 		this.id = id;
-		this.consummable = consummable;
+		this.consumable = consumable;
 	}
 	
 	public Item() {}
 	
+	/*
+	 * Returns the item's id
+	 */
 	public String getId() {
 		return this.id;
 	}
 	
+	/*
+	 * Compares this items id with another's
+	 */
 	public boolean compareId(Item item) {
 		if (this.id.equals(item.getId())) {
 			return true;
@@ -23,8 +35,21 @@ public class Item {
 		return false;
 	}
 	
-	public boolean isConsummable() {
-		return this.consummable;
+	/*
+	 * Compares this items id with another id
+	 */
+	public boolean compareId(String id) {
+		if (this.id.equals(id)) {
+			return true;
+		}
+		return false;
+	}
+	
+	/*
+	 * Returns whether the item is consummable
+	 */
+	public boolean isConsumable() {
+		return this.consumable;
 	}
 	
 }
