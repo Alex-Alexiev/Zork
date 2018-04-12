@@ -1,5 +1,4 @@
 package com.bayviewglen.zork;
-//josh was here 
 /*
  * Author:  Michael Kolling
  * Version: 1.0
