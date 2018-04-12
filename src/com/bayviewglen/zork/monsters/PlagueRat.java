@@ -8,7 +8,7 @@ public class PlagueRat extends Monster {
 	}
 	
 	public void ability(Player player) {
-		player
+		
 	}
 
 }

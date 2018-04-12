@@ -22,6 +22,7 @@ class Room
 {
 	private String roomName;
     private String description;
+    private Inventory inventory;
     private HashMap<String, Room> exits;        // stores exits of this room.
 
     /**

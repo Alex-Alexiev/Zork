@@ -42,14 +42,25 @@ class Game
 			roomScanner = new Scanner(new File(fileName));
 			while(roomScanner.hasNext()){
 				Room room = new Room();
+				
 				// Read the Name
 				String roomName = roomScanner.nextLine();
 				room.setRoomName(roomName.split(":")[1].trim());
-				// Read the Description
+				
+				// Read the Description  
 				String roomDescription = roomScanner.nextLine();
 				room.setDescription(roomDescription.split(":")[1].replaceAll("<br>", "\n").trim());
+				
+				//read the room inventory
+				String roomInventory = roomScanner.nextLine();
+				String[] roomItems = roomInventory.split(",");
+				for (String item: roomItems) {
+					
+				}
+				
 				// Read the Exits
 				String roomExits = roomScanner.nextLine();
+				
 				// An array of strings in the format E-RoomName
 				String[] rooms = roomExits.split(":")[1].split(",");
 				HashMap<String, String> temp = new HashMap<String, String>(); 
@@ -61,9 +72,7 @@ class Game
 				
 				// This puts the room we created (Without the exits in the masterMap)
 				masterRoomMap.put(roomName.toUpperCase().substring(10).trim().replaceAll(" ",  "_"), room);
-				
-				
-				
+
 				// Now we better set the exits.
 			}
 			
