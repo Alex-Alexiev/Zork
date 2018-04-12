@@ -3,20 +3,11 @@ package com.bayviewglen.zork;
 public class Player {
 	
 	private Room currentRoom;
-<<<<<<< Upstream, based on origin/master
 	private Parser parser;
 		
-=======
-	private boolean combat;
-	
->>>>>>> db11de9 Added monsters inside a monster package.
 	public Player(Room startingRoom) {
 		currentRoom = startingRoom;
-<<<<<<< Upstream, based on origin/master
 		parser = new Parser();
-=======
-		combat = false;
->>>>>>> db11de9 Added monsters inside a monster package.
 	}
 	
 	public void printLocation() {
@@ -36,7 +27,6 @@ public class Player {
         }
 	}
 	
-<<<<<<< Upstream, based on origin/master
 	/**
      * Given a command, process (that is: execute) the command.
      * If this command ends the game, true is returned, otherwise false is
@@ -51,15 +41,6 @@ public class Player {
             System.out.println("I don't know what you mean...");
             return false;
         }
-=======
-	public void beganCombat() {
-		combat = true;
-	}
-	
-	public boolean isInCombat() {
-		return combat;
-	}
->>>>>>> db11de9 Added monsters inside a monster package.
 
         String commandWord = command.getCommandWord();
         if (commandWord.equals("help"))
