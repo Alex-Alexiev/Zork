@@ -1,4 +1,4 @@
-package com.bayviewglen.zork;
+package zork.items;
 
 public class Food extends Item {
 	

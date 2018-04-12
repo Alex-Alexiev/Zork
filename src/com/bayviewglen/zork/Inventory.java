@@ -1,4 +1,5 @@
 package com.bayviewglen.zork;
+import zork.items.Item;
 
 /*
  * Inventory class for the player that keeps track of the player's items

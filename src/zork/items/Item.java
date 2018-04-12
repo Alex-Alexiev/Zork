@@ -1,4 +1,4 @@
-package com.bayviewglen.zork;
+package zork.items;
 
 /* 
  * Item class that contains the following:
