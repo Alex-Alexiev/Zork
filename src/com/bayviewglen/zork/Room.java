@@ -24,8 +24,8 @@ class Room
 	private String roomName;
     private String description;
     public Inventory inventory = new Inventory();
-    private HashMap<String, Room> exits;        // stores exits of this room.
-
+    private HashMap<String, Room> exits;
+    
     /**
      * Create a room described "description". Initially, it has no exits.
      * "description" is something like "a kitchen" or "an open court yard".
