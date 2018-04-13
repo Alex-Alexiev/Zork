@@ -50,7 +50,7 @@ class Game
 				// Read the Description  
 				String roomDescription = roomScanner.nextLine();
 				room.setDescription(roomDescription.split(":")[1].replaceAll("<br>", "\n").trim());
-				
+
 				//read the room inventory
 				String roomInventory = roomScanner.nextLine();
 				String[] roomItems = roomInventory.split(",");
