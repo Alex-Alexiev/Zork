@@ -9,10 +9,12 @@ package com.bayviewglen.zork.items;
 public class Item {
 	
 	private String id;
+	private int amount = 0;
 	private boolean consumable;
 	
-	public Item(String id, boolean consumable) {
+	public Item(String id, int amount, boolean consumable) {
 		this.id = id;
+		this.amount = amount;
 		this.consumable = consumable;
 	}
 	
@@ -44,6 +46,24 @@ public class Item {
 		}
 		return false;
 	}
+	
+	public void addAmount(int amount) {
+		this.amount += amount;
+		if (this.amount < 0) this.amount = 0;
+	}
+	
+	public int getAmount() {
+		return amount;
+	}
+	
+	public String toString() {
+		String ret = ""+amount+" ";
+		if (amount > 1) ret += id+"'s";
+		else ret += id;
+		return ret;
+	}
+	
+	
 	
 	/*
 	 * Returns whether the item is consummable

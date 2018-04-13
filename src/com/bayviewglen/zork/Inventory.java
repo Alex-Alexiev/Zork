@@ -1,57 +1,33 @@
 package com.bayviewglen.zork;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import com.bayviewglen.zork.items.Item;
 
 /*
- * Inventory class for the player that keeps track of the player's items
+ * Inventory class for the player that keeps track of and inventory of items
  * 
- * The inventory is managed with two partially filled arrays, one which keeps track of the items 
- * and another which keeps track of the amounts of each item
+ * It uses a HashMap of Items, each referenced by its id.
  * 
- * Matthew Nam (April 12)
+ * 
+ * Matthew Nam (April 12), Alex Alexiev (April 13)
  */
 
 
 public class Inventory {
 	
-	private Item[] items;
-	private int[] amounts;
-	private int size;
-	
-	public Inventory(int maxSize) {
-		items = new Item[maxSize];
-		amounts = new int[maxSize];
-		size = 0;
-	}
-	
-	/*
-	 * Default inventory size is 10
-	 */
-	public Inventory() {
-		items = new Item[10];
-		amounts = new int[10];
-		size = 0;
-	}
-	
+	private HashMap<String, Item> items = new HashMap<String, Item>();
+
 	/*
 	 * Adds an item to the inventory
 	 * If the item is already in the inventory, it adds the given amount to the current amount
 	 */
 	public void addToInventory(Item item, int amount) {
-		int i = checkItem(item.getId());
-		if (i < 0) {
-			if (size < items.length) {
-				items[size] = item;
-				size++;
-				return;
-			}
-		} else {
-			if (items[i].isConsumable()) {
-				amounts[i] += amount;
-				return;
-			} else {
-				System.out.println("You already have " + item.getId());
-				return;
-			}
+		if (items.containsKey(item.getId())) {
+			items.get(item.getId()).addAmount(amount);
+		}
+		else {
+			items.put(item.getId(), item);
 		}
 	}
 	
@@ -59,23 +35,17 @@ public class Inventory {
 	 * Checks for an item and returns its location
 	 * If the item is not in the inventory, returns -1
 	 */
-	public int checkItem(String id) {
-		for (int i = 0; i < size; i++) {
-			if (items[i].compareId(id)) {
-				return i;
-			} 
-		}
-		return -1;
+	public boolean checkItem(String id) {
+		return items.containsKey(id);
 	}
 	
 	/*
 	 * Returns the amount of item in the inventory
 	 * If the item is not in the inventory, returns -1
 	 */
-	public int getItemAmount(Item item) {
-		int i = checkItem(item.getId());
-		if (!(i < 0)) {
-			return amounts[i];
+	public int getItemAmount(String id) {
+		if (checkItem(id)) {
+			return items.get(id).getAmount();
 		}
 		return -1;
 	}
@@ -85,39 +55,38 @@ public class Inventory {
 	 * If the item is in the inventory, returns the item
 	 */
 	public Item getItem(String id) {
-		int i = checkItem(id);
-		if (!(i < 0)) {
-			return items[i];
+		if (items.containsKey(id)) {
+			return items.get(id); 
 		}
 		return null;
+	}
+	
+	public String toString() {
+		String ret = "";
+		for(Item item: items.values()) {
+			ret += item+"\n";
+		}
+		if (ret.length()<1) {
+			return "LOL you have nothing in your inventory XD";
+		}
+		return ret;
 	}
 	
 	/*
 	 * Reduces the amount of an item
 	 * If the amount is less than zero, the item is removed form the array
 	 */
-	public void usedItem(Item item, int amount) {
-		for (int i = 0; i < size; i++) {
-			if (items[i].compareId(item)) {
-				amounts[i] -= amount;
-				if (amounts[i] < 0)
-					removeItem(item);
-			} 
+	public void reduceAmount(String id, int amount) {
+		items.get(id).addAmount(-amount);
+		if (items.get(id).getAmount() < 1) {
+			removeItem(id);
 		}
 	}
 	
 	/*
 	 * Removes an item from the array
 	 */
-	public void removeItem(Item item) {
-		for (int i = 0; i < size; i++) {
-			if (items[i].compareId(item)) {
-				for (int j = i; j < size - 1; j++) {
-					items[i] = items[i+1];
-					amounts[i] = amounts[i+1];
-				}
-				size--;
-			} 
-		}
+	public void removeItem(String id) {
+		items.remove(id);
 	}
 }
