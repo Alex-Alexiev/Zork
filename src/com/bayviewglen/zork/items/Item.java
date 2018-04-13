@@ -62,9 +62,7 @@ public class Item {
 		else ret += id;
 		return ret;
 	}
-	
-	
-	
+		
 	/*
 	 * Returns whether the item is consummable
 	 */

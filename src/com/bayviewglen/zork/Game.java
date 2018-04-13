@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import com.bayviewglen.zork.items.Food;
+
 /**
  * Class Game - the main class of the "Zork" game.
  *
@@ -53,9 +55,15 @@ class Game
 
 				//read the room inventory
 				String roomInventory = roomScanner.nextLine();
+				roomInventory = roomInventory.split(":")[1];
 				String[] roomItems = roomInventory.split(",");
 				for (String item: roomItems) {
-					
+					item = item.substring(1);
+					String type = item.split(" ")[0];
+					if (type.equals("Food")) {
+						Food food = new Food(item.split(" ")[1],Integer.parseInt(item.split(" ")[2]));
+						room.inventory.addToInventory(food, 1);
+					}
 				}
 				
 				// Read the Exits
@@ -124,6 +132,7 @@ class Game
         boolean finished = false;
         while (! finished)
         {
+        	System.out.println(masterRoomMap.get("ROOM_3").inventory);
             finished = player.act();
         }
         System.out.println("Thank you for playing.  Good bye.");
