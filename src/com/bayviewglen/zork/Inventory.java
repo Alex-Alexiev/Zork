@@ -32,8 +32,7 @@ public class Inventory {
 	}
 	
 	/*
-	 * Checks for an item and returns its location
-	 * If the item is not in the inventory, returns -1
+	 * Checks for an item and returns whether or not its in the inventory
 	 */
 	public boolean checkItem(String id) {
 		return items.containsKey(id);

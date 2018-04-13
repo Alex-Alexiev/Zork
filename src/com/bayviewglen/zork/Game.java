@@ -132,8 +132,7 @@ class Game
         boolean finished = false;
         while (! finished)
         {
-        	System.out.println(masterRoomMap.get("ROOM_3").inventory);
-            finished = player.act();
+        	finished = player.act();
         }
         System.out.println("Thank you for playing.  Good bye.");
     }

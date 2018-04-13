@@ -1,4 +1,5 @@
 package com.bayviewglen.zork;
+import com.bayviewglen.zork.items.Item;
 /*
  * Class Room - a room in an adventure game.
  *
@@ -96,7 +97,7 @@ class Room
     public String longDescription()
     {
     	
-        return "Room: " + roomName +"\n\n" + description + "\n" + exitString();
+        return "Room: " + roomName + "\n\n" + description + "\n" + inventory + exitString();
     }
 
     /**
@@ -135,5 +136,13 @@ class Room
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public Item getItem(String id) {
+		return inventory.getItem(id);
+	}
+	
+	public void removeItem(String id) {
+		inventory.removeItem(id);
 	}
 }
