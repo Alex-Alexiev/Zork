@@ -1,4 +1,5 @@
 <<<<<<< Upstream, based on origin/master
+<<<<<<< Upstream, based on origin/master
 package com.bayviewglen.zork.items;
 
 /* 
@@ -66,6 +67,9 @@ public class Item {
 		
 =======
 package zork.items;
+=======
+package com.bayviewglen.zork.items;
+>>>>>>> 9512bf8 Update Merge
 
 /* 
  * Item class that contains the following:
@@ -76,10 +80,12 @@ package zork.items;
 public class Item {
 	
 	private String id;
+	private int amount = 0;
 	private boolean consumable;
 	
-	public Item(String id, boolean consumable) {
+	public Item(String id, int amount, boolean consumable) {
 		this.id = id;
+		this.amount = amount;
 		this.consumable = consumable;
 	}
 	
@@ -112,7 +118,26 @@ public class Item {
 		return false;
 	}
 	
+<<<<<<< Upstream, based on origin/master
 >>>>>>> a2f39d0 This is the basic setup of the weapons class and Evan resynchronized
+=======
+	public void addAmount(int amount) {
+		this.amount += amount;
+		if (this.amount < 0) this.amount = 0;
+	}
+	
+	public int getAmount() {
+		return amount;
+	}
+	
+	public String toString() {
+		String ret = ""+amount+" ";
+		if (amount > 1) ret += id+"'s";
+		else ret += id;
+		return ret;
+	}
+		
+>>>>>>> 9512bf8 Update Merge
 	/*
 	 * Returns whether the item is consummable
 	 */

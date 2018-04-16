@@ -1,10 +1,8 @@
 package com.bayviewglen.zork;
-<<<<<<< Upstream, based on origin/master
 import java.util.ArrayList;
 import java.util.HashMap;
 
 =======
->>>>>>> a2f39d0 This is the basic setup of the weapons class and Evan resynchronized
 import com.bayviewglen.zork.items.Item;
 
 /*

@@ -1,6 +1,5 @@
 package com.bayviewglen.zork.items;
 
-import zork.items.Item;
 
 public class Weapons extends Item{
 	
