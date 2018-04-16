@@ -22,4 +22,12 @@ abstract public class Monster {
 	
 	abstract public void ability(Player player);
 	
+	public int getHealth() {
+		return this.health;
+	}
+	
+	public void setHealth(int health) {
+		this.health = health;
+	}
+	
 }

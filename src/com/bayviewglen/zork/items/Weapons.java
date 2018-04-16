@@ -1,10 +1,10 @@
 package com.bayviewglen.zork.items;
 
-import com.bayviewglen.zork.Monster;
+import com.bayviewglen.zork.monsters.Monster;
 
 abstract class Weapons extends Item{
 	
-	private int damage;
+	protected int damage;
 	
 	public Weapons(String id, int damage) {
 		super(id, 1, false);
