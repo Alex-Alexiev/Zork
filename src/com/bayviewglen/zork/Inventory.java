@@ -7,7 +7,7 @@ import com.bayviewglen.zork.items.Item;
 /*
  * Inventory class for the player that keeps track of and inventory of items
  * 
- * It uses a HashMap of Items, each referenced by its id.
+ * It uses a HashMap of Items, each referenced by its id
  * 
  * 
  * Matthew Nam (April 12), Alex Alexiev (April 13)
