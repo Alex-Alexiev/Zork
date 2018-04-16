@@ -67,10 +67,6 @@ public class Item {
 		return id == item.getId();
 	}
 		
-	public boolean equals(Item item) {
-		return id == item.getId();
-	}
-		
 	/*
 	 * Returns whether the item is consummable
 	 */
