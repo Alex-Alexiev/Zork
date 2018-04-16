@@ -33,13 +33,11 @@ class Parser
     public Command getCommand() 
     {
         String inputLine = "";   // will hold the full input line
-        String word1;
-        String word2;
+        String[] words = new String[4];
 
         System.out.print("> ");     // print prompt
 
-        BufferedReader reader = 
-            new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
             inputLine = reader.readLine();
         }
@@ -50,24 +48,17 @@ class Parser
 
         StringTokenizer tokenizer = new StringTokenizer(inputLine);
 
-        if(tokenizer.hasMoreTokens())
-            word1 = tokenizer.nextToken();      // get first word
-        else
-            word1 = null;
-        if(tokenizer.hasMoreTokens())
-            word2 = tokenizer.nextToken();      // get second word
-        else
-            word2 = null;
+        int i = 0;
+        while (tokenizer.hasMoreTokens()) {
+        	words[i] = tokenizer.nextToken(); 
+        }
 
         // note: we just ignore the rest of the input line.
 
         // Now check whether this word is known. If so, create a command
         // with it. If not, create a "nil" command (for unknown command).
 
-        if(commands.isCommand(word1))
-            return new Command(word1, word2);
-        else
-            return new Command(null, word2);
+        return new Command(words);
     }
 
     /**

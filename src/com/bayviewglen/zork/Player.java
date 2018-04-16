@@ -40,7 +40,7 @@ public class Player {
         	printInventory();
         else if (commandWord.equals("quit"))
         {
-            if (command.hasSecondWord())
+            if (command.hasManyWords(2))
                 System.out.println("Quit what?");
             else
                 return true;  // signal that we want to quit
@@ -95,14 +95,14 @@ public class Player {
      */
     private void goRoom(Command command) 
     {
-        if(!command.hasSecondWord())
+        if(!command.hasManyWords(2))
         {
             // if there is no second word, we don't know where to go...
             System.out.println("Go where?");
             return;
         }
 
-        String direction = command.getSecondWord();
+        String direction = command.getWordAtIndex(2);
         
         // Try to leave current room.
         move(direction);
@@ -130,13 +130,13 @@ public class Player {
 	 * @param command
 	 */
 	private void dropItem(Command command) {
-		if(!command.hasSecondWord())
+		if(!command.hasManyWords(2))
         {
             System.out.println("\nDrop what?\n");
             return;
         }
 		
-        String itemId = command.getSecondWord();
+        String itemId = command.getWordAtIndex(2);
         Item item = inventory.getItem(itemId);
         
         if (item != null) {
@@ -167,13 +167,13 @@ public class Player {
 	 * @param command
 	 */
 	private void pickupItem(Command command) {
-		if(!command.hasSecondWord())
+		if(!command.hasManyWords(2))
         {
             System.out.println("\nPickup what?\n");
             return;
         }
 		
-        String itemId = command.getSecondWord();
+        String itemId = command.getWordAtIndex(2);
         Item item = currentRoom.getItem(itemId);
         
         if (item != null) {
