@@ -3,11 +3,13 @@ Room Description:  This is Room 1
 Room Inventory: Food apple 3, Food banana 5
 Room Entity: Monster PlagueRat, NPC John
 Exit Rooms: E-Room 2
+
 Room Name: Room 2
 Room Description:  This is Room 2
 Room Inventory: Food apple 3, Food banana 5
 Room Entity: Monster PlagueRat, NPC John
 Exit Rooms: W-Room 1, U-Room 3
+
 Room Name: Room 3
 Room Description:  You are upstairs.
 Room Inventory: Food apple 3, Food peach 4, Food banana 5
