@@ -1,20 +1,22 @@
 package com.bayviewglen.zork.items;
 
+import com.bayviewglen.zork.Monster;
 
-public class Weapons extends Item{
+abstract class Weapons extends Item{
 	
-	private int damagePoints;
-	private int fireDamage;
+	private int damage;
 	
-	public Weapons(String id, int damagePoints) {
-		super(id, false);
-		this.damagePoints = damagePoints;
+	public Weapons(String id, int damage) {
+		super(id, 1, false);
+		this.damage = damage;
 		
 	}
 	
 	
-	public int getDamagePoints() {
-		return damagePoints;
+	public int getDamage() {
+		return damage;
 	}
+	
+	abstract public void ability(Monster monster);
 
 }
