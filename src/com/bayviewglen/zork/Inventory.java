@@ -38,6 +38,10 @@ public class Inventory {
 		return items.containsKey(id);
 	}
 	
+	public boolean checkItem(Item item) {
+		return items.containsValue(item);
+	}
+	
 	/*
 	 * Returns the amount of item in the inventory
 	 * If the item is not in the inventory, returns -1
