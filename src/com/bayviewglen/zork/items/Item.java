@@ -5,7 +5,7 @@ package com.bayviewglen.zork.items;
 /* 
  * Item class that contains the following:
  *     - id that describes what it is (apple, sword, shield)
- *     - consumable that describes whether the item is consumable
+ *     - consumable that describes whether the item is consumable.
  */
 
 public class Item {
