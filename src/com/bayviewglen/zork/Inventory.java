@@ -40,7 +40,8 @@ public class Inventory {
 	
 	public boolean checkItem(Item item) {
 		return items.containsValue(item);
-	}
+	} 
+	
 	
 	/*
 	 * Returns the amount of item in the inventory
