@@ -3,8 +3,8 @@ import com.bayviewglen.zork.monsters.Monster;
 
 public class Dagger extends Weapons{
 
-	public Dagger(String id, int damage) {
-		super(id, damage);
+	public Dagger() {
+		super("dagger", 10);
 		// TODO Auto-generated constructor stub
 	}
 	
