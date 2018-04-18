@@ -16,7 +16,7 @@ public class Food extends Item {
 		this.health = health;
 	}
 		
-	public int getHealthPoints(String item) {
+	public int getHealthPoints() {
 		return health;
 	}
 	

@@ -136,6 +136,7 @@ class Game
         while (! finished)
         {
         	finished = player.act();
+        	System.out.println();
         }
         System.out.println("Thank you for playing.  Good bye.");
     }

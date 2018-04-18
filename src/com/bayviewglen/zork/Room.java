@@ -1,5 +1,4 @@
 package com.bayviewglen.zork;
-import com.bayviewglen.zork.items.Item;
 /*
  * Class Room - a room in an adventure game.
  *
@@ -97,7 +96,7 @@ class Room
     public String longDescription()
     {
     	
-        return "Room: " + roomName + "\n\n" + description + "\n" + inventory + exitString();
+        return "Room: " + roomName + "\n\n" + description + inventory + "\n" + exitString();
     }
 
     /**

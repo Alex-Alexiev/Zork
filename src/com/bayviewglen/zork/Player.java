@@ -1,17 +1,24 @@
 package com.bayviewglen.zork;
+import java.util.concurrent.TimeUnit;
+
+import com.bayviewglen.zork.items.Food;
 import com.bayviewglen.zork.items.Item;
 
 public class Player {
 	
 	private Room currentRoom;
 	private Parser parser;
-	
 	private Inventory inventory;
+	
+	private int health;
+	private int maxHealth;
 		
 	public Player(Room startingRoom) {
 		currentRoom = startingRoom;
 		parser = new Parser();
 		inventory = new Inventory();
+		maxHealth = 100;
+		health = 90;
 	}
 	
 	/**
@@ -23,6 +30,8 @@ public class Player {
     {
     	Command command = parser.getCommand();
     	
+    	System.out.println();
+    	    	
         if(command.isUnknown())
         {
             System.out.println("I don't know what you mean...");
@@ -46,7 +55,7 @@ public class Player {
                 return true;  // signal that we want to quit
         }
         else if (commandWord.equals("eat")){
-        	System.out.println("Do you really think you should be eating at a time like this?");
+        	eat(command);
         }
         else if (commandWord.equals("take")) {
         	pickupItem(command);
@@ -86,7 +95,7 @@ public class Player {
      * Prints inventory
      */
     private void printInventory() {
-    	System.out.println("\nYou have:\n" + inventory);
+    	System.out.println("You have:" + inventory);
     }
 
     /** 
@@ -126,13 +135,57 @@ public class Player {
 	}
 	
 	/**
+	 * Eats food
+	 */
+	private void eat(Command command) {
+		if(!command.hasManyWords(2))
+        {
+            System.out.println("Eat what?");
+            return;
+        }
+		
+		String foodId = command.getSecondWord();
+        Food food = (Food) inventory.getItem(foodId);
+        
+        if (food != null) {
+        	
+        	if (health >= maxHealth) {
+        		System.out.println("You are full");
+        		return;
+        	}
+        	
+        	for (int i = 0; i < 3; i++) {
+        		System.out.print("*munch*");
+        		try {
+					TimeUnit.SECONDS.sleep(1);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+        	}
+        	
+        	int foodHealthPoint = food.getHealthPoints();
+        	health += foodHealthPoint;
+        	inventory.reduceAmount(foodId, 1);
+        	
+        	if (health > maxHealth)
+        		health = maxHealth;
+        	        	        	
+        	System.out.print(" Yum\n");
+        	System.out.println("Health: " + health);
+        	
+        } else {
+        	System.out.println("You have no " + foodId + "s");
+        }
+	}
+	
+	/**
 	 * Drops an item
 	 * @param command
 	 */
 	private void dropItem(Command command) {
 		if(!command.hasManyWords(2))
         {
-            System.out.println("\nDrop what?\n");
+            System.out.println("Drop what?");
             return;
         }
 		
@@ -140,8 +193,6 @@ public class Player {
         Item item = inventory.getItem(itemId);
         
         if (item != null) {
-        	
-        	System.out.println();
         	
         	if (item.isConsumable()) {
         		int amount = item.getAmount();
@@ -155,10 +206,10 @@ public class Player {
         	currentRoom.inventory.addToInventory(item, item.getAmount());
         	inventory.removeItem(itemId);
         } else {
-        	System.out.println("\nYou have no " + itemId);
+        	System.out.println("You have no " + itemId + "s");
         }
         
-        System.out.println("\nThe room has \n" + currentRoom.inventory);
+        System.out.println("\nThe room has " + currentRoom.inventory);
         
 	}
 	
@@ -169,7 +220,7 @@ public class Player {
 	private void pickupItem(Command command) {
 		if(!command.hasManyWords(2))
         {
-            System.out.println("\nPickup what?\n");
+            System.out.println("Pickup what?");
             return;
         }
 		
@@ -177,8 +228,6 @@ public class Player {
         Item item = currentRoom.inventory.getItem(itemId);
         
         if (item != null) {
-        	
-        	System.out.println();
         	
         	inventory.addToInventory(item, item.getAmount());
         	currentRoom.inventory.removeItem(itemId);
@@ -193,10 +242,10 @@ public class Player {
         		System.out.println("You picked up a " + itemId);
         	}
         } else {
-        	System.out.println("\nThe room has no " + itemId);
+        	System.out.println("The room has no " + itemId + "s");
         }
         
-        System.out.println("\nThe room has \n" + currentRoom.inventory);
+        System.out.println("\nThe room has " + currentRoom.inventory);
 	}
 	
 	/*
@@ -207,10 +256,10 @@ public class Player {
         {
 			if(!command.hasManyWords(4))
 	        {
-	            System.out.println("\nAttack monster with what?\n");
+	            System.out.println("Attack monster with what?");
 	            return;
 	        }
-			System.out.println("\nAttack what?\n");
+			System.out.println("Attack what?");
             return;
         }
 		

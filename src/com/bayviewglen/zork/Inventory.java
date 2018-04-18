@@ -68,7 +68,7 @@ public class Inventory {
 	public String toString() {
 		String ret = "";
 		for(Item item: items.values()) {
-			ret += item+"\n";
+			ret += "\n" + item;
 		}
 		if (ret.length()<1) {
 			return "LOL you have nothing in your inventory XD";

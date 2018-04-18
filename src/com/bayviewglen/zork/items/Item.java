@@ -58,7 +58,7 @@ public class Item {
 	
 	public String toString() {
 		String ret = ""+amount+" ";
-		if (amount > 1) ret += id+"'s";
+		if (amount > 1) ret += id+"s";
 		else ret += id;
 		return ret;
 	}
