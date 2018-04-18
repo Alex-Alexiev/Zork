@@ -43,6 +43,8 @@ public class Player {
             printHelp();
         else if (commandWord.equals("room"))
         	printLocation();
+        else if (commandWord.equals("welfare"))
+        	System.out.println(this);
         else if (commandWord.equals("go"))
             goRoom(command);
         else if (commandWord.equals("where"))
@@ -97,7 +99,7 @@ public class Player {
      * Prints inventory
      */
     private void printInventory() {
-    	System.out.println("You have:" + inventory);
+    	System.out.println("You have " + inventory);
     }
 
     /** 
@@ -265,5 +267,9 @@ public class Player {
         }
 		
 		String monsterId = command.getSecondWord();
+	}
+	
+	public String toString() {
+		return "Health: " + health + "\n" + currentRoom.shortDescription() + "\nInventory: " + inventory;
 	}
 }

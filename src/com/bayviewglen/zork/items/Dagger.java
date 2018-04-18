@@ -4,7 +4,7 @@ import com.bayviewglen.zork.monsters.Monster;
 public class Dagger extends Weapons{
 
 	public Dagger() {
-		super("dagger", 10);
+		super("dagger", 10, "Stabby time!");
 		// TODO Auto-generated constructor stub
 	}
 	

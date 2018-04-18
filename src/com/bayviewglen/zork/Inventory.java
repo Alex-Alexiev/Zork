@@ -71,7 +71,7 @@ public class Inventory {
 			ret += "\n" + item;
 		}
 		if (ret.length()<1) {
-			return "LOL you have nothing in your inventory XD";
+			return "nothing";
 		}
 		return ret;
 	}
