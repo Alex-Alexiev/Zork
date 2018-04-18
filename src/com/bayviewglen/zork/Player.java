@@ -102,7 +102,7 @@ public class Player {
             return;
         }
 
-        String direction = command.getWordAtIndex(2);
+        String direction = command.getSecondWord();
         
         // Try to leave current room.
         move(direction);
@@ -136,7 +136,7 @@ public class Player {
             return;
         }
 		
-        String itemId = command.getWordAtIndex(2);
+        String itemId = command.getSecondWord();
         Item item = inventory.getItem(itemId);
         
         if (item != null) {
@@ -173,7 +173,7 @@ public class Player {
             return;
         }
 		
-        String itemId = command.getWordAtIndex(2);
+        String itemId = command.getSecondWord();
         Item item = currentRoom.inventory.getItem(itemId);
         
         if (item != null) {
@@ -214,6 +214,6 @@ public class Player {
             return;
         }
 		
-		String monsterId = command.getWordAtIndex(2);
+		String monsterId = command.getSecondWord();
 	}
 }

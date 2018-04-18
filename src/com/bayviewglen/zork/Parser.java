@@ -51,6 +51,7 @@ class Parser
         int i = 0;
         while (tokenizer.hasMoreTokens()) {
         	words[i] = tokenizer.nextToken(); 
+        	i++;
         }
 
         // note: we just ignore the rest of the input line.

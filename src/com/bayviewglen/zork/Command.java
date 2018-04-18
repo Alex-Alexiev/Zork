@@ -47,6 +47,15 @@ class Command
     {
         return words[0];
     }
+    
+    /**
+     * Return the command word (the first word) of this command. If the
+     * command was not understood, the result is null.
+     */
+    public String getSecondWord()
+    {
+        return words[1];
+    }
 
     /**
      * Return the second word of this command. Returns null if there was no
@@ -71,5 +80,13 @@ class Command
     public boolean hasManyWords(int i)
     {
         return (words.length >= i);
+    }
+    
+    public String toString() {
+    	String ret = "";
+    	for (int i = 0; i < words.length; i++) {
+    		ret += words[i] + ", ";
+    	}
+    	return ret;
     }
 }
