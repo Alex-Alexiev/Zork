@@ -14,7 +14,7 @@ class CommandWords
 {
     // a constant array that holds all valid command words
     private static final String validCommands[] = {
-        "room", "welfare", "go", "quit", "help", "eat", "take", "attack *monster name* with *weapon name*", "drop", "inventory"
+        "go", "quit", "help", "room", "welfare", "eat", "take", "attack *monster name* with *weapon name*", "drop", "inventory"
     };
     
     /**
@@ -33,7 +33,7 @@ class CommandWords
     {
         for(int i = 0; i < validCommands.length; i++)
         {
-            if(validCommands[i].equals(aString))
+            if(validCommands[i].split(" ")[0].equals(aString))
                 return true;
         }
         // if we get here, the string was not found in the commands
