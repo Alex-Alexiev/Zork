@@ -138,11 +138,4 @@ class Room
 		this.description = description;
 	}
 	
-	public Item getItem(String id) {
-		return inventory.getItem(id);
-	}
-	
-	public void removeItem(String id) {
-		inventory.removeItem(id);
-	}
 }

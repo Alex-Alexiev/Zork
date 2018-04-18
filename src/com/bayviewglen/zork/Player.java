@@ -174,14 +174,14 @@ public class Player {
         }
 		
         String itemId = command.getWordAtIndex(2);
-        Item item = currentRoom.getItem(itemId);
+        Item item = currentRoom.inventory.getItem(itemId);
         
         if (item != null) {
         	
         	System.out.println();
         	
         	inventory.addToInventory(item, item.getAmount());
-        	currentRoom.removeItem(itemId);
+        	currentRoom.inventory.removeItem(itemId);
         	
         	if (item.isConsumable()) {
         		int amount = item.getAmount();
