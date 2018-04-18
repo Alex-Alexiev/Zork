@@ -52,7 +52,7 @@ public class Player {
         	pickupItem(command);
         }
         else if (commandWord.equals("attack")) {
-        	//
+        	attack(command);
         }
         else if (commandWord.equals("drop")) {
         	dropItem(command);
@@ -174,14 +174,14 @@ public class Player {
         }
 		
         String itemId = command.getWordAtIndex(2);
-        Item item = currentRoom.getItem(itemId);
+        Item item = currentRoom.inventory.getItem(itemId);
         
         if (item != null) {
         	
         	System.out.println();
         	
         	inventory.addToInventory(item, item.getAmount());
-        	currentRoom.removeItem(itemId);
+        	currentRoom.inventory.removeItem(itemId);
         	
         	if (item.isConsumable()) {
         		int amount = item.getAmount();
@@ -197,6 +197,23 @@ public class Player {
         }
         
         System.out.println("\nThe room has \n" + currentRoom.inventory);
-        
+	}
+	
+	/*
+	 * Attacks monster
+	 */
+	private void attack(Command command) {
+		if(!command.hasManyWords(2))
+        {
+			if(!command.hasManyWords(4))
+	        {
+	            System.out.println("\nAttack monster with what?\n");
+	            return;
+	        }
+			System.out.println("\nAttack what?\n");
+            return;
+        }
+		
+		String monsterId = command.getWordAtIndex(2);
 	}
 }
