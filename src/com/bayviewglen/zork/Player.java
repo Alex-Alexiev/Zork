@@ -17,8 +17,8 @@ public class Player {
 		currentRoom = startingRoom;
 		parser = new Parser();
 		inventory = new Inventory();
-		maxHealth = 100;
-		health = 90;
+		maxHealth = 500;
+		health = 500;
 	}
 	
 	/**
