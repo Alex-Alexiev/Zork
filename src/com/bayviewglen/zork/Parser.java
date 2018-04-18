@@ -17,6 +17,7 @@ package com.bayviewglen.zork;
  */
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
@@ -45,8 +46,6 @@ class Parser
             System.out.println ("There was an error during reading: "
                                 + exc.getMessage());
         }
-
-        StringTokenizer tokenizer = new StringTokenizer(inputLine);
 
         words = inputLine.split(" ");
 

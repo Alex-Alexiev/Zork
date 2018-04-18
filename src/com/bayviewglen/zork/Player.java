@@ -159,7 +159,7 @@ public class Player {
         	for (int i = 0; i < 3; i++) {
         		System.out.print("*munch*");
         		try {
-					TimeUnit.SECONDS.sleep(1);
+					TimeUnit.MILLISECONDS.sleep(400);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -172,8 +172,7 @@ public class Player {
         	if (health > maxHealth)
         		health = maxHealth;
         	        	        	
-        	System.out.print(" Yum\n");
-        	System.out.println("Health: " + health);
+        	System.out.println("\nHealth: " + health);
         	
         } else {
         	System.out.println("You have no " + foodId + "s");

@@ -6,10 +6,10 @@ abstract class Weapons extends Item{
 	
 	protected int damage;
 	
-	public Weapons(String id, int damage) {
+	public Weapons(String id, int damage, String description) {
 		super(id, 1, false);
 		this.damage = damage;
-		
+		this.description = description;
 	}
 	
 	

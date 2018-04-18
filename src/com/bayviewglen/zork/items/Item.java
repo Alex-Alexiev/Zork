@@ -9,8 +9,10 @@ package com.bayviewglen.zork.items;
 public class Item {
 	
 	private String id;
-	private int amount = 0;
+	private int amount;
 	private boolean consumable;
+	
+	protected String description;
 	
 	public Item(String id, int amount, boolean consumable) {
 		this.id = id;
