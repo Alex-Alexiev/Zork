@@ -126,6 +126,7 @@ public class Player {
 	 * @param direction
 	 */
 	private void move(String direction) {
+		
 		Room nextRoom = currentRoom.nextRoom(direction);
 
         if (nextRoom == null) {

@@ -113,7 +113,7 @@ class Game
     public Game() {
         try {
 			initRooms("data/Rooms.dat");
-			player = new Player(masterRoomMap.get("ROOM_1"));
+			player = new Player(masterRoomMap.get("CABIN_1"));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
