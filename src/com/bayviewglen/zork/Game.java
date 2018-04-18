@@ -21,7 +21,7 @@ import com.bayviewglen.zork.items.Food;
  *  To play this game, create an instance of this class and call the "play"
  *  routine.
  * 
- *  This main class creates and initialises all the others: it creates all
+ *  This main class creates and initializes all the others: it creates all
  *  rooms, creates the parser and starts the game.  It also evaluates the
  *  commands that the parser returns.
  */
@@ -66,6 +66,8 @@ class Game
 					}
 				}
 				
+				roomScanner.nextLine();
+				
 				// Read the Exits
 				String roomExits = roomScanner.nextLine();
 				
@@ -82,6 +84,7 @@ class Game
 				masterRoomMap.put(roomName.toUpperCase().substring(10).trim().replaceAll(" ",  "_"), room);
 
 				// Now we better set the exits.
+				if (roomScanner.hasNext()) roomScanner.nextLine();
 			}
 			
 			for (String key : masterRoomMap.keySet()){
@@ -105,7 +108,7 @@ class Game
     }    
 
     /**
-     * Create the game and initialise its internal map.
+     * Create the game and initialize its internal map.
      */
     public Game() {
         try {
