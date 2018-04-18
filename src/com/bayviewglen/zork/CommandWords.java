@@ -14,7 +14,7 @@ class CommandWords
 {
     // a constant array that holds all valid command words
     private static final String validCommands[] = {
-        "go", "quit", "help", "eat", "take", "attack *monster name* with *weapon name*", "drop", "inventory"
+        "room", "go", "quit", "help", "eat", "take", "attack *monster name* with *weapon name*", "drop", "inventory"
     };
 
     /**
@@ -29,7 +29,7 @@ class CommandWords
      * Check whether a given String is a valid command word. 
      * Return true if it is, false if it isn't.
      **/
-    public boolean isCommand(String aString)
+    public static boolean isCommand(String aString)
     {
         for(int i = 0; i < validCommands.length; i++)
         {
@@ -47,7 +47,7 @@ class CommandWords
     {
         for(int i = 0; i < validCommands.length; i++)
         {
-            System.out.print(validCommands[i] + "  ");
+            System.out.print(validCommands[i] + " | ");
         }
         System.out.println();
     }

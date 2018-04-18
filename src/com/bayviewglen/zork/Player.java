@@ -41,6 +41,8 @@ public class Player {
         String commandWord = command.getCommandWord();
         if (commandWord.equals("help"))
             printHelp();
+        else if (commandWord.equals("room"))
+        	printLocation();
         else if (commandWord.equals("go"))
             goRoom(command);
         else if (commandWord.equals("where"))

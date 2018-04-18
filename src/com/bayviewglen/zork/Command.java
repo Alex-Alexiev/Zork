@@ -71,7 +71,7 @@ class Command
      */
     public boolean isUnknown()
     {
-        return (words[0] == null);
+        return (words[0] == null) || !CommandWords.isCommand(words[0]);
     }
 
     /**

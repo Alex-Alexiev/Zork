@@ -152,6 +152,7 @@ class Game
         System.out.println("Type 'help' if you need help.");
         System.out.println();
         player.printLocation();
+        System.out.println();
     }
   
 }
