@@ -12,11 +12,6 @@ abstract class Weapons extends Item{
 		this.description = description;
 	}
 	
-	
-	public int getDamage() {
-		return damage;
-	}
-	
 	abstract public void ability(Monster monster);
 
 }
