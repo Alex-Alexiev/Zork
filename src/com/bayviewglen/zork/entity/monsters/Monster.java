@@ -1,4 +1,4 @@
-package com.bayviewglen.zork.monsters;
+package com.bayviewglen.zork.entity.monsters;
 
 import com.bayviewglen.zork.Player;
 

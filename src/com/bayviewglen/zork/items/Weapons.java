@@ -1,8 +1,8 @@
 package com.bayviewglen.zork.items;
 
-import com.bayviewglen.zork.monsters.Monster;
+import com.bayviewglen.zork.entity.monsters.Monster;
 
-abstract class Weapons extends Item{
+abstract public class Weapons extends Item{
 	
 	protected int damage;
 	
