@@ -33,7 +33,7 @@ class Parser
     public Command getCommand() 
     {
         String inputLine = "";   // will hold the full input line
-        String[] words = new String[4];
+        String[] words;
 
         System.out.print("> ");     // print prompt
 
@@ -48,16 +48,7 @@ class Parser
 
         StringTokenizer tokenizer = new StringTokenizer(inputLine);
 
-        int i = 0;
-        while (tokenizer.hasMoreTokens()) {
-        	words[i] = tokenizer.nextToken(); 
-        	i++;
-        }
-
-        // note: we just ignore the rest of the input line.
-
-        // Now check whether this word is known. If so, create a command
-        // with it. If not, create a "nil" command (for unknown command).
+        words = inputLine.split(" ");
 
         return new Command(words);
     }
