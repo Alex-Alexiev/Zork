@@ -12,6 +12,7 @@ public class Player {
 	
 	private int health;
 	private int maxHealth;
+	private boolean combat;
 		
 	public Player(Room startingRoom) {
 		currentRoom = startingRoom;
@@ -19,6 +20,7 @@ public class Player {
 		inventory = new Inventory();
 		maxHealth = 100;
 		health = 90;
+		combat = false;
 	}
 	
 	/**
@@ -58,18 +60,14 @@ public class Player {
             else
                 return true;  // signal that we want to quit
         }
-        else if (commandWord.equals("eat")){
+        else if (commandWord.equals("eat"))
         	eat(command);
-        }
-        else if (commandWord.equals("take")) {
+        else if (commandWord.equals("take"))
         	pickupItem(command);
-        }
-        else if (commandWord.equals("attack")) {
+        else if (commandWord.equals("attack"))
         	attack(command);
-        }
-        else if (commandWord.equals("drop")) {
+        else if (commandWord.equals("drop"))
         	dropItem(command);
-        }
         
         return false;
     }
