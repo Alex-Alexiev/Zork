@@ -65,10 +65,13 @@ public class Inventory {
 		return null;
 	}
 	
+	/*
+	 * Converts the inventory to a string
+	 */
 	public String toString() {
 		String ret = "";
 		for(Item item: items.values()) {
-			ret += "\n" + item;
+			ret += "\n- " + item;
 		}
 		if (ret.length()<1) {
 			return "nothing";

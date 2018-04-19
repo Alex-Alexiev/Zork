@@ -14,7 +14,7 @@ class CommandWords
 {
     // a constant array that holds all valid command words
     private static final String validCommands[] = {
-        "go", "quit", "help", "room", "welfare", "eat", "take", "attack *monster name* with *weapon name*", "drop", "inventory"
+        "go", "help", "quit", "search", "room", "welfare", "eat", "take", "attack *monster name* with *weapon name*", "drop", "inventory"
     };
     
     /**
@@ -48,6 +48,8 @@ class CommandWords
         for(int i = 0; i < validCommands.length; i++)
         {
             System.out.print(validCommands[i] + " | ");
+            if (i % 8 == 0 && i != 0) 
+            	System.out.println();
         }
         System.out.println();
     }

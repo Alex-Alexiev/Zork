@@ -49,6 +49,8 @@ public class Player {
         	System.out.println(this);
         else if (commandWord.equals("go"))
             goRoom(command);
+        else if (commandWord.equals("search"))
+        	searchRoom();
         else if (commandWord.equals("where"))
         	printLocation();
         else if (commandWord.equals("inventory"))
@@ -98,6 +100,13 @@ public class Player {
      */
     private void printInventory() {
     	System.out.println("You have " + inventory);
+    }
+    
+    /**
+     * Searches the room
+     */
+    private void searchRoom() {
+    	System.out.println("There is " + currentRoom.inventory);
     }
 
     /** 
@@ -196,6 +205,9 @@ public class Player {
         
         if (item != null) {
         	
+        	currentRoom.inventory.addToInventory(item, item.getAmount());
+        	inventory.removeItem(itemId);
+        	
         	if (item.isConsumable()) {
         		int amount = item.getAmount();
         		if (amount > 1)
@@ -205,14 +217,9 @@ public class Player {
         	} else {
         		System.out.println("You dropped your" + itemId);
         	}
-        	currentRoom.inventory.addToInventory(item, item.getAmount());
-        	inventory.removeItem(itemId);
         } else {
         	System.out.println("You have no " + itemId + "s");
         }
-        
-        System.out.println("\nThe room has " + currentRoom.inventory);
-        
 	}
 	
 	/**
@@ -246,8 +253,6 @@ public class Player {
         } else {
         	System.out.println("The room has no " + itemId + "s");
         }
-        
-        System.out.println("\nThe room has " + currentRoom.inventory);
 	}
 	
 	/*
