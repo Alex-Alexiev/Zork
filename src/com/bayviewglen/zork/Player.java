@@ -12,15 +12,13 @@ public class Player {
 	
 	private int health;
 	private int maxHealth;
-	private boolean combat;
 		
 	public Player(Room startingRoom) {
 		currentRoom = startingRoom;
 		parser = new Parser();
 		inventory = new Inventory();
-		maxHealth = 100;
-		health = 90;
-		combat = false;
+		maxHealth = 500;
+		health = 500;
 	}
 	
 	/**
