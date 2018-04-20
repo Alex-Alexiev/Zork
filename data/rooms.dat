@@ -11,7 +11,7 @@ Room Entity:
 Exit Rooms: W-Main Deck 2
 
 Room Name: Main Deck 1
-Room Description: The salty briny air fills your nostrils. The ship's crew works tirelessly, scrubbing the deck clean./nShouting can be heard from the captian's deck.
+Room Description: The salty briny air fills your nostrils.<br>The ship's crew works tirelessly, scrubbing the deck clean.<br>Shouting can be heard from the captian's deck.
 Room Inventory: Food rat -4
 Room Entity: 
 Exit Rooms: E-Cabin 2, W-Captains Deck 1
@@ -20,11 +20,17 @@ Room Name: Main Deck 2
 Room Description: "We're here!" says a crew member.
 Room Inventory: 
 Room Entity: 
-Exit Rooms: E-Cabin 2, W-Captains Deck 1, N-Docks 1
+Exit Rooms: E-Cabin 2, W-Captains Deck 2, N-Docks 1
 
 Room Name: Captains Deck 1
 Room Description: The Captain is barking orders, while turning the wheel.
 Room Inventory: Food rottensteak -3
+Room Entity: NPC Captain Morgan
+Exit Rooms: E-Main Deck 2
+
+Room Name: Captains Deck 2
+Room Description: The Captain is standing still. He looks stoic as ever.
+Room Inventory: 
 Room Entity: NPC Captain Morgan
 Exit Rooms: E-Main Deck 2
 
@@ -38,4 +44,42 @@ Room Name: Shore 1
 Room Description:  You are on the shore of the Island.
 Room Inventory: 
 Room Entity: 
-Exit Rooms: S-Docks 1
+Exit Rooms: S-Docks 1, N-Forest Entrance 1
+
+/s Forest Of The Lost
+
+Room Name: Forest Entrance 1 
+Room Description: The entrance to the "Forest of the Lost". <br>Beyond the endless labyrinth of trees lies a cave, leading to the heart of the island.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: S-Shore 1, N-Misty Path 1
+
+Room Name: Misty Path 1
+Room Description: As you enter the forest, the ethereal mist envelopes around you. <br>The shore is no longer in sight.
+Room Inventory: 
+Room Entity:
+Exit Rooms: S-Misty Path 2, N-Forest Intersection 1
+
+Room Name: Misty Path 2
+Room Description:  There is no Shore in sight. <br>The air is as still as a corpse. The mist is all encompassing.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: S-Misty Path 2, N-Forest Intersection 1
+
+Room Name: Misty Path 3
+Room Description:  You feel you have been here before.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: S-Misty Path 2, N-Forest Intersection 1
+
+Room Name: Forest Intersection 1
+Room Description:  The path splits off into three directions. <br>The mist prevents looking farther without further exploration.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: S-Misty Path 2, N-Silent Hill 1
+
+Room Name: Silent Hill 1
+Room Description: A small hill lies in the center of a clearing. <br>There is no sound, only silence. A hooded figure stands atop the hill.
+Room Inventory: 
+Room Entity:
+Exit Rooms: S-Forest Intersection 1, N-Misty Path 3
