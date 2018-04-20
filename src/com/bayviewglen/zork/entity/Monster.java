@@ -1,21 +1,15 @@
-package com.bayviewglen.zork.entity.monsters;
+package com.bayviewglen.zork.entity;
 
 import com.bayviewglen.zork.Player;
 
-abstract public class Monster {
-	private String id;
-	
-	private String description;
-	
-	//private 
+abstract public class Monster extends Entity {
 	
 	private int damage;
 	
 	private int health;
 	
 	public Monster(String id, String description, int damage, int health) {
-		this.id = id;
-		this.description = description;
+		super(id, description);
 		this.damage = damage;
 		this.health = health;
 	}

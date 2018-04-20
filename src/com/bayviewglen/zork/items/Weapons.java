@@ -1,6 +1,6 @@
 package com.bayviewglen.zork.items;
 
-import com.bayviewglen.zork.entity.monsters.Monster;
+import com.bayviewglen.zork.entity.Monster;
 
 abstract public class Weapons extends Item{
 	
