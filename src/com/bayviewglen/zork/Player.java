@@ -113,8 +113,8 @@ public class Player {
      * Prints equipment()
      */
     private void printEquipment() {
-    	String weapon = equippedWeapon == null ? "No sword equipped" : "Sword: " + equippedWeapon;
-    	String armor = equippedArmor == null ? "No armor equipped" : "Armor: " + equippedArmor;
+    	String weapon = equippedWeapon == null ? "No sword equipped" : "Sword: " + equippedWeapon + " " + equippedWeapon.getDamage();
+    	String armor = equippedArmor == null ? "No armor equipped" : "Armor: " + equippedArmor + " " + equippedArmor.getShieldPoints();
     	System.out.println(weapon);
     	System.out.println(armor);
     }
