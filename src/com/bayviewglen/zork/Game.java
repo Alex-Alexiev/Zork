@@ -43,68 +43,74 @@ class Game
 			HashMap<String, HashMap<String, String>> exits = new HashMap<String, HashMap<String, String>>();    
 			roomScanner = new Scanner(new File(fileName));
 			while(roomScanner.hasNext()){
-				Room room = new Room();
-				
-				// Read the Name
-				String roomName = roomScanner.nextLine().substring(10).trim();
-				room.setRoomName(roomName.substring(0, roomName.length() - 2));
-				
-				// Read State of the room
-				int roomState = Integer.parseInt(roomName.substring(roomName.length() - 1));
-								
-				// Gets the key of the room with state 1
-				String roomOneKey = "";
-				if (roomState != 1)
-					roomOneKey = roomName.substring(0, roomName.length() - 2).toUpperCase().replaceAll(" ",  "_") + "_" + 1;
-								
-				// Read the Description  
-				String roomDescription = roomScanner.nextLine();
-				String des = roomDescription.split(":")[1].replaceAll("<br>", "\n").trim();
-				if (roomState != 1 && des.trim().equals("")) {
-					des = masterRoomMap.get(roomOneKey).getDescription();
-				}
-				room.setDescription(des);
-
-				// Read the room inventory
-				String roomInventory = roomScanner.nextLine();
-				roomInventory = roomInventory.split(":")[1];
-				String[] roomItems = roomInventory.split(",");
-				if (roomState != 1 && roomInventory.trim().equals("")) {
-					room.inventory = masterRoomMap.get(roomOneKey).inventory;
-				} else {
-					for (String item : roomItems) {
-						item = item.substring(1);
-						String type = item.split(" ")[0];
-						if (type.equals("Food")) {
-							Food food = new Food(item.split(" ")[1],Integer.parseInt(item.split(" ")[2]));
-							room.inventory.addToInventory(food, 1);
+				String next = roomScanner.nextLine();
+				if (!next.substring(0,2).equals("/s")) {
+					Room room = new Room();
+					
+					// Read the Name
+					String roomName = next.substring(10).trim();
+					room.setRoomName(roomName.substring(0, roomName.length() - 2));
+					
+					// Read State of the room
+					int roomState = Integer.parseInt(roomName.substring(roomName.length() - 1));
+									
+					// Gets the key of the room with state 1
+					String roomOneKey = "";
+					if (roomState != 1)
+						roomOneKey = roomName.substring(0, roomName.length() - 2).toUpperCase().replaceAll(" ",  "_") + "_" + 1;
+									
+					// Read the Description  
+					String roomDescription = roomScanner.nextLine();
+					String des = roomDescription.split(":")[1].replaceAll("<br>", "\n").trim();
+					if (roomState != 1 && des.trim().equals("")) {
+						des = masterRoomMap.get(roomOneKey).getDescription();
+					}
+					room.setDescription(des);
+	
+					// Read the room inventory
+					String roomInventory = roomScanner.nextLine();
+					roomInventory = roomInventory.split(":")[1];
+					String[] roomItems = roomInventory.split(",");
+					if (roomState != 1 && roomInventory.trim().equals("")) {
+						room.inventory = masterRoomMap.get(roomOneKey).inventory;
+					} else {
+						for (String item : roomItems) {
+							item = item.substring(1);
+							String type = item.split(" ")[0];
+							if (type.equals("Food")) {
+								Food food = new Food(item.split(" ")[1],Integer.parseInt(item.split(" ")[2]));
+								room.inventory.addToInventory(food, 1);
+							}
 						}
 					}
-				}
-				
-				roomScanner.nextLine();
-				
-				// Read the Exits
-				String roomExits = roomScanner.nextLine();
-				roomExits = roomExits.split(":")[1];
-				
-				// An array of strings in the format E-RoomName
-				String[] rooms = roomExits.split(",");
-				if (roomState != 1 && roomExits.trim().equals("")) {
-					room.setExits(masterRoomMap.get(roomOneKey).getExits());
-				} else {
-					HashMap<String, String> temp = new HashMap<String, String>(); 
-					for (String s : rooms){
-						temp.put(s.split("-")[0].trim(), s.split("-")[1]);
+					
+					roomScanner.nextLine();
+					
+					// Read the Exits
+					String roomExits = roomScanner.nextLine();
+					roomExits = roomExits.split(":")[1];
+					
+					// An array of strings in the format E-RoomName
+					String[] rooms = roomExits.split(",");
+					if (roomState != 1 && roomExits.trim().equals("")) {
+						room.setExits(masterRoomMap.get(roomOneKey).getExits());
+					} else {
+						HashMap<String, String> temp = new HashMap<String, String>(); 
+						for (String s : rooms){
+							temp.put(s.split("-")[0].trim(), s.split("-")[1]);
+						}
+						exits.put(roomName.toUpperCase().replaceAll(" ",  "_"), temp);
 					}
-					exits.put(roomName.toUpperCase().replaceAll(" ",  "_"), temp);
+					
+					// This puts the room we created (Without the exits in the masterMap)
+					masterRoomMap.put(roomName.toUpperCase().replaceAll(" ",  "_"), room);
+					
+					// Now we better set the exits.
+					if (roomScanner.hasNext()) roomScanner.nextLine();
 				}
-				
-				// This puts the room we created (Without the exits in the masterMap)
-				masterRoomMap.put(roomName.toUpperCase().replaceAll(" ",  "_"), room);
-				
-				// Now we better set the exits.
-				if (roomScanner.hasNext()) roomScanner.nextLine();
+				else if (roomScanner.hasNext()) {
+					roomScanner.nextLine();
+				}
 			}
 			
 			for (String key : masterRoomMap.keySet()){
