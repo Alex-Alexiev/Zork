@@ -315,16 +315,20 @@ public class Player {
             return;
         }
 		
-		if (command.getSecondWord().equals("armor") || Command.mergeFinalWords(command, 1).equals(equippedArmor.getId())) {
+		String secondWord = command.getSecondWord();
+				
+		if ((secondWord.equals("armor") && equippedArmor != null) || Command.mergeFinalWords(command, 1).equals(equippedArmor.getId())) {
 			inventory.addToInventory(equippedArmor, 1);
 			equippedArmor = null;
+			System.out.println("You unequiped your " + secondWord);
 		}
-		else if (command.getSecondWord().equals("weapon") || Command.mergeFinalWords(command, 1).equals(equippedWeapon.getId())) {
+		else if ((secondWord.equals("weapon") && equippedWeapon != null) || Command.mergeFinalWords(command, 1).equals(equippedWeapon.getId())) {
 			inventory.addToInventory(equippedWeapon, 1);
 			equippedWeapon = null;
+			System.out.println("You unequiped your " + secondWord);
 		}
 		else {
-			System.out.println(command.getCommandWord() + " is not currently equiped");
+			System.out.println(secondWord.substring(0, 1).toUpperCase() + secondWord.substring(1) + " is not currently equiped");
 		}
 	}
 	
