@@ -95,8 +95,7 @@ class Room
      */
     public String longDescription()
     {
-    	
-        return "Room: " + roomName + "\n" + description + inventory + "\n" + exitString();
+    	return "Room: " + roomName + "\n" + description + "\n" + exitString();
     }
 
     /**
@@ -135,6 +134,14 @@ class Room
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public HashMap<String, Room> getExits() {
+		return exits;
+	}
+	
+	public void setExits(HashMap<String, Room> exits) {
+		this.exits = exits;
 	}
 	
 }

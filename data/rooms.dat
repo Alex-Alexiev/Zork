@@ -1,8 +1,8 @@
 Room Name: Cabin 1
 Room Description: You in an old ship's quarters. You are sailing to an Island far across the sea.
-Room Inventory: 
+Room Inventory: Food steak 5, Food egg 4
 Room Entity:
-Exit Rooms: W-Main Deck
+Exit Rooms: W-Main Deck 1
 
 Room Name: Cabin 2
 Room Description: You in the old ship's quarters again.
@@ -10,32 +10,32 @@ Room Inventory:
 Room Entity:
 Exit Rooms: W-Main Deck 2
 
-Room Name: Main Deck
+Room Name: Main Deck 1
 Room Description: The salty briny air fills your nostrils. The ship's crew works tirelessly, scrubbing the deck clean./nShouting can be heard from the captian's deck.
-Room Inventory: 
+Room Inventory: Food rat -4
 Room Entity: 
-Exit Rooms: E-Cabin 2, W-Captains Deck
+Exit Rooms: E-Cabin 2, W-Captains Deck 1
 
 Room Name: Main Deck 2
 Room Description: "We're here!" says a crew member.
 Room Inventory: 
 Room Entity: 
-Exit Rooms: E-Cabin 2, W-Captains Deck, N-Docks
+Exit Rooms: E-Cabin 2, W-Captains Deck 1, N-Docks 1
 
-Room Name: Captains Deck
+Room Name: Captains Deck 1
 Room Description: The Captain is barking orders, while turning the wheel.
 Room Inventory: 
 Room Entity: NPC Captain Morgan
 Exit Rooms: E-Main Deck 2
 
-Room Name: Docks
+Room Name: Docks 1
 Room Description:  You are on the docks. Old rotten wood creaks under your feet.
 Room Inventory: 
 Room Entity: NPC Herr Harker
-Exit Rooms: N-Shore, S-Main Deck 2
+Exit Rooms: N-Shore 1, S-Main Deck 2
 
-Room Name: Shore
+Room Name: Shore 1
 Room Description:  You are on the shore of the Island.
 Room Inventory: 
 Room Entity: 
-Exit Rooms: S-Docks
+Exit Rooms: S-Docks 1
