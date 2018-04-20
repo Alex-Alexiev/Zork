@@ -1,8 +1,8 @@
 package com.bayviewglen.zork.items.weapons;
 import com.bayviewglen.zork.entity.Monster;
-import com.bayviewglen.zork.items.Weapons;
+import com.bayviewglen.zork.items.Weapon;
 
-public class CleaverOfGiants extends Weapons{
+public class CleaverOfGiants extends Weapon{
 
 	public CleaverOfGiants() {
 		super("CleaverOfGiants", 30, "Not just for cutting the beanstalk.");

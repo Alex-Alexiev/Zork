@@ -1,8 +1,8 @@
 package com.bayviewglen.zork.items.weapons;
 import com.bayviewglen.zork.entity.Monster;
-import com.bayviewglen.zork.items.Weapons;
+import com.bayviewglen.zork.items.Weapon;
 
-public class Dagger extends Weapons{
+public class Dagger extends Weapon{
 
 	public Dagger() {
 		super("dagger", 10, "Stabby time!");

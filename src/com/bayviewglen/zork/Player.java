@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 import com.bayviewglen.zork.items.Armor;
 import com.bayviewglen.zork.items.Food;
 import com.bayviewglen.zork.items.Item;
-import com.bayviewglen.zork.items.Weapons;
+import com.bayviewglen.zork.items.Weapon;
 
 public class Player {
 	
@@ -12,7 +12,7 @@ public class Player {
 	private Parser parser;
 	private Inventory inventory;
 	private Armor equippedArmor;
-	private Weapons equippedWeapon;
+	private Weapon equippedWeapon;
 	
 	private int health;
 	private int maxHealth;
@@ -232,7 +232,7 @@ public class Player {
         		else 
         			System.out.println("You dropped " + amount + " " + itemId);
         	} else {
-        		System.out.println("You dropped your" + itemId);
+        		System.out.println("You dropped your " + itemId);
         	}
         } else {
         	System.out.println("You have no " + itemId + "s");
@@ -287,8 +287,8 @@ public class Player {
         Item item = inventory.getItem(itemId);
         
         if (item != null) {
-        	if (item instanceof Weapons) {
-        		equippedWeapon = (Weapons) item;
+        	if (item instanceof Weapon) {
+        		equippedWeapon = (Weapon) item;
         		inventory.removeItem(itemId);
         		System.out.println("You equipped " + equippedWeapon);
         	}

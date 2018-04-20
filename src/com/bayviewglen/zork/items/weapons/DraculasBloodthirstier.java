@@ -1,8 +1,8 @@
 package com.bayviewglen.zork.items.weapons;
 import com.bayviewglen.zork.entity.Monster;
-import com.bayviewglen.zork.items.Weapons;
+import com.bayviewglen.zork.items.Weapon;
 
-public class DraculasBloodthirstier extends Weapons{
+public class DraculasBloodthirstier extends Weapon{
 
 	public DraculasBloodthirstier() {
 		super("Dracula’s Bloodthirstier", 40, "Forged by the famous Lord Dracula. "

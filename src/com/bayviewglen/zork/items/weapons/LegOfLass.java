@@ -1,8 +1,8 @@
 package com.bayviewglen.zork.items.weapons;
 import com.bayviewglen.zork.entity.Monster;
-import com.bayviewglen.zork.items.Weapons;
+import com.bayviewglen.zork.items.Weapon;
 
-public class LegOfLass extends Weapons{
+public class LegOfLass extends Weapon{
 
 	public LegOfLass() {
 		super("LegOfLass", 30, "Who knew the legs of some Scottish lady would make such fantastic bow arms? Such flexibility! Such Finesse!");

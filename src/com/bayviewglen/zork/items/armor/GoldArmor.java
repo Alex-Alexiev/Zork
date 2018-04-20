@@ -1,4 +1,4 @@
-package com.bayviewglen.zork;
+package com.bayviewglen.zork.items.armor;
 
 import com.bayviewglen.zork.items.Armor;
 

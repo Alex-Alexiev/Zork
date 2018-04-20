@@ -85,10 +85,15 @@ class Game
 								room.inventory.addToInventory(food, 1);
 							}
 							if (type.equals("Armor")) {
-								Class<?> clazz = Class.forName("com.bayviewglen.zork.GoldArmor");
+								Class<?> clazz = Class.forName("com.bayviewglen.zork.items.armor." + item.split(" ")[1].trim());
 								Constructor<?> ctor = clazz.getConstructor();
 								Item object = (Item) ctor.newInstance();
-								//Armor armor = new Food(item.split(" ")[1],Integer.parseInt(item.split(" ")[2]));
+								room.inventory.addToInventory(object, 1);
+							}
+							if (type.equals("Weapon")) {
+								Class<?> clazz = Class.forName("com.bayviewglen.zork.items.weapons." + item.split(" ")[1].trim());
+								Constructor<?> ctor = clazz.getConstructor();
+								Item object = (Item) ctor.newInstance();
 								room.inventory.addToInventory(object, 1);
 							}
 						}
