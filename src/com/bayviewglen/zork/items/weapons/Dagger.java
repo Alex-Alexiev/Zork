@@ -1,5 +1,5 @@
 package com.bayviewglen.zork.items.weapons;
-import com.bayviewglen.zork.entity.monsters.Monster;
+import com.bayviewglen.zork.entity.Monster;
 import com.bayviewglen.zork.items.Weapons;
 
 public class Dagger extends Weapons{
