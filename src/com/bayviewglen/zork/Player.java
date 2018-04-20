@@ -1,14 +1,18 @@
 package com.bayviewglen.zork;
 import java.util.concurrent.TimeUnit;
 
+import com.bayviewglen.zork.items.Armor;
 import com.bayviewglen.zork.items.Food;
 import com.bayviewglen.zork.items.Item;
+import com.bayviewglen.zork.items.Weapons;
 
 public class Player {
 	
 	private Room currentRoom;
 	private Parser parser;
 	private Inventory inventory;
+	private Armor equippedArmor;
+	private Weapons equippedWeapon;
 	
 	private int health;
 	private int maxHealth;
@@ -53,13 +57,6 @@ public class Player {
         	printLocation();
         else if (commandWord.equals("inventory"))
         	printInventory();
-        else if (commandWord.equals("quit"))
-        {
-            if (command.hasManyWords(2))
-                System.out.println("Quit what?");
-            else
-                return true;  // signal that we want to quit
-        }
         else if (commandWord.equals("eat"))
         	eat(command);
         else if (commandWord.equals("take"))
@@ -68,6 +65,18 @@ public class Player {
         	attack(command);
         else if (commandWord.equals("drop"))
         	dropItem(command);
+        else if (commandWord.equals("equip"))
+        	equipItem(command);
+        else if (commandWord.equals("equipment"))
+        	printEquipment();
+        else if (commandWord.equals("unequip"))
+        	unequip(command);
+        else if (commandWord.equals("quit")) {
+            if (command.hasManyWords(2))
+                System.out.println("Quit what?");
+            else
+                return true;  // signal that we want to quit
+        }
         
         return false;
     }
@@ -98,6 +107,16 @@ public class Player {
      */
     private void printInventory() {
     	System.out.println("You have " + inventory);
+    }
+    
+    /**
+     * Prints equipment()
+     */
+    private void printEquipment() {
+    	String weapon = equippedWeapon == null ? "No sword equipped" : "Sword: " + equippedWeapon;
+    	String armor = equippedArmor == null ? "No armor equipped" : "Armor: " + equippedArmor;
+    	System.out.println(weapon);
+    	System.out.println(armor);
     }
     
     /**
@@ -154,7 +173,7 @@ public class Player {
             return;
         }
 		
-		String foodId = command.getSecondWord();
+		String foodId = Command.mergeFinalWords(command, 1);
         Food food = (Food) inventory.getItem(foodId);
         
         if (food != null) {
@@ -198,7 +217,7 @@ public class Player {
             return;
         }
 		
-        String itemId = command.getSecondWord();
+		String itemId = Command.mergeFinalWords(command, 1);
         Item item = inventory.getItem(itemId);
         
         if (item != null) {
@@ -231,7 +250,7 @@ public class Player {
             return;
         }
 		
-        String itemId = command.getSecondWord();
+		String itemId = Command.mergeFinalWords(command, 1);
         Item item = currentRoom.inventory.getItem(itemId);
         
         if (item != null) {
@@ -251,6 +270,62 @@ public class Player {
         } else {
         	System.out.println("The room has no " + itemId + "s");
         }
+	}
+	
+	/*
+	 * Equips item
+	 */
+	private void equipItem(Command command) {
+		if(!command.hasManyWords(2))
+        {
+            System.out.println("Equip what?");
+            return;
+        }
+		
+		
+        String itemId = Command.mergeFinalWords(command, 1);
+        Item item = inventory.getItem(itemId);
+        
+        if (item != null) {
+        	if (item instanceof Weapons) {
+        		equippedWeapon = (Weapons) item;
+        		inventory.removeItem(itemId);
+        		System.out.println("You equipped " + equippedWeapon);
+        	}
+        	else if (item instanceof Armor) {
+        		equippedArmor = (Armor) item;
+        		inventory.removeItem(itemId);
+        		System.out.println("You equipped " + equippedArmor);
+        	}
+        	else {
+        		System.out.println("You cannot equip that");
+        	}
+        } else {
+        	System.out.println("You have no " + itemId + "s");
+        }
+	}
+	
+	/*
+	 * Unequips a weapon or shield
+	 */
+	private void unequip(Command command) {
+		if(!command.hasManyWords(2))
+        {
+			System.out.println("Unequip what?");
+            return;
+        }
+		
+		if (command.getSecondWord().equals("armor") || Command.mergeFinalWords(command, 1).equals(equippedArmor.getId())) {
+			inventory.addToInventory(equippedArmor, 1);
+			equippedArmor = null;
+		}
+		else if (command.getSecondWord().equals("weapon") || Command.mergeFinalWords(command, 1).equals(equippedWeapon.getId())) {
+			inventory.addToInventory(equippedWeapon, 1);
+			equippedWeapon = null;
+		}
+		else {
+			System.out.println(command.getCommandWord() + " is not currently equiped");
+		}
 	}
 	
 	/*

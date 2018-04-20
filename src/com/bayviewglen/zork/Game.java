@@ -2,10 +2,13 @@ package com.bayviewglen.zork;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import com.bayviewglen.zork.items.Armor;
 import com.bayviewglen.zork.items.Food;
+import com.bayviewglen.zork.items.Item;
 
 /**
  * Class Game - the main class of the "Zork" game.
@@ -80,6 +83,13 @@ class Game
 							if (type.equals("Food")) {
 								Food food = new Food(item.split(" ")[1],Integer.parseInt(item.split(" ")[2]));
 								room.inventory.addToInventory(food, 1);
+							}
+							if (type.equals("Armor")) {
+								Class<?> clazz = Class.forName("com.bayviewglen.zork.GoldArmor");
+								Constructor<?> ctor = clazz.getConstructor();
+								Item object = (Item) ctor.newInstance();
+								//Armor armor = new Food(item.split(" ")[1],Integer.parseInt(item.split(" ")[2]));
+								room.inventory.addToInventory(object, 1);
 							}
 						}
 					}

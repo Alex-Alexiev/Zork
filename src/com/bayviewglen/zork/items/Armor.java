@@ -15,4 +15,8 @@ abstract public class Armor extends Item {
 	}
 	
 	abstract public void ability();
+	
+	public String toString() {
+		return super.getId();
+	}
 }

@@ -82,11 +82,26 @@ class Command
         return (words.length >= i);
     }
     
+    /**
+     * Reutrns how many command words
+     */
+    public int numOfWords() {
+    	return words.length;
+    }
+    
     public String toString() {
     	String ret = "";
     	for (int i = 0; i < words.length; i++) {
     		ret += words[i] + ", ";
     	}
     	return ret;
+    }
+    
+    public static String mergeFinalWords(Command command, int index) {
+    	String ret = "";
+    	for (int i = index; i < command.numOfWords(); i++) {
+    		ret += command.getWordAtIndex(i) + " ";
+    	}
+    	return ret.trim();
     }
 }
