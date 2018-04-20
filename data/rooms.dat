@@ -24,7 +24,7 @@ Exit Rooms: E-Cabin 2, W-Captains Deck 1, N-Docks 1
 
 Room Name: Captains Deck 1
 Room Description: The Captain is barking orders, while turning the wheel.
-Room Inventory: 
+Room Inventory: Food rottensteak -3
 Room Entity: NPC Captain Morgan
 Exit Rooms: E-Main Deck 2
 
