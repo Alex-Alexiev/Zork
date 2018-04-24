@@ -15,6 +15,9 @@ package com.bayviewglen.zork;
  */
 
 import java.util.Set;
+
+import com.bayviewglen.zork.entity.Entities;
+
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -23,6 +26,7 @@ class Room
 	private String roomName;
     private String description;
     public Inventory inventory = new Inventory();
+    public Entities entities = new Entities();
     private HashMap<String, Room> exits;
     
     /**

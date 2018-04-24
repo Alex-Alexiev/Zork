@@ -6,6 +6,7 @@ import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import com.bayviewglen.zork.entity.Entity;
 import com.bayviewglen.zork.items.Armor;
 import com.bayviewglen.zork.items.Food;
 import com.bayviewglen.zork.items.Item;
@@ -72,34 +73,56 @@ class Game
 	
 					// Read the room inventory
 					String roomInventory = roomScanner.nextLine();
-					roomInventory = roomInventory.split(":")[1];
-					String[] roomItems = roomInventory.split(",");
-					if (roomState != 1 && roomInventory.trim().equals("")) {
-						room.inventory = masterRoomMap.get(roomOneKey).inventory;
-					} else {
-						for (String item : roomItems) {
-							item = item.substring(1);
-							String type = item.split(" ")[0];
-							if (type.equals("Food")) {
-								Food food = new Food(item.split(" ")[1],Integer.parseInt(item.split(" ")[2]));
-								room.inventory.addToInventory(food, 1);
-							}
-							if (type.equals("Armor")) {
-								Class<?> clazz = Class.forName("com.bayviewglen.zork.items.armor." + item.split(" ")[1].trim());
-								Constructor<?> ctor = clazz.getConstructor();
-								Item object = (Item) ctor.newInstance();
-								room.inventory.addToInventory(object, 1);
-							}
-							if (type.equals("Weapon")) {
-								Class<?> clazz = Class.forName("com.bayviewglen.zork.items.weapons." + item.split(" ")[1].trim());
-								Constructor<?> ctor = clazz.getConstructor();
-								Item object = (Item) ctor.newInstance();
-								room.inventory.addToInventory(object, 1);
+					if (roomInventory.split(":").length > 1){
+						roomInventory = roomInventory.split(":")[1];
+						String[] roomItems = roomInventory.split(",");
+						if (roomState != 1 && roomInventory.trim().equals("")) {
+							room.inventory = masterRoomMap.get(roomOneKey).inventory;
+						} else {
+							for (String item : roomItems) {
+								item = item.substring(1);
+								String type = item.split(" ")[0];
+								if (type.equals("Food")) {
+									Food food = new Food(item.split(" ")[1],Integer.parseInt(item.split(" ")[2]));
+									room.inventory.addToInventory(food, 1);
+								}
+								if (type.equals("Armor")) {
+									Class<?> clazz = Class.forName("com.bayviewglen.zork.items.armor." + item.split(" ")[1].trim());
+									Constructor<?> ctor = clazz.getConstructor();
+									Item object = (Item) ctor.newInstance();
+									room.inventory.addToInventory(object, 1);
+								}
+								if (type.equals("Weapon")) {
+									Class<?> clazz = Class.forName("com.bayviewglen.zork.items.weapons." + item.split(" ")[1].trim());
+									Constructor<?> ctor = clazz.getConstructor();
+									Item object = (Item) ctor.newInstance();
+									room.inventory.addToInventory(object, 1);
+								}
 							}
 						}
 					}
 					
-					roomScanner.nextLine();
+					// Read the room entities (Monsters and NPC's)
+					String roomEntities = roomScanner.nextLine();
+					if (roomEntities.split(":").length > 1) {
+						roomEntities = roomEntities.split(":")[1];
+						String[] roomsEntitiesArray = roomEntities.split(",");
+						if (roomState != 1 && roomEntities.trim().equals("")) {
+							room.entities = masterRoomMap.get(roomOneKey).entities;
+						} else {
+							for (String entity: roomsEntitiesArray) {
+								entity = entity.substring(1);
+								String type = entity.split(" ")[0];
+								if (type.equals("Monster")) {
+									Class<?> clazz = Class.forName("com.bayviewglen.zork.entity.monsters." + entity.split(" ")[1].trim());
+									Constructor<?> ctor = clazz.getConstructor();
+									Entity object = (Entity) ctor.newInstance();
+									room.entities.addEntity(object);
+								}
+							}
+						}
+					}
+					
 					
 					// Read the Exits
 					String roomExits = roomScanner.nextLine();
