@@ -25,6 +25,10 @@ public class Player {
 		health = 500;
 	}
 	
+	public void damage(int damage) {
+		health -= damage;
+	}
+	
 	/**
      * Parse command, process (that is: execute) the command.
      * If this command ends the game, true is returned, otherwise false is
