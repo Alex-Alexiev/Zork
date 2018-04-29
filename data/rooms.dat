@@ -81,5 +81,5 @@ Exit Rooms: S-Misty Path 2, N-Silent Hill 1
 Room Name: Silent Hill 1
 Room Description: A small hill lies in the center of a clearing. <br>There is no sound, only silence. A hooded figure stands atop the hill.
 Room Inventory: 
-Room Entity:
+Room Entity: Monster PlagueRat
 Exit Rooms: S-Forest Intersection 1, N-Misty Path 3
