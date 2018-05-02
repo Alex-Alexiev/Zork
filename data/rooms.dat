@@ -1,7 +1,7 @@
 Room Name: Cabin 1
 Room Description: You in an old ship's quarters. You are sailing to an Island far across the sea.
-Room Inventory: Food steak 5, Food egg 4, Armor GoldArmor
-Room Entity: Monster BloodPriest, Monster PlagueRat
+Room Inventory: Food steak 5, Food egg 4, Armor BasicArmor
+Room Entity: Monster PlagueRat
 Exit Rooms: W-Main Deck 1
 
 Room Name: Cabin 2

@@ -14,6 +14,10 @@ abstract public class Armor extends Item {
 		return shieldPoints;
 	}
 	
+	public void damage(int damage) {
+		shieldPoints -= damage;
+	}
+	
 	abstract public void ability();
 	
 	public String toString() {
