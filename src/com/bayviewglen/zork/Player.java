@@ -1,5 +1,4 @@
 package com.bayviewglen.zork;
-
 import java.util.concurrent.TimeUnit;
 
 import com.bayviewglen.zork.items.Armor;
@@ -17,7 +16,6 @@ public class Player {
 
 	private int health;
 	private int maxHealth;
-	private boolean armorActive;
 
 	public Player(Room startingRoom) {
 		currentRoom = startingRoom;
