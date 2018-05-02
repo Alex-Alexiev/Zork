@@ -1,7 +1,7 @@
 Room Name: Cabin 1
 Room Description: You in an old ship's quarters. You are sailing to an Island far across the sea.
-Room Inventory: Food steak 5, Food egg 4, Armor BasicArmor
-Room Entity: Monster PlagueRat
+Room Inventory: Food steak 5, Food egg 4, Armor GoldArmor
+Room Entity: Monster BloodPriest, Monster PlagueRat
 Exit Rooms: W-Main Deck 1
 
 Room Name: Cabin 2
@@ -81,5 +81,5 @@ Exit Rooms: S-Misty Path 2, N-Silent Hill 1
 Room Name: Silent Hill 1
 Room Description: A small hill lies in the center of a clearing. <br>There is no sound, only silence. A hooded figure stands atop the hill.
 Room Inventory: 
-Room Entity: Monster PlagueRat
+Room Entity:
 Exit Rooms: S-Forest Intersection 1, N-Misty Path 3
