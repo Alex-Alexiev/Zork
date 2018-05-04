@@ -66,7 +66,7 @@ public class Player {
 			printLocation();
 		else if (commandWord.equals("welfare"))
 			System.out.println(this);
-		else if (commandWord.equals("go"))
+		else if (commandWord.equals("go") || commandWord.equals("move"))
 			goRoom(command);
 		else if (commandWord.equals("search"))
 			searchRoom();
@@ -172,13 +172,13 @@ public class Player {
 		if (nextRoom == null) {
 			System.out.println("There is no door!");
 		} else {
+			System.out.println(currentRoom.longDescription());
 			if (nextRoom.entities.hasMonsters()) {
 				Combat entranceFight = new Combat(this, nextRoom.entities.getMonsters());
 				entranceFight.chooseEngage();
 			}
 			else {
 				currentRoom = nextRoom;
-				System.out.println(currentRoom.longDescription());
 			}
 		}
 	}
