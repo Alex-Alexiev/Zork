@@ -24,14 +24,9 @@ import java.util.StringTokenizer;
 class Parser 
 {
 
-    private CommandWords commands;  // holds all valid command words
+    private static CommandWords commands = new CommandWords();  // holds all valid command words
 
-    public Parser() 
-    {
-        commands = new CommandWords();
-    }
-
-    public Command getCommand() 
+    public static Command getCommand() 
     {
         String inputLine = "";   // will hold the full input line
         String[] words;
@@ -55,7 +50,7 @@ class Parser
     /**
      * Print out a list of valid command words.
      */
-    public void showCommands()
+    public static void showCommands()
     {
         commands.showAll();
     }
