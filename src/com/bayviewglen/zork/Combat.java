@@ -14,11 +14,26 @@ public class Combat {
 		this.player = player;
 	}
 	
+	public boolean chooseEngage() {
+		System.out.println("Here are the monsters gaurding this room: ");
+		for (Monster m : monsters) {
+			System.out.println(m);
+		}
+		System.out.println();
+		System.out.println("Would you like to fight ALL these monsters (and get destroyed) or walk away? (loser)");
+		if (Parser.getCommand().getCommandWord().toLowerCase().equals("yes")){
+			engageInCombat();
+		}
+		return false;
+	}
+	
 	public void engageInCombat() {
+		System.out.println("You made the wrong choice");
 		if (Math.random() >= 0.5) {
 			monstersAttack();
 		}
 		while(monsters.size() > 0 && player.getHealth() > 0) {
+			printStats();
 			playerAttack();
 			monstersAttack();
 		}
@@ -27,10 +42,19 @@ public class Combat {
 	private void monstersAttack() {
 		for (Monster m : monsters) {
 			m.ability(player);
+			System.out.println();
+		}
+	}
+	
+	private void printStats() {
+		System.out.println("Your health: "+ player.getHealth());
+		for (Monster m : monsters) {
+			System.out.println(m.getId()+ " health: "+m.getHealth());
 		}
 	}
 	
 	private void playerAttack() {
+		System.out.println("Which monster would you like to attack?");
 		Command playerCommand = Parser.getCommand();
 		String monsterId = playerCommand.getSecondWord();
 		for (Monster m : monsters) {
