@@ -33,14 +33,12 @@ public class Combat {
 	private void playerAttack() {
 		Command playerCommand = Parser.getCommand();
 		String monsterId = playerCommand.getSecondWord();
-		Monster selectedMonster;
 		for (Monster m : monsters) {
 			if (m.getId().equals(monsterId)) {
-				selectedMonster = m;
+				player.getWeapon().ability(m);
 				break;
 			}
 		}
-		player.getWeapon().ability(selectedMonster);
 	}
 	
 	private void removeDeadMonsters() {
