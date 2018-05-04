@@ -14,7 +14,7 @@ public class BloodPriest extends Monster {
 		super(id, description, damage, health);
 	}
 	
-	public void ability(Player player) {
-		
+	public int ability(Player player) {
+		return 0;
 	}
 }

@@ -1,7 +1,7 @@
 Room Name: Cabin 1
-Room Description: You in an old ship's quarters. You are sailing to an Island far across the sea.
+Room Description: You in an old ship's quarters. You are sailing to an Island far across the sea (north). <br>Go out to the deck (west) and explore.
 Room Inventory: Food steak 5, Food egg 4, Armor GoldArmor
-Room Entity: Monster BloodPriest, Monster PlagueRat
+Room Entity: 
 Exit Rooms: W-Main Deck 1
 
 Room Name: Cabin 2
@@ -11,9 +11,9 @@ Room Entity:
 Exit Rooms: W-Main Deck 2
 
 Room Name: Main Deck 1
-Room Description: The salty briny air fills your nostrils.<br>The ship's crew works tirelessly, scrubbing the deck clean.<br>Shouting can be heard from the captian's deck.
+Room Description: The salty briny air fills your nostrils.<br>The ship's crew works tirelessly, scrubbing the deck clean.<br>Shouting can be heard (west) from the captian's deck.
 Room Inventory: Food rat -4
-Room Entity: Monster BloodPriest
+Room Entity: Monster PlagueRat
 Exit Rooms: E-Cabin 2, W-Captains Deck 1
 
 Room Name: Main Deck 2
@@ -76,10 +76,22 @@ Room Name: Forest Intersection 1
 Room Description:  The path splits off into three directions. <br>The mist prevents looking farther without further exploration.
 Room Inventory: 
 Room Entity: 
-Exit Rooms: S-Misty Path 2, N-Silent Hill 1
+Exit Rooms: S-Misty Path 2, N-Silent Hill 1, W- West Forest Crossroads 1, E- East Forest Crossroads 1
 
 Room Name: Silent Hill 1
-Room Description: A small hill lies in the center of a clearing. <br>There is no sound, only silence. A hooded figure stands atop the hill.
+Room Description: A small hill lies in the center of a clearing. <br>There is no sound, only silence. 
 Room Inventory: 
-Room Entity:
+Room Entity: Monster EldritchInfected
 Exit Rooms: S-Forest Intersection 1, N-Misty Path 3
+
+Room Name: West Forest Crossroads 1
+Room Description:  The path splits off into two directions (north and west). <br>The mist prevents looking farther without further exploration.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: N-Silent Hill 1, W-Silent Hill 1
+
+Room Name: East Forest Crossroads 1
+Room Description:  The path splits off into two directions (north and west). <br>The mist prevents looking farther without further exploration.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: N-Silent Hill 1, W-Silent Hill 1
