@@ -5,6 +5,7 @@ import com.bayviewglen.zork.items.Armor;
 import com.bayviewglen.zork.items.Food;
 import com.bayviewglen.zork.items.Item;
 import com.bayviewglen.zork.items.Weapon;
+import com.bayviewglen.zork.items.weapons.BareHands;
 
 public class Player {
 
@@ -23,6 +24,7 @@ public class Player {
 		inventory = new Inventory();
 		maxHealth = 500;
 		health = 500;
+		equippedWeapon = new BareHands();
 	}
 
 	public void normalDamage(int damage) {
@@ -170,9 +172,14 @@ public class Player {
 		if (nextRoom == null) {
 			System.out.println("There is no door!");
 		} else {
-			
-			currentRoom = nextRoom;
-			System.out.println(currentRoom.longDescription());
+			if (nextRoom.entities.hasMonsters()) {
+				Combat entranceFight = new Combat(this, nextRoom.entities.getMonsters());
+				entranceFight.chooseEngage();
+			}
+			else {
+				currentRoom = nextRoom;
+				System.out.println(currentRoom.longDescription());
+			}
 		}
 	}
 

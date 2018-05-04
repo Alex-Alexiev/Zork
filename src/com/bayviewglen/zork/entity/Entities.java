@@ -36,8 +36,8 @@ public class Entities {
 	/*
 	 * This is just a temporary method for testing the attacking
 	 */
-	public List<Monster> getMonsters(int i) {
-		List<Monster> monsters = new ArrayList<Monster>();
+	public ArrayList<Monster> getMonsters() {
+		ArrayList<Monster> monsters = new ArrayList<Monster>();
 		for (Entity e : entities.values()) {
 			if (e instanceof Monster) {
 				monsters.add((Monster)e);

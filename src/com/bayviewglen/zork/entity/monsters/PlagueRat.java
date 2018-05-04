@@ -14,7 +14,7 @@ public class PlagueRat extends Monster {
 		super("PlagueRat", "A giant rat, with rotten flesh, <br>exposed ribcage and visible viscera", 10, 350);
 	}
 	
-	public void ability(Player player) {
+	public int ability(Player player) {
 		int num = (int) (Math.random() *7);
 		int initHealth = player.getHealth();
 		
@@ -46,7 +46,7 @@ public class PlagueRat extends Monster {
 			player.specialDamage(poisDmg);
 		
 		}
-		
+		return initHealth-player.getHealth();
 	}
 
 }

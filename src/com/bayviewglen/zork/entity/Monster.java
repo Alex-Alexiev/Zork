@@ -14,7 +14,7 @@ abstract public class Monster extends Entity {
 		this.health = health;
 	}
 	
-	abstract public void ability(Player player);
+	abstract public int ability(Player player);
 	
 	public int getHealth() {
 		return this.health;
@@ -22,6 +22,10 @@ abstract public class Monster extends Entity {
 	
 	public void setHealth(int health) {
 		this.health = health;
+	}
+	
+	public String toString() {
+		return id;
 	}
 	
 }
