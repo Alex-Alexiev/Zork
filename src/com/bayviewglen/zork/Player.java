@@ -170,6 +170,7 @@ public class Player {
 		if (nextRoom == null) {
 			System.out.println("There is no door!");
 		} else {
+			
 			currentRoom = nextRoom;
 			System.out.println(currentRoom.longDescription());
 		}
@@ -362,5 +363,9 @@ public class Player {
 	public int getHealth() {
 
 		return health;
+	}
+	
+	public Weapon getWeapon() {
+		return equippedWeapon;
 	}
 }

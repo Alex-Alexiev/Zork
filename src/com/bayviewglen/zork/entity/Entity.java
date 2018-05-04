@@ -1,6 +1,6 @@
 package com.bayviewglen.zork.entity;
 
-public class Entity {
+public abstract class Entity {
 	
 	String id;
 	String description;

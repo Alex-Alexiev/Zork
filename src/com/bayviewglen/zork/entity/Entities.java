@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public abstract class Entities {
+public class Entities {
 	
 	private HashMap<String, Entity> entities = new HashMap<String, Entity>();
 	
