@@ -15,7 +15,7 @@ public class Player {
 	private Armor equippedArmor;
 	private Weapon equippedWeapon;
 
-	private int health;
+	public int health;
 	private int maxHealth;
 
 	public Player(Room startingRoom) {
@@ -62,19 +62,17 @@ public class Player {
 		String commandWord = command.getCommandWord();
 		if (commandWord.equals("help"))
 			printHelp();
-		else if (commandWord.equals("room"))
+		else if (CommandWords.isLocationCommand(commandWord))
 			printLocation();
 		else if (commandWord.equals("welfare"))
 			System.out.println(this);
-		else if (commandWord.equals("go") || commandWord.equals("move"))
+		else if (CommandWords.isMoveCommand(commandWord))
 			goRoom(command);
-		else if (commandWord.equals("search"))
+		else if (CommandWords.isSearchCommand(commandWord))
 			searchRoom();
-		else if (commandWord.equals("where"))
-			printLocation();
-		else if (commandWord.equals("inventory"))
+		else if (CommandWords.isInventoryCommand(commandWord))
 			printInventory();
-		else if (commandWord.equals("eat"))
+		else if (CommandWords.isEatCommand(commandWord))
 			eat(command);
 		else if (commandWord.equals("take"))
 			pickupItem(command);
