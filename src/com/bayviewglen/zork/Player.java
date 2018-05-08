@@ -5,6 +5,7 @@ import com.bayviewglen.zork.items.Armor;
 import com.bayviewglen.zork.items.Food;
 import com.bayviewglen.zork.items.Item;
 import com.bayviewglen.zork.items.Weapon;
+import com.bayviewglen.zork.items.armor.BasicArmor;
 import com.bayviewglen.zork.items.weapons.BareHands;
 
 public class Player {
@@ -25,6 +26,7 @@ public class Player {
 		maxHealth = 500;
 		health = 500;
 		equippedWeapon = new BareHands();
+		equippedArmor = new BasicArmor();
 	}
 
 	public void normalDamage(int damage) {
