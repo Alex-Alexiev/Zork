@@ -15,7 +15,7 @@ public class Item {
 	protected String description;
 	
 	public Item(String id, int amount, boolean consumable) {
-		this.id = id;
+		this.id = id.toLowerCase();
 		this.amount = amount;
 		this.consumable = consumable;
 	}

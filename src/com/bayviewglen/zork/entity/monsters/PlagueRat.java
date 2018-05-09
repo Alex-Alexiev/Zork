@@ -28,9 +28,9 @@ public class PlagueRat extends Monster {
 					if (poisStacks[i] == 0) {
 						poisStacks[i] = poisLength;
 					}
-					}
 				}
 			}
+		}
 		
 		for (int i = 0; i < poisStacks.length; i++) {
 			if (poisStacks[i] > 0) {

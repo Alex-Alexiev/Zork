@@ -6,7 +6,7 @@ public abstract class Entity {
 	String description;
 	
 	public Entity(String id, String description) {
-		this.id = id;
+		this.id = id.toLowerCase();
 		this.description = description;
 	}
 	

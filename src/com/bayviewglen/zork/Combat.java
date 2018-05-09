@@ -16,16 +16,18 @@ public class Combat {
 	}
 	
 	public boolean chooseEngage() {
-		System.out.println("\nThere are some monsters guarding this room:\n");
+		System.out.println("\nThere are some monsters guarding this room:");
 		for (Monster m : monsters) {
 			System.out.println(m);
 		}
 		System.out.println();
-		System.out.println("Would you like to fight ALL these monsters (and get destroyed) or walk away?");
-		if (Parser.getCommand().getCommandWord().toLowerCase().equals("yes")){
+		System.out.println("Would you like to fight ALL these monsters or walk away?\n");
+		String response = Parser.getCommand().getCommandWord();
+		if (response.equals("yes") || response.equals("fight")){
 			engageInCombat();
+		} else {
+			System.out.println("\nYou return to the previous room\n");
 		}
-		System.out.println("\nI see how it is... good luck making progress because you are still in the same room.\n");
 		player.printLocation();
 		return false;
 	}
@@ -54,16 +56,20 @@ public class Combat {
 	}
 	
 	private void printStats() {
-		System.out.println("Your health: "+ player.getHealth());
+		System.out.println(player);
 		for (Monster m : monsters) {
-			System.out.println(m.getId()+ " health: "+m.getHealth());
+			System.out.println(m.getId()+ " health: " + m.getHealth());
 		}
 		System.out.println();
 	}
 	
 	private boolean playerAttack() {
-		System.out.println("Which monster would you like to attack? (you can also walk away)");
+		System.out.println("Which monster would you like to attack? Or would you like to walk away?\n");
 		Command playerCommand = Parser.getCommand();
+		if (playerCommand.numOfWords() < 2) {
+			System.out.println("Attack what?");
+			return true;
+		}
 		if (playerCommand.getWordAtIndex(0).toLowerCase().equals("walk")) {
 			return false;
 		}

@@ -21,6 +21,6 @@ abstract public class Armor extends Item {
 	abstract public void ability();
 	
 	public String toString() {
-		return super.getId();
+		return super.getId() + "\n  Shield Points: " + this.shieldPoints;
 	}
 }

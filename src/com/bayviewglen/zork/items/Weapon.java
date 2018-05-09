@@ -16,6 +16,10 @@ abstract public class Weapon extends Item{
 		return damage;
 	}
 	
+	public String toString() {
+		return super.getId() + "\n  Damage: " + damage;
+	}
+	
 	abstract public void ability(Monster monster);
 
 }
