@@ -11,7 +11,7 @@ public class DraculasBloodthirstier extends Weapon{
 	}
 	
 	public void ability(Monster monster){
-		monster.setHealth(monster.getHealth() - damage);
+		monster.setHealth(monster.getHealth() - getDamage());
 	}
 
 }

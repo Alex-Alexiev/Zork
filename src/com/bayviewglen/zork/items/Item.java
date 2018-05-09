@@ -11,8 +11,7 @@ public class Item {
 	private String id;
 	private int amount;
 	private boolean consumable;
-	
-	protected String description;
+	private String description;
 	
 	public Item(String id, int amount, boolean consumable) {
 		this.id = id.toLowerCase();
@@ -56,6 +55,14 @@ public class Item {
 	
 	public int getAmount() {
 		return amount;
+	}
+	
+	public String getDescription() {
+		return this.description;
+	}
+	
+	public void setDescription(String des) {
+		this.description = des;
 	}
 	
 	public String toString() {

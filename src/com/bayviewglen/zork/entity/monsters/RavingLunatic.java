@@ -12,14 +12,11 @@ public class RavingLunatic extends Monster {
 	}
 
 	public int ability(Player player) {
-			int num = (int) (Math.random() *8);
-			int initHealth = player.getHealth();
-		
-			if (num < 5) {
-				player.normalDamage(damage); 
-			}
-				
-			return initHealth-player.getHealth();
-			
+		int num = (int) (Math.random() *8);
+		int initHealth = player.getHealth();
+		if (num < 5) {
+			player.normalDamage(getDamage()); 
 		}
+		return initHealth-player.getHealth();
+	}
 }

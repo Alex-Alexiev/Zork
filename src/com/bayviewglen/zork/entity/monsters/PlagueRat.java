@@ -19,7 +19,7 @@ public class PlagueRat extends Monster {
 		int initHealth = player.getHealth();
 		
 		if (num <= 5) {
-			player.normalDamage(damage); 
+			player.normalDamage(getDamage()); 
 		
 			if (player.getHealth() < initHealth) {
 				

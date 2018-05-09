@@ -4,9 +4,8 @@ import com.bayviewglen.zork.Player;
 
 abstract public class Monster extends Entity {
 	
-	protected int damage;
-	
-	protected int health;
+	private int damage;
+	private int health;
 	
 	public Monster(String id, String description, int damage, int health) {
 		super(id, description);
@@ -24,8 +23,12 @@ abstract public class Monster extends Entity {
 		this.health = health;
 	}
 	
+	public int getDamage() {
+		return this.damage;
+	}
+	
 	public String toString() {
-		return id;
+		return getId();
 	}
 	
 }

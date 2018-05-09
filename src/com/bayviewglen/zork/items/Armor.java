@@ -7,7 +7,7 @@ abstract public class Armor extends Item {
 	public Armor(String id, int shieldPoints, String description) {
 		super(id, 1, false);
 		this.shieldPoints = shieldPoints;
-		this.description = description;
+		setDescription(description);
 	}
 	
 	public int getShieldPoints() {
