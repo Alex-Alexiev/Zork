@@ -31,4 +31,5 @@ abstract public class Monster extends Entity {
 		return getId();
 	}
 	
+	
 }
