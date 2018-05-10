@@ -14,7 +14,7 @@ public class DesecratedCorpse extends Monster {
 		int num = (int) (Math.random() * 6);
 		int initHealth = player.getHealth();
 		if (num < 4) {
-			player.normalDamage(damage);
+			player.normalDamage(getDamage());
 		}
 		return initHealth-player.getHealth();
 	}

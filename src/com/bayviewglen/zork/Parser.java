@@ -43,6 +43,10 @@ class Parser
         }
 
         words = inputLine.split(" ");
+        
+        for (int i = 0; i < words.length; i++) {
+        	words[i] = words[i].toLowerCase();
+        }
 
         return new Command(words);
     }

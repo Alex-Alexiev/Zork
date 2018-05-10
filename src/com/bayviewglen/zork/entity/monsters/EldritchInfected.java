@@ -16,10 +16,9 @@ public class EldritchInfected extends Monster {
 		int initHealth = player.getHealth();
 
 		if (num > 6) {
-			player.normalDamage(damage);
+			player.normalDamage(getDamage());
 			if (initHealth > player.getHealth()) {
-				health += ((initHealth - player.getHealth()) / 2);
-
+				setHealth(getHealth() + (initHealth - player.getHealth()) / 2);
 			}
 		}
 		

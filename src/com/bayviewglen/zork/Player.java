@@ -11,7 +11,6 @@ import com.bayviewglen.zork.items.weapons.BareHands;
 public class Player {
 
 	private Room currentRoom;
-	private Parser parser;
 	private Inventory inventory;
 	private Armor equippedArmor;
 	private Weapon equippedWeapon;
@@ -21,16 +20,18 @@ public class Player {
 
 	public Player(Room startingRoom) {
 		currentRoom = startingRoom;
-		parser = new Parser();
 		inventory = new Inventory();
 		maxHealth = 500;
 		health = 500;
 		equippedWeapon = new BareHands();
-		equippedArmor = new BasicArmor();
+		equippedArmor = null;
 	}
 
+	/*
+	 * Normal damage (hits armor before health)
+	 */
 	public void normalDamage(int damage) {
-		if (equippedArmor.getShieldPoints() > 0) {
+		if (equippedArmor != null && equippedArmor.getShieldPoints() > 0) {
 			int unblockedDamage = equippedArmor.getShieldPoints() - damage;
 			equippedArmor.damage(damage);
 			if (equippedArmor.getShieldPoints() <= 0) {
@@ -43,6 +44,9 @@ public class Player {
 		}
 	}
 
+	/*
+	 * Directly decreases health
+	 */
 	public void specialDamage(int damage) {
 		health -= damage;
 	}
@@ -52,7 +56,7 @@ public class Player {
 	 * the game, true is returned, otherwise false is returned.
 	 */
 	public boolean act() {
-		Command command = parser.getCommand();
+		Command command = Parser.getCommand();
 
 		System.out.println();
 
@@ -76,17 +80,15 @@ public class Player {
 			printInventory();
 		else if (CommandWords.isEatCommand(commandWord))
 			eat(command);
-		else if (commandWord.equals("take"))
+		else if (CommandWords.isPickupCommand(commandWord))
 			pickupItem(command);
-		else if (commandWord.equals("attack"))
-			attack(command);
 		else if (commandWord.equals("drop"))
 			dropItem(command);
 		else if (commandWord.equals("equip"))
 			equipItem(command);
-		else if (commandWord.equals("equipment"))
+		else if (CommandWords.isEquipmentCommand(commandWord))
 			printEquipment();
-		else if (commandWord.equals("unequip"))
+		else if (CommandWords.isUnequipCommand(commandWord))
 			unequip(command);
 		else if (commandWord.equals("quit")) {
 			if (command.hasManyWords(2))
@@ -114,7 +116,7 @@ public class Player {
 		System.out.println("Don't worry. I got you buddy.");
 		System.out.println();
 		System.out.println("Your command words are:");
-		parser.showCommands();
+		Parser.showCommands();
 	}
 
 	/**
@@ -129,9 +131,9 @@ public class Player {
 	 */
 	private void printEquipment() {
 		String weapon = equippedWeapon == null ? "No sword equipped"
-				: "Sword: " + equippedWeapon + " " + equippedWeapon.getDamage();
+				: "Sword: " + equippedWeapon;
 		String armor = equippedArmor == null ? "No armor equipped"
-				: "Armor: " + equippedArmor + " " + equippedArmor.getShieldPoints();
+				: "Armor: " + equippedArmor;
 		System.out.println(weapon);
 		System.out.println(armor);
 	}
@@ -172,7 +174,7 @@ public class Player {
 		if (nextRoom == null) {
 			System.out.println("There is no door!");
 		} else {
-			System.out.println(currentRoom.longDescription());
+			System.out.println(nextRoom.longDescription());
 			if (nextRoom.entities.hasMonsters()) {
 				Combat entranceFight = new Combat(this, nextRoom.entities.getMonsters());
 				entranceFight.chooseEngage();
@@ -347,28 +349,15 @@ public class Player {
 		}
 	}
 
-	/*
-	 * Attacks monster
-	 */
-	private void attack(Command command) {
-		if (!command.hasManyWords(2)) {
-			if (!command.hasManyWords(4)) {
-				System.out.println("Attack monster with what?");
-				return;
-			}
-			System.out.println("Attack what?");
-			return;
-		}
-
-		String monsterId = command.getSecondWord();
-	}
-
 	public String toString() {
-		return "Health: " + health + "\n" + currentRoom.shortDescription() + "\nInventory: " + inventory;
+		String ret = "Health: " + health;
+		if (equippedArmor != null) {
+			ret += "\nArmor: " + equippedArmor;
+		}
+		return ret;
 	}
 
 	public int getHealth() {
-
 		return health;
 	}
 	
