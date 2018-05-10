@@ -86,9 +86,9 @@ public class Player {
 			dropItem(command);
 		else if (commandWord.equals("equip"))
 			equipItem(command);
-		else if (CommandWords.isCommand(commandWord))
+		else if (CommandWords.isEquipmentCommand(commandWord))
 			printEquipment();
-		else if (commandWord.equals("unequip"))
+		else if (CommandWords.isUnequipCommand(commandWord))
 			unequip(command);
 		else if (commandWord.equals("quit")) {
 			if (command.hasManyWords(2))
