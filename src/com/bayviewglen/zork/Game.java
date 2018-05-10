@@ -179,13 +179,14 @@ class Game {
 	}
 	
 	private void initNPCs(String fileName) {
+		npcData = new HashMap<String, ArrayList<String>>();
 		Scanner npcScanner;
 		try {
 			npcScanner = new Scanner(new File(fileName));
 			while (npcScanner.hasNext()) {
 				String[] firstLine = npcScanner.nextLine().split(" ");
 				String name = firstLine[0];
-				int numResponses = Integer.parseInt(firstLine[1]);
+				int numResponses = Integer.parseInt(firstLine[firstLine.length - 1]);
 				
 				npcData.put(name, new ArrayList<String>());
 				
@@ -193,7 +194,8 @@ class Game {
 					String response = npcScanner.nextLine();
 					npcData.get(name).add(response);
 				}
-				npcScanner.nextLine();
+				if (npcScanner.hasNext())
+					npcScanner.nextLine();
 			}
 			npcScanner.close();
 		} catch (FileNotFoundException e) {
