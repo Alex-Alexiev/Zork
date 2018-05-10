@@ -352,6 +352,7 @@ public class Player {
 	public String toString() {
 		String ret = "Health: " + health;
 		if (equippedArmor != null) {
+			ret += "Shield health: " + equippedArmor.getShieldPoints();
 			ret += "\nArmor: " + equippedArmor;
 		}
 		return ret;
