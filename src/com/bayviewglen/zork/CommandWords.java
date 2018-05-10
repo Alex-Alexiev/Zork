@@ -17,7 +17,8 @@ class CommandWords
         "go", "move", "walk", "run", "help", "quit", "search", "find", "look",
         "room", "place", "location", "spot", "equip", "equipment",
         "unequip", "welfare", "eat", "consume", "bite", "chew", "ingest",
-        "snack", "munch", "gorge", "dine", "lunch", "take",
+        "snack", "munch", "gorge", "dine", "lunch", "ingest",
+        "take", "retrieve", "aquire", "recieve", "snag", "grab",
         "attack *monster name* with *weapon name*", 
         "drop", "inventory", "items", "things", "supply"
     };
@@ -44,19 +45,17 @@ class CommandWords
     };
     
     private static final String pickupCommands[] = {
-    		"",
+    		"take", "retrieve", "aquire", "recieve", "snag", "grab",
     };
     
     private static final String equipmentCommands[] = {
-    		"",
+    		"weapons", "armor", "equipment", "shield", "apparatus",
+    		"devices", "attachments", "gadgets", "outfit",
+    		"tools",
     };
     
     private static final String unequipCommands[] = {
-    		"",
-    };
-    
-    private static final String quitCommands[] = {
-    		"",
+    		"unequip", "holster",
     };
     
     
@@ -158,6 +157,28 @@ class CommandWords
      */
     public static boolean isPickupCommand(String command) {
     	for (String validCommand : pickupCommands) {
+    		if (validCommand.equals(command))
+    			return true;
+    	}
+    	return false;
+    }
+    
+    /* 
+     * Checks equipment commands
+     */
+    public static boolean isEquipmentCommand(String command) {
+    	for (String validCommand : equipmentCommands) {
+    		if (validCommand.equals(command))
+    			return true;
+    	}
+    	return false;
+    }
+    
+    /* 
+     * Checks unequip commands
+     */
+    public static boolean isUnequipCommand(String command) {
+    	for (String validCommand : unequipCommands) {
     		if (validCommand.equals(command))
     			return true;
     	}

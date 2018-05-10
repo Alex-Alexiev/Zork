@@ -80,13 +80,13 @@ public class Player {
 			printInventory();
 		else if (CommandWords.isEatCommand(commandWord))
 			eat(command);
-		else if (commandWord.equals("take"))
+		else if (CommandWords.isPickupCommand(commandWord))
 			pickupItem(command);
 		else if (commandWord.equals("drop"))
 			dropItem(command);
 		else if (commandWord.equals("equip"))
 			equipItem(command);
-		else if (commandWord.equals("equipment"))
+		else if (CommandWords.isCommand(commandWord))
 			printEquipment();
 		else if (commandWord.equals("unequip"))
 			unequip(command);
