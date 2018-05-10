@@ -10,6 +10,7 @@ import java.util.Scanner;
 import com.bayviewglen.zork.entity.Entities;
 import com.bayviewglen.zork.entity.Entity;
 import com.bayviewglen.zork.entity.Monster;
+import com.bayviewglen.zork.entity.NPC;
 import com.bayviewglen.zork.items.Armor;
 import com.bayviewglen.zork.items.Food;
 import com.bayviewglen.zork.items.Item;
@@ -42,6 +43,7 @@ class Game {
 	// masterRoomMap.get("GREAT_ROOM") will return the Room Object that is the Great
 	// Room (assuming you have one).
 	private HashMap<String, Room> masterRoomMap;
+	private HashMap<String, ArrayList<String>> npcData;
 
 	private void initRooms(String fileName) throws Exception {
 		masterRoomMap = new HashMap<String, Room>();
@@ -124,6 +126,13 @@ class Game {
 								Constructor<?> ctor = clazz.getConstructor();
 								Entity object = (Entity) ctor.newInstance();
 								room.entities.addEntity(object);
+							} 
+							else if (type.equals("NPC")) {
+								String name = entity.substring(4);
+								ArrayList<String> responses = npcData.get(name);
+								
+								NPC npc = new NPC(name, responses);
+								room.entities.addEntity(npc);
 							}
 						}
 					}
@@ -168,12 +177,36 @@ class Game {
 			e.printStackTrace();
 		}
 	}
+	
+	private void initNPCs(String fileName) {
+		Scanner npcScanner;
+		try {
+			npcScanner = new Scanner(new File(fileName));
+			while (npcScanner.hasNext()) {
+				String[] firstLine = npcScanner.nextLine().split(" ");
+				String name = firstLine[0];
+				int numResponses = Integer.parseInt(firstLine[1]);
+				
+				npcData.put(name, new ArrayList<String>());
+				
+				for (int i = 0; i < numResponses; i++) {
+					String response = npcScanner.nextLine();
+					npcData.get(name).add(response);
+				}
+				npcScanner.nextLine();
+			}
+			npcScanner.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * Create the game and initialize its internal map.
 	 */
 	public Game() {
 		try {
+			initNPCs("data/npc.dat");
 			initRooms("data/Rooms.dat");
 			player = new Player(masterRoomMap.get("CABIN_1"));
 		} catch (Exception e) {

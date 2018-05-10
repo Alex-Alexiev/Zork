@@ -1,15 +1,18 @@
 package com.bayviewglen.zork.entity;
 
+import java.util.ArrayList;
+
 public class NPC extends Entity {
 	
-	private String response;
+	private ArrayList<String> responses;
 	
-	public NPC(String id, String description, String response) {
-		super(id, description);
+	public NPC(String id, ArrayList<String> responses) {
+		super(id);
+		this.responses = responses;
 	}
 	
-	public void respond() {
-		System.out.println(response);
+	public String getResponse() {
+		int random = (int) (Math.random() * responses.size());
+		return responses.get(random);
 	}
-	
 }

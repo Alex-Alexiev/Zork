@@ -6,11 +6,13 @@ abstract public class Monster extends Entity {
 	
 	private int damage;
 	private int health;
+	private String description;
 	
 	public Monster(String id, String description, int damage, int health) {
-		super(id, description);
+		super(id);
 		this.damage = damage;
 		this.health = health;
+		this.description = description;
 	}
 	
 	abstract public int ability(Player player);
