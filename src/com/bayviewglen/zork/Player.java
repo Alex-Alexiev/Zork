@@ -174,13 +174,20 @@ public class Player {
 		if (nextRoom == null) {
 			System.out.println("There is no door!");
 		} else {
-			System.out.println(nextRoom.longDescription());
 			if (nextRoom.entities.hasMonsters()) {
 				Combat entranceFight = new Combat(this, nextRoom.entities.getMonsters());
-				entranceFight.chooseEngage();
-			}
-			else {
-				currentRoom = nextRoom;
+				if (entranceFight.chooseEngage()) {
+					if (entranceFight.engageInCombat()) {
+						System.out.println(nextRoom.longDescription());
+						currentRoom = nextRoom;	
+					}
+					else {
+						System.out.println(currentRoom.longDescription());
+					}
+				}
+				else {
+					System.out.println(currentRoom.longDescription());
+				}
 			}
 		}
 	}
@@ -350,9 +357,8 @@ public class Player {
 	}
 
 	public String toString() {
-		String ret = "Health: " + health + "\n";
+		String ret = "Your health: " + health + "";
 		if (equippedArmor != null) {
-			ret += "Shield health: " + equippedArmor.getShieldPoints();
 			ret += "\nArmor: " + equippedArmor;
 		}
 		return ret;

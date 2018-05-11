@@ -1,3 +1,4 @@
+
 package com.bayviewglen.zork;
 
 import java.util.ArrayList;
@@ -8,7 +9,6 @@ public class Combat {
 	
 	private ArrayList<Monster> monsters;
 	private Player player;
-	private boolean runAway;
 	
 	public Combat(Player player, ArrayList<Monster> monsters) {
 		this.monsters = monsters;
@@ -16,7 +16,7 @@ public class Combat {
 	}
 	
 	public boolean chooseEngage() {
-		System.out.println("\nThere are some monsters guarding this room:");
+		System.out.println("There are some monsters guarding this room:");
 		for (Monster m : monsters) {
 			System.out.println(m);
 		}
@@ -24,33 +24,40 @@ public class Combat {
 		System.out.println("Would you like to fight ALL these monsters or walk away?\n");
 		String response = Parser.getCommand().getCommandWord();
 		if (response.equals("yes") || response.equals("fight")){
-			engageInCombat();
+			return true;
 		} else {
-			System.out.println("\nYou return to the previous room\n");
+			System.out.println("\nYou return to the previous room");
 		}
-		player.printLocation();
 		return false;
 	}
 	
-	public void engageInCombat() {
+	public boolean engageInCombat() {
 		System.out.println("\nGood luck soldier, not many people make it out alive.\n");
 		if (Math.random() >= 0.5) {
 			monstersAttack();
 		}
-		while(!runAway && monsters.size() > 0 && player.getHealth() > 0) {
+		while(monsters.size() > 0 && player.getHealth() > 0) {
 			printStats();
 			if (!playerAttack()) {
-				break;
+				System.out.println("Back to the previous room\n");
+				return false;
 			}
 			monstersAttack();
 			removeDeadMonsters();
 		}
+		if (monsters.size() <= 0) {
+			System.out.println("You have beat the monsters! You can advance to the next room.\n");
+			return true;
+		}
+		else {
+			System.out.println("Ops, try again next time...");
+		}
+		return false;
 	}
 	
 	private void monstersAttack() {
 		for (Monster m : monsters) {
 			m.ability(player);
-			System.out.println(m.getId()+" has attacked you!");
 		}
 		System.out.println();
 	}
@@ -71,13 +78,13 @@ public class Combat {
 			return true;
 		}
 		if (playerCommand.getWordAtIndex(0).toLowerCase().equals("walk")) {
+			System.out.println("\nwimp\n");
 			return false;
 		}
 		String monsterId = playerCommand.getSecondWord();
 		for (Monster m : monsters) {
 			if (m.getId().equals(monsterId)) {
 				player.getWeapon().ability(m);
-				System.out.println("\nYou have attacked "+m.getId()+"\n");
 				break;
 			}
 		}

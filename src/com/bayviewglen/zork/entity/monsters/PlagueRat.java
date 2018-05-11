@@ -19,6 +19,7 @@ public class PlagueRat extends Monster {
 		int initHealth = player.getHealth();
 		
 		if (num <= 5) {
+			System.out.println("PlagueRat has hit you (-"+getDamage()+")");
 			player.normalDamage(getDamage()); 
 		
 			if (player.getHealth() < initHealth) {
@@ -30,6 +31,9 @@ public class PlagueRat extends Monster {
 					}
 				}
 			}
+		}
+		else {
+			System.out.println("Plague Rat has missed the hit!");
 		}
 		
 		for (int i = 0; i < poisStacks.length; i++) {
@@ -43,8 +47,8 @@ public class PlagueRat extends Monster {
 		}
 		
 		if (poisDmg > 0) {
+			System.out.println("Plague Rat has poisoned you (-"+poisDmg+")");
 			player.specialDamage(poisDmg);
-		
 		}
 		return initHealth-player.getHealth();
 	}

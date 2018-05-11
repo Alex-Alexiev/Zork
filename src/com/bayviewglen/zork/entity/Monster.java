@@ -30,7 +30,7 @@ abstract public class Monster extends Entity {
 	}
 	
 	public String toString() {
-		return getId();
+		return getId()+": "+description;
 	}
 	
 	
