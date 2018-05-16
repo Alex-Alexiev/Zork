@@ -180,6 +180,8 @@ public class Player {
 						currentRoom = nextRoom;
 					}
 				}
+			} else {
+				currentRoom = nextRoom;
 			}
 		}
 		System.out.println(currentRoom.longDescription());
