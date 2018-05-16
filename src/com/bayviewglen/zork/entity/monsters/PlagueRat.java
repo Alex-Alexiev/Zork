@@ -6,8 +6,8 @@ import com.bayviewglen.zork.entity.Monster;
 public class PlagueRat extends Monster {
 	
 	private int poisDmg = 0;
-	private final int poisDmgInc = 10;
-	private int poisLength = 4;
+	private final int poisDmgInc = 20;
+	private int poisLength = 3;
 	private int[] poisStacks = new int[poisLength];
 	
 	public PlagueRat() {
@@ -19,7 +19,7 @@ public class PlagueRat extends Monster {
 		int initHealth = player.getHealth();
 		
 		if (num <= 5) {
-			System.out.println("PlagueRat has hit you (-"+getDamage()+")");
+			System.out.println(getId() + " has hit you (-"+getDamage()+")");
 			player.normalDamage(getDamage()); 
 		
 			if (player.getHealth() < initHealth) {
