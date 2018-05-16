@@ -7,13 +7,13 @@ Exit Rooms: W-Main Deck 1
 Room Name: Cabin 2
 Room Description: You in the old ship's quarters again.
 Room Inventory: 
-Room Entity:
+Room Entity: 
 Exit Rooms: W-Main Deck 2
 
 Room Name: Main Deck 1
 Room Description: The salty briny air fills your nostrils.<br>The ship's crew works tirelessly, scrubbing the deck clean.<br>Shouting can be heard (west) from the captian's deck.
 Room Inventory: Food rat -4
-Room Entity: 
+Room Entity: Monster PlagueRat
 Exit Rooms: E-Cabin 2, W-Captains Deck 1
 
 Room Name: Main Deck 2
@@ -112,7 +112,31 @@ Room Inventory:
 Room Entity: 
 Exit Rooms: W-Beaten Path 1, N-Misty Path 3
 
+Room Name: Rocky East Path 1
+Room Description: The terrain becomes increasingly rocky. <br>The path you are on is uneven. Watch your step.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: S-East Forest Crossroads 1, E-Placebo Room 1, N-East Side Gorge 1
+
+Room Name: East Side Gorge 1
+Room Description: A large scar separates the land. On the other side of the gorge, <br>you see another path.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: S-Rocky East Path 1, N-Centerpoint 1
+
+Room Name: Centerpoint 1
+Room Description: The gorge ends. You see the West Side Gorge Path begin.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: S-East Side Gorge 1, W-West Side Gorge 1
+
 /s West
+
+Room Name: Centerpoint 2
+Room Description: The gorge ends. You see the East Side Gorge Path begin.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: S-East Side Gorge 1, W-West Side Gorge 1
 
 Room Name: Abandoned Trench 1
 Room Description: In the place of the path is a scar across the ground, filled with<br>the remains of a group of explorers long gone, impaled upon tree branches. <br>Saplings are sprouting from their bones, and out their eye sockets.
@@ -125,3 +149,15 @@ Room Description: You shouldn't be here.
 Room Inventory: 
 Room Entity: 
 Exit Rooms: N-Misty Path 3
+
+Room Name: Rocky West Path 1
+Room Description: The terrain becomes increasingly rocky. <br>The path you are on is uneven. Watch your step.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: S-West Forest Crossroads 1, W-Placebo Room 1, N-West Side Gorge 1
+
+Room Name: West Side Gorge 1
+Room Description: A large scar separates the land. On the other side of the gorge, <br>you see another path.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: S-Rocky West Path 1, N-Centerpoint 2
