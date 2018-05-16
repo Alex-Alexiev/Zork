@@ -1,4 +1,5 @@
 package com.bayviewglen.zork;
+
 import java.util.concurrent.TimeUnit;
 
 import com.bayviewglen.zork.items.Armor;
@@ -130,10 +131,8 @@ public class Player {
 	 * Prints equipment()
 	 */
 	private void printEquipment() {
-		String weapon = equippedWeapon == null ? "No sword equipped"
-				: "Sword: " + equippedWeapon;
-		String armor = equippedArmor == null ? "No armor equipped"
-				: "Armor: " + equippedArmor;
+		String weapon = equippedWeapon == null ? "No sword equipped" : "Sword: " + equippedWeapon;
+		String armor = equippedArmor == null ? "No armor equipped" : "Armor: " + equippedArmor;
 		System.out.println(weapon);
 		System.out.println(armor);
 	}
@@ -178,18 +177,12 @@ public class Player {
 				Combat entranceFight = new Combat(this, nextRoom.entities.getMonsters());
 				if (entranceFight.chooseEngage()) {
 					if (entranceFight.engageInCombat()) {
-						System.out.println(nextRoom.longDescription());
-						currentRoom = nextRoom;	
+						currentRoom = nextRoom;
 					}
-					else {
-						System.out.println(currentRoom.longDescription());
-					}
-				}
-				else {
-					System.out.println(currentRoom.longDescription());
 				}
 			}
 		}
+		System.out.println(currentRoom.longDescription());
 	}
 
 	/**
@@ -367,7 +360,7 @@ public class Player {
 	public int getHealth() {
 		return health;
 	}
-	
+
 	public Weapon getWeapon() {
 		return equippedWeapon;
 	}
