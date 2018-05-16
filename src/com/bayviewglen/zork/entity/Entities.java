@@ -17,6 +17,15 @@ public class Entities {
 		return false;
 	}
 	
+	public boolean hasNPC() {
+		for (Entity e : entities.values()) {
+			if (e instanceof NPC) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public String toString() {
 		String ret = "Entities: ";
 		for (Entity e : entities.values()) {
@@ -44,6 +53,16 @@ public class Entities {
 			}
 		}
 		return monsters;
+	}
+	
+	public ArrayList<NPC> getNPCs() {
+		ArrayList<NPC> npcs = new ArrayList<NPC>();
+		for (Entity e : entities.values()) {
+			if (e instanceof NPC) {
+				npcs.add((NPC)e);
+			}
+		}
+		return npcs;
 	}
 
 }

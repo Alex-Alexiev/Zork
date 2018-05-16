@@ -30,7 +30,7 @@ class CommandWords
         "drop", "inventory", "items", "things", "supply",
         "weapons", "armor", "equipment", "shield", "apparatus",
 		"devices", "attachments", "gadgets", "outfit",
-		"tools", "unequip", "holster",
+		"tools", "unequip", "holster", "talk"
     };
     
     private static final String locationCommands[] = {

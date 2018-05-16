@@ -1,7 +1,9 @@
 package com.bayviewglen.zork;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import com.bayviewglen.zork.entity.NPC;
 import com.bayviewglen.zork.items.Armor;
 import com.bayviewglen.zork.items.Food;
 import com.bayviewglen.zork.items.Item;
@@ -26,30 +28,6 @@ public class Player {
 		health = 500;
 		equippedWeapon = new BareHands();
 		equippedArmor = null;
-	}
-
-	/*
-	 * Normal damage (hits armor before health)
-	 */
-	public void normalDamage(int damage) {
-		if (equippedArmor != null && equippedArmor.getShieldPoints() > 0) {
-			int unblockedDamage = equippedArmor.getShieldPoints() - damage;
-			equippedArmor.damage(damage);
-			if (equippedArmor.getShieldPoints() <= 0) {
-				equippedArmor = null;
-				specialDamage(unblockedDamage);
-				System.out.println("Your " + equippedArmor.getId() + " got annihilated.");
-			}
-		} else {
-			specialDamage(damage);
-		}
-	}
-
-	/*
-	 * Directly decreases health
-	 */
-	public void specialDamage(int damage) {
-		health -= damage;
 	}
 
 	/**
@@ -91,6 +69,8 @@ public class Player {
 			printEquipment();
 		else if (CommandWords.isUnequipCommand(commandWord))
 			unequip(command);
+		else if (commandWord.equals("talk"))
+			talk(command);
 		else if (commandWord.equals("quit")) {
 			if (command.hasManyWords(2))
 				System.out.println("Quit what?");
@@ -348,7 +328,40 @@ public class Player {
 					secondWord.substring(0, 1).toUpperCase() + secondWord.substring(1) + " is not currently equiped");
 		}
 	}
+	
+	/*
+	 * Talks to NPC
+	 */
+	private void talk(Command command) {
+		if (!command.hasManyWords(2)) {
+			// if there is no second word, we don't know where to go...
+			System.out.println("Talk to whom?");
+			return;
+		}
+		if (!currentRoom.entities.hasNPC()) {
+			System.out.println("You are alone");
+			return;
+		}
 
+		String npcId = command.getSecondWord();
+		ArrayList<NPC> npcs = currentRoom.entities.getNPCs();
+		boolean didTalk = false;
+		for (NPC npc : npcs) {
+			if (npc.getId().equals(npcId)) {
+				System.out.println(npc.getResponse());
+				didTalk = true;
+			}
+		}
+		
+		if (!didTalk) {
+			System.out.println(npcId + " is not here");
+		}
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString() {
 		String ret = "Your health: " + health + "";
 		if (equippedArmor != null) {
@@ -367,5 +380,29 @@ public class Player {
 	
 	public Weapon getWeapon() {
 		return equippedWeapon;
+	}
+	
+	/*
+	 * Normal damage (hits armor before health)
+	 */
+	public void normalDamage(int damage) {
+		if (equippedArmor != null && equippedArmor.getShieldPoints() > 0) {
+			int unblockedDamage = equippedArmor.getShieldPoints() - damage;
+			equippedArmor.damage(damage);
+			if (equippedArmor.getShieldPoints() <= 0) {
+				equippedArmor = null;
+				specialDamage(unblockedDamage);
+				System.out.println("Your " + equippedArmor.getId() + " got annihilated.");
+			}
+		} else {
+			specialDamage(damage);
+		}
+	}
+
+	/*
+	 * Directly decreases health
+	 */
+	public void specialDamage(int damage) {
+		health -= damage;
 	}
 }
