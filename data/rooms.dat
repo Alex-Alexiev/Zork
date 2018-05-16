@@ -116,7 +116,7 @@ Room Name: Rocky East Path 1
 Room Description: The terrain becomes increasingly rocky. <br>The path you are on is uneven. Watch your step.
 Room Inventory: 
 Room Entity: 
-Exit Rooms: S-East Forest Crossroads 1, E-Placebo Room 1, N-East Side Gorge 1
+Exit Rooms: S-East Forest Crossroads 1, E-East Meadow 1, N-East Side Gorge 1
 
 Room Name: East Side Gorge 1
 Room Description: A large scar separates the land. On the other side of the gorge, <br>you see another path.
@@ -129,6 +129,18 @@ Room Description: The gorge ends. You see the West Side Gorge Path begin.
 Room Inventory: 
 Room Entity: 
 Exit Rooms: S-East Side Gorge 1, W-West Side Gorge 1
+
+Room Name: East Meadow 1
+Room Description: You come across small patch of low lying plants. <br>They crinkle under your feet. They are all dead.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: W-Rocky East Path 1, N-Undead End 1
+
+Room Name: Undead End 1
+Room Description: The path is littered with the undead. Although too rotten to be a threat,<br>they still writhe and moan under your feet.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: S-East Meadow 1, N-Misty Path 3
 
 /s West
 
