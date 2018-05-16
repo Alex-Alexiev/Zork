@@ -360,7 +360,11 @@ public class Player {
 	public int getHealth() {
 		return health;
 	}
-
+	
+	public void affectHealth(int h) {
+		health += h;
+	}
+	
 	public Weapon getWeapon() {
 		return equippedWeapon;
 	}
