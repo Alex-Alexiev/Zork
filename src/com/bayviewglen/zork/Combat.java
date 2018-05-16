@@ -4,6 +4,7 @@ package com.bayviewglen.zork;
 import java.util.ArrayList;
 
 import com.bayviewglen.zork.entity.Monster;
+import com.bayviewglen.zork.items.weapons.Bow;
 
 public class Combat {
 	
@@ -33,7 +34,7 @@ public class Combat {
 	
 	public boolean engageInCombat() {
 		System.out.println("\nGood luck soldier, not many people make it out alive.\n");
-		if (Math.random() >= 0.5) {
+		if (Math.random() >= 0.5 && !(player.getWeapon() instanceof Bow)) {
 			monstersAttack();
 		}
 		while(monsters.size() > 0 && player.getHealth() > 0) {
@@ -57,7 +58,9 @@ public class Combat {
 	
 	private void monstersAttack() {
 		for (Monster m : monsters) {
-			m.ability(player);
+			if (!m.isStunned()) {
+				m.ability(player);
+			}
 		}
 		System.out.println();
 	}
@@ -84,7 +87,7 @@ public class Combat {
 		String monsterId = playerCommand.getSecondWord();
 		for (Monster m : monsters) {
 			if (m.getId().equals(monsterId)) {
-				player.getWeapon().ability(m);
+				player.getWeapon().ability(m, player);
 				break;
 			}
 		}
