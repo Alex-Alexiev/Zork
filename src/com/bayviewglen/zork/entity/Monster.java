@@ -6,6 +6,7 @@ abstract public class Monster extends Entity {
 	
 	private int damage;
 	private int health;
+	private boolean stunned;
 	private String description;
 	
 	public Monster(String id, String description, int damage, int health) {
@@ -13,6 +14,7 @@ abstract public class Monster extends Entity {
 		this.damage = damage;
 		this.health = health;
 		this.description = description;
+		this.stunned = false;
 	}
 	
 	abstract public int ability(Player player);
@@ -29,9 +31,15 @@ abstract public class Monster extends Entity {
 		return this.damage;
 	}
 	
+	public boolean isStunned() {
+		return stunned;
+	}
+	
+	public void stun(boolean s) {
+		stunned = s;
+	}
+	
 	public String toString() {
 		return getId()+": "+description;
 	}
-	
-	
 }

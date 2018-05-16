@@ -1,5 +1,6 @@
 package com.bayviewglen.zork.items;
 
+import com.bayviewglen.zork.Player;
 import com.bayviewglen.zork.entity.Monster;
 
 abstract public class Weapon extends Item{
@@ -20,6 +21,6 @@ abstract public class Weapon extends Item{
 		return super.getId() + "\n  Damage: " + damage;
 	}
 	
-	abstract public void ability(Monster monster);
+	abstract public void ability(Monster monster, Player player);
 
 }
