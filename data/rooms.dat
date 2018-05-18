@@ -1,19 +1,19 @@
 Room Name: Cabin 1
 Room Description: You in an old ship's quarters. You are sailing to an Island far across the sea (north). <br>Go out to the deck (west) and explore.
 Room Inventory: Food steak 5, Food egg 4, Armor GoldArmor
-Room Entity: 
+Room Entity: NPC CaptainMorgan
 Exit Rooms: W-Main Deck 1
 
 Room Name: Cabin 2
 Room Description: You in the old ship's quarters again.
 Room Inventory: 
-Room Entity:
+Room Entity: 
 Exit Rooms: W-Main Deck 2
 
 Room Name: Main Deck 1
 Room Description: The salty briny air fills your nostrils.<br>The ship's crew works tirelessly, scrubbing the deck clean.<br>Shouting can be heard (west) from the captian's deck.
 Room Inventory: Food rat -4
-Room Entity: Monster PlagueRat
+Room Entity: 
 Exit Rooms: E-Cabin 2, W-Captains Deck 1
 
 Room Name: Main Deck 2
@@ -76,7 +76,7 @@ Room Name: Forest Intersection 1
 Room Description:  The path splits off into three directions. <br>The mist prevents looking farther without further exploration.
 Room Inventory: 
 Room Entity: 
-Exit Rooms: S-Misty Path 2, N-Silent Hill 1, W- West Forest Crossroads 1, E- East Forest Crossroads 1
+Exit Rooms: S-Misty Path 2, N-Silent Hill 1, W-West Forest Crossroads 1, E-East Forest Crossroads 1
 
 Room Name: Silent Hill 1
 Room Description: A small hill lies in the center of a clearing. <br>There is no sound, only silence. 
@@ -84,14 +84,92 @@ Room Inventory:
 Room Entity: Monster EldritchInfected
 Exit Rooms: S-Forest Intersection 1, N-Misty Path 3
 
+/s First roads
+
 Room Name: West Forest Crossroads 1
 Room Description:  The path splits off into two directions (north and west). <br>The mist prevents looking farther without further exploration.
 Room Inventory: 
 Room Entity: 
-Exit Rooms: N-Silent Hill 1, W-Silent Hill 1
+Exit Rooms: E-Forest Intersection 1, W-Abandoned Trench 1, N-Placebo Room 1
 
 Room Name: East Forest Crossroads 1
 Room Description:  The path splits off into two directions (north and west). <br>The mist prevents looking farther without further exploration.
 Room Inventory: 
 Room Entity: 
-Exit Rooms: N-Silent Hill 1, W-Silent Hill 1
+Exit Rooms: W-Forest Intersection 1, E-Beaten Path 1, N-Placebo Room 1
+
+/s East
+
+Room Name: Beaten Path 1
+Room Description: The humid air clings to your lungs. Felled, festering trees<br>litter the path, and fungus flourishes in their remains.<br> Flies swarm the fetid stumps, feeding on the sap.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: W-East Forest Crossroads 1, E-Rotten Road 1
+
+Room Name: Rotten Road 1
+Room Description: The moist ground emits a squelch, as every step sinks deep<br>into the foul smelling floor. The stench of corpses is faint in the air.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: W-Beaten Path 1, N-Misty Path 3
+
+Room Name: Rocky East Path 1
+Room Description: The terrain becomes increasingly rocky. <br>The path you are on is uneven. Watch your step.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: S-East Forest Crossroads 1, E-East Meadow 1, N-East Side Gorge 1
+
+Room Name: East Side Gorge 1
+Room Description: A large scar separates the land. On the other side of the gorge, <br>you see another path.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: S-Rocky East Path 1, N-Centerpoint 1
+
+Room Name: Centerpoint 1
+Room Description: The gorge ends. You see the West Side Gorge Path begin.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: S-East Side Gorge 1, W-West Side Gorge 1
+
+Room Name: East Meadow 1
+Room Description: You come across small patch of low lying plants. <br>They crinkle under your feet. They are all dead.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: W-Rocky East Path 1, N-Undead End 1, E- Placebo Room 1
+
+Room Name: Undead End 1
+Room Description: The path is littered with the undead. Although too decomposed to be a threat,<br>they still writhe and moan under your feet.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: S-East Meadow 1, N-Misty Path 3
+
+/s West
+
+Room Name: Centerpoint 2
+Room Description: The gorge ends. You see the East Side Gorge Path begin.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: S-East Side Gorge 1, W-West Side Gorge 1
+
+Room Name: Abandoned Trench 1
+Room Description: In the place of the path is a scar across the ground, filled with<br>the remains of a group of explorers long gone, impaled upon tree branches. <br>Saplings are sprouting from their bones, and out their eye sockets.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: E-West Forest Crossroads 1, N-Misty Path 3
+
+Room Name: Rocky West Path 1
+Room Description: The terrain becomes increasingly rocky. <br>The path you are on is uneven. Watch your step.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: S-West Forest Crossroads 1, W-Placebo Room 1, N-West Side Gorge 1
+
+Room Name: West Side Gorge 1
+Room Description: A large scar separates the land. On the other side of the gorge, <br>you see another path.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: S-Rocky West Path 1, N-Centerpoint 2
+
+Room Name: Placebo Room 1
+Room Description: You shouldn't be here.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: N-Misty Path 3

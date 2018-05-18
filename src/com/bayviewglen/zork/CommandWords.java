@@ -12,18 +12,25 @@ package com.bayviewglen.zork;
 
 class CommandWords
 {
+	// a constant array that returns the main valid command words
+	private static final String showCommands[] = {
+			"go/move", "help", "quit", "search", "room",
+			"equip", "equipment", "welfare", "eat",
+			"take", "attack *monster name* with *weapon name*", 
+	        "drop", "inventory", "equipment", "unequip",
+	};
     // a constant array that holds all valid command words
     private static final String validCommands[] = {
         "go", "move", "walk", "run", "help", "quit", "search", "find",
         "look", "room", "place", "location", "spot", "equip", "equipment",
-        "unequip", "welfare", "eat", "consume", "bite", "chew",
+        "welfare", "eat", "consume", "bite", "chew",
         "ingest", "snack", "munch", "gorge", "dine", "lunch",
         "ingest", "take", "retrieve", "aquire", "recieve",
         "snag", "grab", "attack *monster name* with *weapon name*", 
         "drop", "inventory", "items", "things", "supply",
         "weapons", "armor", "equipment", "shield", "apparatus",
 		"devices", "attachments", "gadgets", "outfit",
-		"tools", "unequip", "holster",
+		"tools", "unequip", "holster", "talk"
     };
     
     private static final String locationCommands[] = {
@@ -91,9 +98,9 @@ class CommandWords
      */
     public void showAll() 
     {
-        for(int i = 0; i < validCommands.length; i++)
+        for(int i = 0; i < showCommands.length; i++)
         {
-            System.out.print(validCommands[i] + " | ");
+            System.out.print(showCommands[i] + " | ");
             if (i % 8 == 0 && i != 0) 
             	System.out.println();
         }
