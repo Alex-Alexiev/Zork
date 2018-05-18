@@ -11,16 +11,13 @@ public class Lucille extends Weapon{
 	private int[] poisStacks = new int[poisLength];
 
 	public Lucille() {
-		super("Lucille", 20, "Barbed wire baseball bat. Highly effective against asians and zombies.");
+		super("Lucille", "Barbed wire baseball bat. Highly effective against asians and zombies.", 200, 80);
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void ability(Monster monster, Player player){		
-		int chance = (int) (Math.random() *7);
-		
-		if (chance <= 5) {
-			monster.setHealth(monster.getHealth() - getDamage());
-		
+	public void ability(Monster monster, Player player){
+		if (didHit()) {
+			monster.setHealth(monster.getHealth() - getDamage() - criticalHit());
 			poisDmg += poisDmgInc;
 			for (int i = 0; i < poisStacks.length; i++) {
 				if (poisStacks[i] == 0) {
@@ -29,13 +26,9 @@ public class Lucille extends Weapon{
 			}
 			
 			int stun = (int) (Math.random() * 2);
-			
 			if (stun == 0) {
 				monster.stun(true);
 			}
-		}
-		else {
-			System.out.println("You have missed the hit!");
 		}
 		
 		for (int i = 0; i < poisStacks.length; i++) {
@@ -49,7 +42,7 @@ public class Lucille extends Weapon{
 		}
 		
 		if (poisDmg > 0) {
-			System.out.println("Plague Rat has been poisoned (-"+poisDmg+")");
+			System.out.println(monster.getId() + " has been poisoned (-"+poisDmg+")");
 			monster.setHealth(monster.getHealth() - poisDmg);
 		}
 	}

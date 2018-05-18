@@ -6,12 +6,13 @@ import com.bayviewglen.zork.items.Weapon;
 public class Dagger extends Weapon{
 
 	public Dagger() {
-		super("dagger", 10, "Stabby time!");
+		super("dagger", "Stabby time!", 100, 90);
 		// TODO Auto-generated constructor stub
 	}
 	
 	public void ability(Monster monster, Player player){
-		monster.setHealth(monster.getHealth() - getDamage());
+		if (didHit())
+			monster.setHealth(monster.getHealth() - getDamage() - criticalHit());
 	}
 
 }

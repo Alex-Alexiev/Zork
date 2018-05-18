@@ -6,12 +6,13 @@ import com.bayviewglen.zork.items.Weapon;
 public class ShortSword extends Weapon{
 
 	public ShortSword() {
-		super("ShortSword", 15, "Medium sized weapon, excellent for close engagement");
+		super("ShortSword", "Medium sized weapon, excellent for close engagement", 150, 80);
 		// TODO Auto-generated constructor stub
 	}
 	
 	public void ability(Monster monster, Player player){
-		monster.setHealth(monster.getHealth() - getDamage());
+		if (didHit())
+			monster.setHealth(monster.getHealth() - getDamage() - criticalHit());
 	}
 
 }

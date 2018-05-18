@@ -4,7 +4,9 @@ package com.bayviewglen.zork;
 import java.util.ArrayList;
 
 import com.bayviewglen.zork.entity.Monster;
+import com.bayviewglen.zork.items.Weapon;
 import com.bayviewglen.zork.items.weapons.Bow;
+import com.bayviewglen.zork.items.weapons.LegsOfLass;
 
 public class Combat {
 	
@@ -84,11 +86,25 @@ public class Combat {
 			System.out.println("\nwimp\n");
 			return false;
 		}
+		
+		Weapon weapon = player.getWeapon();
+		
+		if (weapon instanceof LegsOfLass) {
+			int monstersLength = monsters.size();
+			for (Monster m : monsters) {
+				System.out.println("You attack " + m.getId() + " with " + weapon.getId() + " (-" + weapon + ")\n");
+				((LegsOfLass) weapon).ability(m, monstersLength);
+			}
+			return true;
+		}
+		
 		String monsterId = playerCommand.getSecondWord();
+		
 		for (Monster m : monsters) {
 			if (m.getId().equals(monsterId)) {
-				player.getWeapon().ability(m, player);
-				break;
+				System.out.println("You attack " + m.getId() + " with " + weapon.getId() + " (-" + weapon + ")\n");
+				weapon.ability(m, player);
+				return true;
 			}
 		}
 		return true;
