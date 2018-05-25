@@ -10,7 +10,7 @@ public class PlagueRat extends Monster {
 	private final int POISON_LENGTH = 3;
 	
 	public PlagueRat() {
-		super("PlagueRat", "A giant rat, with rotten flesh, \nexposed ribcage and visible viscera", 10, 350);
+		super("Plague Rat", "A giant rat, with rotten flesh, \nexposed ribcage and visible viscera", 10, 350);
 	}
 	
 	public int ability(Player player) {
@@ -18,11 +18,11 @@ public class PlagueRat extends Monster {
 		int initHealth = player.getHealth();
 		
 		if (num <= 5) {
-			System.out.println(getId() + " has hit you (-"+getDamage()+")");
+			System.out.println(getName() + " has hit you (-"+getDamage()+")");
 			player.normalDamage(getDamage()); 
 		
 			if (player.getHealth() < initHealth) {
-				player.poisoned(new Poison(POISON_INC, new int[POISON_LENGTH]));
+				//player.poisoned(new Poison(POISON_INC, new int[POISON_LENGTH]));
 			}
 		}
 		else {

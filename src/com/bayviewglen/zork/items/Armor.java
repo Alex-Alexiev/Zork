@@ -4,8 +4,8 @@ abstract public class Armor extends Item {
 	
 	private int shieldPoints;
 	
-	public Armor(String id, int shieldPoints, String description) {
-		super(id, 1, false);
+	public Armor(String name, int shieldPoints, String description) {
+		super(name, 1, false);
 		this.shieldPoints = shieldPoints;
 		setDescription(description);
 	}
@@ -21,6 +21,10 @@ abstract public class Armor extends Item {
 	abstract public void ability();
 	
 	public String toString() {
-		return super.getId() + "\n  Shield Points: " + this.shieldPoints;
+		return super.getName();
+	}
+	
+	public String longDescription() {
+		return super.getName() + "\n" + getDescription() + "\n  Shield Points: " + this.shieldPoints;
 	}
 }

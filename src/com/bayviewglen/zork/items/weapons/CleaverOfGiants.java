@@ -6,7 +6,7 @@ import com.bayviewglen.zork.player.Player;
 public class CleaverOfGiants extends Weapon{
 
 	public CleaverOfGiants() {
-		super("CleaverOfGiants", "Not just for cutting the beanstalk.", 0, 50);
+		super("Cleaver of Giants", "Not just for cutting the beanstalk.", 0, 50);
 		// TODO Auto-generated constructor stub
 	}
 	

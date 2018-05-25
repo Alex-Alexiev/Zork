@@ -10,14 +10,14 @@ abstract public class Weapon extends Item{
 	 */
 	private int damage;
 	private int chance;
-	private int CRIT_PERCENT = 50;
+	private double CRIT_PERCENT = 0.5;
 	private int CRIT_CHANCE = 20;
 	
 	/*
 	 * Constructor
 	 */
-	public Weapon(String id, String description, int damage, int chance) {
-		super(id, 1, false);
+	public Weapon(String name, String description, int damage, int chance) {
+		super(name, 1, false);
 		this.damage = damage;
 		this.chance = chance;
 		setDescription(description);
@@ -62,7 +62,11 @@ abstract public class Weapon extends Item{
 	 * @see com.bayviewglen.zork.items.Item#toString()
 	 */
 	public String toString() {
-		return super.getId() + "\n  Damage: " + damage;
+		return super.getName();
+	}
+	
+	public String longDescription() {
+		return super.getName() + "\n" + getDescription() + "\n Damage: " + this.damage;
 	}
 	
 	/*

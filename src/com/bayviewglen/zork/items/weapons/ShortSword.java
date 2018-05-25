@@ -6,7 +6,7 @@ import com.bayviewglen.zork.player.Player;
 public class ShortSword extends Weapon{
 
 	public ShortSword() {
-		super("ShortSword", "Medium sized weapon, excellent for close engagement", 150, 80);
+		super("Short Sword", "Medium sized weapon, excellent for close engagement", 150, 80);
 		// TODO Auto-generated constructor stub
 	}
 	

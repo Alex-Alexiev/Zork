@@ -4,7 +4,7 @@ import com.bayviewglen.zork.items.Armor;
 
 public class SteelArmor extends Armor {
 	public SteelArmor() {
-		super("steel armor", 600, "This stuff is the best you can get.");
+		super("Steel Armor", 600, "This stuff is the best you can get.");
 	}
 
 	public void ability() {

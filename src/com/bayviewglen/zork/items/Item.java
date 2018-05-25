@@ -9,12 +9,14 @@ package com.bayviewglen.zork.items;
 public class Item {
 	
 	private String id;
+	private String name;
 	private int amount;
 	private boolean consumable;
 	private String description;
 	
-	public Item(String id, int amount, boolean consumable) {
-		this.id = id.toLowerCase();
+	public Item(String name, int amount, boolean consumable) {
+		this.name = name;
+		this.id = name.replaceAll("\\s","").toLowerCase();
 		this.amount = amount;
 		this.consumable = consumable;
 	}
@@ -26,6 +28,13 @@ public class Item {
 	 */
 	public String getId() {
 		return this.id;
+	}
+	
+	/*
+	 * Returns the item's name
+	 */
+	public String getName() {
+		return this.name;
 	}
 	
 	/*
@@ -67,8 +76,8 @@ public class Item {
 	
 	public String toString() {
 		String ret = ""+amount+" ";
-		if (amount > 1) ret += id+"s";
-		else ret += id;
+		if (amount > 1) ret += name+"s";
+		else ret += name;
 		return ret;
 	}
 	

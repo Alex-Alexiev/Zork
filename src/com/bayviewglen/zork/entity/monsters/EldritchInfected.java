@@ -6,7 +6,7 @@ import com.bayviewglen.zork.player.Player;
 public class EldritchInfected extends Monster {
 
 	public EldritchInfected() {
-		super("EldritchInfected",
+		super("Eldritch Infected",
 				"Seems humanoid, albeit slightly emancipated, \nuntil the mouth opens unnaturally wide, to extend feeding apparatus, <br>consisting of 3 tentacles, lined with sharp teeth",
 				100, 850);
 	}

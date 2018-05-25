@@ -119,9 +119,10 @@ public class Player {
 	 * Prints equipment()
 	 */
 	private void printEquipment() {
-		String weapon = equippedWeapon == null ? "No sword equipped" : "Sword: " + equippedWeapon;
-		String armor = equippedArmor == null ? "No armor equipped" : "Armor: " + equippedArmor;
+		String weapon = equippedWeapon == null ? "No sword equipped" : "Sword: " + equippedWeapon.longDescription();
+		String armor = equippedArmor == null ? "No armor equipped" : "Armor: " + equippedArmor.longDescription();
 		System.out.println(weapon);
+		System.out.println();
 		System.out.println(armor);
 	}
 
@@ -185,7 +186,8 @@ public class Player {
 			return;
 		}
 
-		String foodId = Command.mergeFinalWords(command, 1);
+		String foodName = Command.mergeFinalWords(command, 1);
+		String foodId = foodName.replaceAll("\\s","");
 		Food food = (Food) inventory.getItem(foodId);
 
 		if (food != null) {
@@ -214,7 +216,7 @@ public class Player {
 			System.out.println("\nHealth: " + health);
 
 		} else {
-			System.out.println("You have no " + foodId + "s");
+			System.out.println("You have no " + foodName + "s");
 		}
 	}
 
@@ -229,7 +231,8 @@ public class Player {
 			return;
 		}
 
-		String itemId = Command.mergeFinalWords(command, 1);
+		String itemName = Command.mergeFinalWords(command, 1);
+		String itemId = itemName.replaceAll("\\s","");
 		Item item = inventory.getItem(itemId);
 
 		if (item != null) {
@@ -240,14 +243,14 @@ public class Player {
 			if (item.isConsumable()) {
 				int amount = item.getAmount();
 				if (amount > 1)
-					System.out.println("You dropped " + amount + " " + itemId + "s.");
+					System.out.println("You dropped " + amount + " " + item.getName() + "s.");
 				else
-					System.out.println("You dropped " + amount + " " + itemId);
+					System.out.println("You dropped " + amount + " " + item.getName());
 			} else {
-				System.out.println("You dropped your " + itemId);
+				System.out.println("You dropped your " + item.getName());
 			}
 		} else {
-			System.out.println("You have no " + itemId + "s");
+			System.out.println("You have no " + itemName + "s");
 		}
 	}
 
@@ -262,7 +265,8 @@ public class Player {
 			return;
 		}
 
-		String itemId = Command.mergeFinalWords(command, 1);
+		String itemName = Command.mergeFinalWords(command, 1);
+		String itemId = itemName.replaceAll("\\s","");
 		Item item = currentRoom.inventory.getItem(itemId);
 
 		if (item != null) {
@@ -273,14 +277,14 @@ public class Player {
 			if (item.isConsumable()) {
 				int amount = item.getAmount();
 				if (amount > 1)
-					System.out.println("You picked up " + amount + " " + itemId + "s.");
+					System.out.println("You picked up " + amount + " " + item.getName() + "s.");
 				else
-					System.out.println("You picked up " + amount + " " + itemId);
+					System.out.println("You picked up " + amount + " " + item.getName());
 			} else {
-				System.out.println("You picked up a " + itemId);
+				System.out.println("You picked up a " + item.getName());
 			}
 		} else {
-			System.out.println("The room has no " + itemId + "s");
+			System.out.println("The room has no " + itemName + "s");
 		}
 	}
 
@@ -293,7 +297,8 @@ public class Player {
 			return;
 		}
 
-		String itemId = Command.mergeFinalWords(command, 1);
+		String itemName = Command.mergeFinalWords(command, 1);
+		String itemId = itemName.replaceAll("\\s","");
 		Item item = inventory.getItem(itemId);
 
 		if (item != null) {
@@ -309,7 +314,7 @@ public class Player {
 				System.out.println("You cannot equip that");
 			}
 		} else {
-			System.out.println("You have no " + itemId + "s");
+			System.out.println("You have no " + itemName + "s");
 		}
 	}
 
@@ -354,7 +359,8 @@ public class Player {
 			return;
 		}
 
-		String npcId = command.getSecondWord();
+		String npcName = Command.mergeFinalWords(command, 1);
+		String npcId = npcName.replaceAll("\\s","");
 		ArrayList<NPC> npcs = currentRoom.entities.getNPCs();
 		boolean didTalk = false;
 		for (NPC npc : npcs) {
@@ -365,7 +371,7 @@ public class Player {
 		}
 		
 		if (!didTalk) {
-			System.out.println(npcId + " is not here");
+			System.out.println(npcName + " is not here");
 		}
 	}
 	
@@ -376,7 +382,7 @@ public class Player {
 	public String toString() {
 		String ret = "Your health: " + health + "";
 		if (equippedArmor != null) {
-			ret += "\nArmor: " + equippedArmor;
+			ret += "\nArmor: " + equippedArmor + "\n Shield Points: " + equippedArmor.getShieldPoints();
 		}
 		return ret;
 	}
@@ -403,7 +409,7 @@ public class Player {
 			if (equippedArmor.getShieldPoints() <= 0) {
 				equippedArmor = null;
 				specialDamage(unblockedDamage);
-				System.out.println("Your " + equippedArmor.getId() + " got annihilated.");
+				System.out.println("Your " + equippedArmor.getName() + " got annihilated.");
 			}
 		} else {
 			specialDamage(damage);

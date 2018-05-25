@@ -6,8 +6,8 @@ public class NPC extends Entity {
 	
 	private ArrayList<String> responses;
 	
-	public NPC(String id, ArrayList<String> responses) {
-		super(id);
+	public NPC(String name, ArrayList<String> responses) {
+		super(name);
 		this.responses = responses;
 	}
 	

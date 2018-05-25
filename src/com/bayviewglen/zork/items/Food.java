@@ -11,8 +11,8 @@ public class Food extends Item {
 	 */
 	private int health;
 	
-	public Food(String id, int health) {
-		super(id, 1, true);
+	public Food(String name, int health) {
+		super(name, 1, true);
 		this.health = health;
 	}
 		

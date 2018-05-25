@@ -6,7 +6,7 @@ import com.bayviewglen.zork.player.Player;
 public class LongSword extends Weapon{
 
 	public LongSword() {
-		super("LongSword", "The preferred weapon of warriors.", 300, 100);
+		super("Long Sword", "The preferred weapon of warriors.", 300, 100);
 		// TODO Auto-generated constructor stub
 	}
 	

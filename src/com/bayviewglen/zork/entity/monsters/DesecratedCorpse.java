@@ -6,7 +6,7 @@ import com.bayviewglen.zork.player.Player;
 public class DesecratedCorpse extends Monster {
 
 	public DesecratedCorpse() {
-		super("DesecratedCorpse", "A rotten corpse, with its flesh <br>flayed to emulate twisted cult symbols", 55,
+		super("Desecrated Corpse", "A rotten corpse, with its flesh <br>flayed to emulate twisted cult symbols", 55,
 				550);
 	}
 
