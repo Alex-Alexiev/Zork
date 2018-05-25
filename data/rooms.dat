@@ -90,13 +90,13 @@ Room Name: West Forest Crossroads 1
 Room Description:  The path splits off into two directions (north and west). <br>The mist prevents looking farther without further exploration.
 Room Inventory: 
 Room Entity: 
-Exit Rooms: E-Forest Intersection 1, W-Abandoned Trench 1, N-Placebo Room 1
+Exit Rooms: E-Forest Intersection 1, W-Abandoned Trench 1, N-Rocky West Path 1
 
 Room Name: East Forest Crossroads 1
 Room Description:  The path splits off into two directions (north and west). <br>The mist prevents looking farther without further exploration.
 Room Inventory: 
 Room Entity: 
-Exit Rooms: W-Forest Intersection 1, E-Beaten Path 1, N-Placebo Room 1
+Exit Rooms: W-Forest Intersection 1, E-Beaten Path 1, N-Rocky East Path 1
 
 /s East
 
@@ -134,7 +134,7 @@ Room Name: East Meadow 1
 Room Description: You come across small patch of low lying plants. <br>They crinkle under your feet. They are all dead.
 Room Inventory: 
 Room Entity: 
-Exit Rooms: W-Rocky East Path 1, N-Undead End 1, E- Placebo Room 1
+Exit Rooms: W-Rocky East Path 1, N-Undead End 1, E-East Complex 1
 
 Room Name: Undead End 1
 Room Description: The path is littered with the undead. Although too decomposed to be a threat,<br>they still writhe and moan under your feet.
@@ -167,6 +167,90 @@ Room Description: A large scar separates the land. On the other side of the gorg
 Room Inventory: 
 Room Entity: 
 Exit Rooms: S-Rocky West Path 1, N-Centerpoint 2
+
+/s East Complex
+
+Room Name: East Complex 1
+Room Description: 
+Room Inventory:
+Room Entity:
+Exit Rooms: W-East Meadow 1, N-East Complex 2
+
+Room Name: East Complex 2
+Room Description: 
+Room Inventory:
+Room Entity:
+Exit Rooms: S-East Complex 1, W-East Complex 3
+
+Room Name: East Complex 3
+Room Description: 
+Room Inventory:
+Room Entity:
+Exit Rooms: E-East Complex 2, N-Trisplit Path 1
+
+Room Name: Trisplit Path 1
+Room Description: 
+Room Inventory: 
+Room Entity: 
+Exit Rooms: S-East Complex 3, W-Crimson Field 1, E-Decaying Marsh 1, N-Twilight Graveyard 1
+
+Room Name: Crimson Field 1
+Room Description: The field is covered in dark red flowers. The smell of iron stains the air.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: E-Trispilt Path 1, N-Misty Path 3
+
+Room Name: Decaying Marsh 1
+Room Description: 
+Room Inventory: The rotten plant life sloushes around your legs as you wade through the swamp.
+Room Entity: 
+Exit Rooms: W-Trisplit Path 1, N-Misty Path 3
+
+Room Name: Twilight Graveyard 1
+Room Description: 
+Room Inventory: A light mist faintly covers the ground. Tombstones unevenly cover the path.
+Room Entity:
+Exit Room: S-Trisplit Path 1, N-Haunted Mausoleum 1
+
+Room Name: Haunted Mausoleum 1
+Room Description: You shouldn't be here.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: N-Misty Path 3, W-Ivy Ridden Path 1, E-Forgotten Treeline 1
+
+Room Name: Forgotten Treeline 1
+Room Description: Ancient twisted trunks line the sides of this path. 
+Room Inventory: 
+Room Entity: 
+Exit Rooms: N-Misty Path 3, W-Haunted Mausoleum 1
+
+Room Name: Ivy Ridden Path 1
+Room Description: Spiraling ivy vines cover a stone wall.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: N-Misty Path 3, E-Haunted Mausoleum 1, W-Forest Exit 1
+
+/west complex
+
+Room Name: Cave Clearing 1
+Room Description: 
+Room Inventory: 
+Room Entity: 
+Exit Rooms: S-Forest Exit 1
+
+/end
+
+Room Name: Forest Exit 1
+Room Description: 
+Room Inventory: 
+Room Entity: 
+Exit Rooms: E-Ivy Ridden Path 1, N-Cave Clearing 1
+
+Room Name: Cave Clearing 1
+Room Description: 
+Room Inventory: 
+Room Entity: 
+Exit Rooms: S-Forest Exit 1
 
 Room Name: Placebo Room 1
 Room Description: You shouldn't be here.
