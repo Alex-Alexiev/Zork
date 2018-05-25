@@ -21,7 +21,7 @@ import com.bayviewglen.zork.entity.Entities;
 import java.util.HashMap;
 import java.util.Iterator;
 
-class Room 
+public class Room 
 {
 	private String roomName;
     private String description;

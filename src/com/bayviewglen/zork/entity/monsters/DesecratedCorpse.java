@@ -1,7 +1,7 @@
 package com.bayviewglen.zork.entity.monsters;
 
-import com.bayviewglen.zork.Player;
 import com.bayviewglen.zork.entity.Monster;
+import com.bayviewglen.zork.player.Player;
 
 public class DesecratedCorpse extends Monster {
 
@@ -15,6 +15,8 @@ public class DesecratedCorpse extends Monster {
 		int initHealth = player.getHealth();
 		if (num < 4) {
 			player.normalDamage(getDamage());
+		}else{
+			System.out.println("Desecrated Corpse has missed the hit!");
 		}
 		return initHealth-player.getHealth();
 	}

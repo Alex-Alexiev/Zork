@@ -1,7 +1,7 @@
 package com.bayviewglen.zork.entity.monsters;
 
-import com.bayviewglen.zork.Player;
 import com.bayviewglen.zork.entity.Monster;
+import com.bayviewglen.zork.player.Player;
 
 public class BloodPriest extends Monster {
 	

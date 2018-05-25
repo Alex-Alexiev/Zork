@@ -1,8 +1,14 @@
-package com.bayviewglen.zork;
+package com.bayviewglen.zork.player;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import com.bayviewglen.zork.Combat;
+import com.bayviewglen.zork.Command;
+import com.bayviewglen.zork.CommandWords;
+import com.bayviewglen.zork.Inventory;
+import com.bayviewglen.zork.Parser;
+import com.bayviewglen.zork.Room;
 import com.bayviewglen.zork.entity.NPC;
 import com.bayviewglen.zork.items.Armor;
 import com.bayviewglen.zork.items.Food;
@@ -20,6 +26,8 @@ public class Player {
 
 	public int health;
 	private int maxHealth;
+	
+	private Poison poison;
 
 	public Player(Room startingRoom) {
 		currentRoom = startingRoom;
@@ -407,5 +415,20 @@ public class Player {
 	 */
 	public void specialDamage(int damage) {
 		health -= damage;
+	}
+	
+	/*
+	 *Poison Method
+	 */
+	public void poisoned(Poison poison) {
+		this.poison = poison;
+		this.poison.poisoned();
+	}
+	
+	/*
+	 * Poison tick method
+	 */
+	public void poisonTick() {
+		specialDamage(poison.tick());
 	}
 }

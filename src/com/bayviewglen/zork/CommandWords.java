@@ -10,7 +10,7 @@ package com.bayviewglen.zork;
  * This class is part of the "Zork" game.
  */
 
-class CommandWords
+public class CommandWords
 {
 	// a constant array that returns the main valid command words
 	private static final String showCommands[] = {

@@ -1,17 +1,16 @@
 package com.bayviewglen.zork.entity.monsters;
 
-import com.bayviewglen.zork.Player;
 import com.bayviewglen.zork.entity.Monster;
+import com.bayviewglen.zork.player.Player;
+import com.bayviewglen.zork.player.Poison;
 
 public class PlagueRat extends Monster {
 	
-	private int poisDmg = 0;
-	private final int poisDmgInc = 20;
-	private int poisLength = 3;
-	private int[] poisStacks = new int[poisLength];
+	private final int POISON_INC = 20;
+	private final int POISON_LENGTH = 3;
 	
 	public PlagueRat() {
-		super("PlagueRat", "A giant rat, with rotten flesh, <br>exposed ribcage and visible viscera", 10, 350);
+		super("PlagueRat", "A giant rat, with rotten flesh, \nexposed ribcage and visible viscera", 10, 350);
 	}
 	
 	public int ability(Player player) {
@@ -23,33 +22,13 @@ public class PlagueRat extends Monster {
 			player.normalDamage(getDamage()); 
 		
 			if (player.getHealth() < initHealth) {
-				
-				poisDmg += poisDmgInc;
-				for (int i = 0; i < poisStacks.length; i++) {
-					if (poisStacks[i] == 0) {
-						poisStacks[i] = poisLength;
-					}
-				}
+				player.poisoned(new Poison(POISON_INC, new int[POISON_LENGTH]));
 			}
 		}
 		else {
 			System.out.println("Plague Rat has missed the hit!");
 		}
 		
-		for (int i = 0; i < poisStacks.length; i++) {
-			if (poisStacks[i] > 0) {
-				poisStacks[i] -= 1;
-			}
-			
-			if (poisStacks[i] == 0) {
-				poisDmg -= poisDmgInc; 
-			}
-		}
-		
-		if (poisDmg > 0) {
-			System.out.println("Plague Rat has poisoned you (-"+poisDmg+")");
-			player.specialDamage(poisDmg);
-		}
 		return initHealth-player.getHealth();
 	}
 

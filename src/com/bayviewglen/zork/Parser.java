@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-class Parser 
+public class Parser 
 {
 
     private static CommandWords commands = new CommandWords();  // holds all valid command words

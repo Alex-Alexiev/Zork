@@ -1,6 +1,7 @@
 package com.bayviewglen.zork.entity;
 
-import com.bayviewglen.zork.Player;
+import com.bayviewglen.zork.player.Player;
+import com.bayviewglen.zork.player.Poison;
 
 abstract public class Monster extends Entity {
 	
@@ -8,6 +9,7 @@ abstract public class Monster extends Entity {
 	private int health;
 	private boolean stunned;
 	private String description;
+	private Poison poison;
 	
 	public Monster(String id, String description, int damage, int health) {
 		super(id);
@@ -41,5 +43,20 @@ abstract public class Monster extends Entity {
 	
 	public String toString() {
 		return getId()+": "+description;
+	}
+	
+	/*
+	 *Poison Method
+	 */
+	public void poisoned(Poison poison) {
+		this.poison = poison;
+		this.poison.poisoned();
+	}
+	
+	/*
+	 * Poison tick method
+	 */
+	public void poisonTick() {
+		health -= poison.tick();
 	}
 }

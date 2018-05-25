@@ -1,7 +1,7 @@
 package com.bayviewglen.zork.items.weapons;
-import com.bayviewglen.zork.Player;
 import com.bayviewglen.zork.entity.Monster;
 import com.bayviewglen.zork.items.Weapon;
+import com.bayviewglen.zork.player.Player;
 
 public class LongSword extends Weapon{
 

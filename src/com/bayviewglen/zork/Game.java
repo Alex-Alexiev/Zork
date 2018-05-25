@@ -14,6 +14,7 @@ import com.bayviewglen.zork.entity.NPC;
 import com.bayviewglen.zork.items.Armor;
 import com.bayviewglen.zork.items.Food;
 import com.bayviewglen.zork.items.Item;
+import com.bayviewglen.zork.player.Player;
 
 /**
  * Class Game - the main class of the "Zork" game.

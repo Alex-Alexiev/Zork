@@ -7,6 +7,7 @@ import com.bayviewglen.zork.entity.Monster;
 import com.bayviewglen.zork.items.Weapon;
 import com.bayviewglen.zork.items.weapons.Bow;
 import com.bayviewglen.zork.items.weapons.LegsOfLass;
+import com.bayviewglen.zork.player.Player;
 
 public class Combat {
 	

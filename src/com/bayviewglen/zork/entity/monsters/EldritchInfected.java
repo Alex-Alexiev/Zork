@@ -1,13 +1,13 @@
 package com.bayviewglen.zork.entity.monsters;
 
-import com.bayviewglen.zork.Player;
 import com.bayviewglen.zork.entity.Monster;
+import com.bayviewglen.zork.player.Player;
 
 public class EldritchInfected extends Monster {
 
 	public EldritchInfected() {
 		super("EldritchInfected",
-				"Seems humanoid, albeit slightly emancipated, <br>until the mouth opens unnaturally wide, to extend feeding apparatus, <br>consisting of 3 tentacles, lined with sharp teeth",
+				"Seems humanoid, albeit slightly emancipated, \nuntil the mouth opens unnaturally wide, to extend feeding apparatus, <br>consisting of 3 tentacles, lined with sharp teeth",
 				100, 850);
 	}
 
@@ -19,9 +19,11 @@ public class EldritchInfected extends Monster {
 			player.normalDamage(getDamage());
 			if (initHealth > player.getHealth()) {
 				setHealth(getHealth() + (initHealth - player.getHealth()) / 2);
+			} else {
+				System.out.println("Eldritch Infected has missed the hit!");
 			}
 		}
-		
-		return initHealth-player.getHealth();
+
+		return initHealth - player.getHealth();
 	}
 }

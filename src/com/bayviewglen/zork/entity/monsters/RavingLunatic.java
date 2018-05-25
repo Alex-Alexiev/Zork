@@ -1,13 +1,13 @@
 package com.bayviewglen.zork.entity.monsters;
 
-import com.bayviewglen.zork.Player;
 import com.bayviewglen.zork.entity.Monster;
+import com.bayviewglen.zork.player.Player;
 
 public class RavingLunatic extends Monster {
 
 	public RavingLunatic() {
 		super("RavingLunatic",
-				"A person driven to murder from the influence of the island. <br>Brandishes a massive knife, caked with blood.",
+				"A person driven to murder from the influence of the island.  \nBrandishes a massive knife, caked with blood.",
 				150, 400);
 	}
 
@@ -16,6 +16,8 @@ public class RavingLunatic extends Monster {
 		int initHealth = player.getHealth();
 		if (num < 5) {
 			player.normalDamage(getDamage()); 
+		}else{
+			System.out.println("Raving Lunatic has missed the hit!");
 		}
 		return initHealth-player.getHealth();
 	}
