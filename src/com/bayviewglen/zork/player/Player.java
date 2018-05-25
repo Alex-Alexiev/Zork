@@ -27,7 +27,7 @@ public class Player {
 	public int health;
 	private int maxHealth;
 	
-	private Poison poison;
+	private ArrayList<Poison> poisons = new ArrayList<Poison>();
 
 	public Player(Room startingRoom) {
 		currentRoom = startingRoom;
@@ -420,15 +420,17 @@ public class Player {
 	/*
 	 *Poison Method
 	 */
-	public void poisoned(Poison poison) {
-		this.poison = poison;
-		this.poison.poisoned();
+	public void addPoison(Poison poison) {
+		poison.poisoned();
+		this.poisons.add(poison);
 	}
 	
 	/*
 	 * Poison tick method
 	 */
-	public void poisonTick() {
-		specialDamage(poison.tick());
+	public void poison() {
+		for (Poison p : poisons) {
+			specialDamage(p.tick());
+		}
 	}
 }
