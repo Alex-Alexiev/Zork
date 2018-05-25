@@ -35,13 +35,13 @@ Room Entity: NPC Captain Morgan
 Exit Rooms: E-Main Deck 2
 
 Room Name: Docks 1
-Room Description:  You are on the docks. Old rotten wood creaks under your feet.
+Room Description: You are on the docks. Old rotten wood creaks under your feet.
 Room Inventory: 
 Room Entity: NPC Herr Harker
 Exit Rooms: N-Shore 1, S-Main Deck 2
 
 Room Name: Shore 1
-Room Description:  You are on the shore of the Island.
+Room Description: You are on the shore of the Island.
 Room Inventory: 
 Room Entity: 
 Exit Rooms: S-Docks 1, N-Forest Entrance 1
@@ -61,13 +61,13 @@ Room Entity:
 Exit Rooms: S-Misty Path 2, N-Forest Intersection 1
 
 Room Name: Misty Path 2
-Room Description:  There is no Shore in sight. <br>The air is as still as a corpse. The mist is all encompassing.
+Room Description: There is no Shore in sight. <br>The air is as still as a corpse. The mist is all encompassing.
 Room Inventory: 
 Room Entity: 
 Exit Rooms: S-Misty Path 2, N-Forest Intersection 1
 
 Room Name: Misty Path 3
-Room Description:  You feel you have been here before.
+Room Description: You feel you have been here before.
 Room Inventory: 
 Room Entity: 
 Exit Rooms: S-Misty Path 2, N-Forest Intersection 1
@@ -87,13 +87,13 @@ Exit Rooms: S-Forest Intersection 1, N-Misty Path 3
 /s First roads
 
 Room Name: West Forest Crossroads 1
-Room Description:  The path splits off into two directions (north and west). <br>The mist prevents looking farther without further exploration.
+Room Description: The path splits off into two directions (north and west). <br>The mist prevents looking farther without further exploration.
 Room Inventory: 
 Room Entity: 
 Exit Rooms: E-Forest Intersection 1, W-Abandoned Trench 1, N-Rocky West Path 1
 
 Room Name: East Forest Crossroads 1
-Room Description:  The path splits off into two directions (north and west). <br>The mist prevents looking farther without further exploration.
+Room Description: The path splits off into two directions (north and west). <br>The mist prevents looking farther without further exploration.
 Room Inventory: 
 Room Entity: 
 Exit Rooms: W-Forest Intersection 1, E-Beaten Path 1, N-Rocky East Path 1
@@ -168,28 +168,28 @@ Room Inventory:
 Room Entity: 
 Exit Rooms: S-Rocky West Path 1, N-Centerpoint 2
 
-/s East Complex
+/s Eastcomplex
 
 Room Name: East Complex 1
-Room Description: 
+Room Description: fgweqfg
 Room Inventory:
 Room Entity:
 Exit Rooms: W-East Meadow 1, N-East Complex 2
 
 Room Name: East Complex 2
-Room Description: 
+Room Description: qwefdq
 Room Inventory:
 Room Entity:
 Exit Rooms: S-East Complex 1, W-East Complex 3
 
 Room Name: East Complex 3
-Room Description: 
+Room Description: qwdqw
 Room Inventory:
 Room Entity:
 Exit Rooms: E-East Complex 2, N-Trisplit Path 1
 
 Room Name: Trisplit Path 1
-Room Description: 
+Room Description: qwdwqd
 Room Inventory: 
 Room Entity: 
 Exit Rooms: S-East Complex 3, W-Crimson Field 1, E-Decaying Marsh 1, N-Twilight Graveyard 1
@@ -207,8 +207,8 @@ Room Entity:
 Exit Rooms: W-Trisplit Path 1, N-Misty Path 3
 
 Room Name: Twilight Graveyard 1
-Room Description: 
-Room Inventory: A light mist faintly covers the ground. Tombstones unevenly cover the path.
+Room Description: A light mist faintly covers the ground. Tombstones unevenly cover the path.
+Room Inventory: 
 Room Entity:
 Exit Room: S-Trisplit Path 1, N-Haunted Mausoleum 1
 
@@ -230,24 +230,24 @@ Room Inventory:
 Room Entity: 
 Exit Rooms: N-Misty Path 3, E-Haunted Mausoleum 1, W-Forest Exit 1
 
-/west complex
+/s westcomplex
 
 Room Name: Cave Clearing 1
-Room Description: 
+Room Description: qwdqw
 Room Inventory: 
 Room Entity: 
 Exit Rooms: S-Forest Exit 1
 
-/end
+/s end
 
 Room Name: Forest Exit 1
-Room Description: 
+Room Description: You have found the exit!
 Room Inventory: 
 Room Entity: 
 Exit Rooms: E-Ivy Ridden Path 1, N-Cave Clearing 1
 
 Room Name: Cave Clearing 1
-Room Description: 
+Room Description: A light breeze blows agaisnt you. A cave mouth is ahead.
 Room Inventory: 
 Room Entity: 
 Exit Rooms: S-Forest Exit 1
