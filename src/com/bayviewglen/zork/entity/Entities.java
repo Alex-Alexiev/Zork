@@ -43,6 +43,13 @@ public class Entities {
 	}
 	
 	/*
+	 * Remove monsters
+	 */
+	public void removeMonsters() {
+		entities.entrySet().removeIf(entry -> entry.getValue() instanceof Monster);
+	}
+	
+	/*
 	 * This is just a temporary method for testing the attacking
 	 */
 	public ArrayList<Monster> getMonsters() {

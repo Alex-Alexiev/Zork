@@ -158,6 +158,7 @@ public class Player {
 				if (entranceFight.chooseEngage()) {
 					if (entranceFight.engageInCombat()) {
 						currentRoom = nextRoom;
+						currentRoom.entities.removeMonsters();
 					}
 				}
 			} else {
