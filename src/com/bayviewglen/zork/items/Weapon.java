@@ -52,7 +52,7 @@ abstract public class Weapon extends Item{
 		int num = (int) (Math.random() * 100);
 		if (num < CRIT_CHANCE) {
 			System.out.println("Critical Hit!");
-			return damage * CRIT_PERCENT;
+			return (int) (damage * CRIT_PERCENT);
 		}
 		return 0;
 	}
