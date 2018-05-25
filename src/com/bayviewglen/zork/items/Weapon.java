@@ -48,7 +48,7 @@ abstract public class Weapon extends Item{
 	/*
 	 * Decides whether critical hit
 	 */
-	public int criticalHit() {
+	public double criticalHit() {
 		int num = (int) (Math.random() * 100);
 		if (num < CRIT_CHANCE) {
 			System.out.println("Critical Hit!");
