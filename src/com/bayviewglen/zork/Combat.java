@@ -45,8 +45,8 @@ public class Combat {
 				System.out.println("Back to the previous room\n");
 				return false;
 			}
-			monstersAttack();
 			removeDeadMonsters();
+			monstersAttack();
 		}
 		if (monsters.size() <= 0) {
 			System.out.println("The monsters are slain\n");

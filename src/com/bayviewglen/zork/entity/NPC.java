@@ -11,8 +11,16 @@ public class NPC extends Entity {
 		this.responses = responses;
 	}
 	
+	/*
+	 * Returns a random reponse from the NPC's 
+	 * list of responses
+	 */
 	public String getResponse() {
 		int random = (int) (Math.random() * responses.size());
 		return responses.get(random);
+	}
+	
+	public String toString() {
+		return this.getName();
 	}
 }

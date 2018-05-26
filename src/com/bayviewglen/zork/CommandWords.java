@@ -16,8 +16,7 @@ public class CommandWords
 	private static final String showCommands[] = {
 			"go/move", "help", "quit", "search", "room",
 			"equip", "equipment", "welfare", "eat",
-			"take", "attack *monster name* with *weapon name*", 
-	        "drop", "inventory", "equipment", "unequip",
+			"take", "drop", "inventory", "unequip",
 	};
     // a constant array that holds all valid command words
     private static final String validCommands[] = {
@@ -26,8 +25,7 @@ public class CommandWords
         "welfare", "eat", "consume", "bite", "chew",
         "ingest", "snack", "munch", "gorge", "dine", "lunch",
         "ingest", "take", "retrieve", "aquire", "recieve",
-        "snag", "grab", "attack *monster name* with *weapon name*", 
-        "drop", "inventory", "items", "things", "supply",
+        "snag", "grab", "drop", "inventory", "items", "things", "supply",
         "weapons", "armor", "equipment", "shield", "apparatus",
 		"devices", "attachments", "gadgets", "outfit",
 		"tools", "unequip", "holster", "talk"

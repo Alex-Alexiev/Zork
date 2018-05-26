@@ -50,7 +50,7 @@ public class Entities {
 	}
 	
 	/*
-	 * This is just a temporary method for testing the attacking
+	 * Returns list of monsters
 	 */
 	public ArrayList<Monster> getMonsters() {
 		ArrayList<Monster> monsters = new ArrayList<Monster>();
@@ -62,6 +62,9 @@ public class Entities {
 		return monsters;
 	}
 	
+	/*
+	 * Returns list of NPCs 
+	 */
 	public ArrayList<NPC> getNPCs() {
 		ArrayList<NPC> npcs = new ArrayList<NPC>();
 		for (Entity e : entities.values()) {
@@ -70,6 +73,21 @@ public class Entities {
 			}
 		}
 		return npcs;
+	}
+	
+	/*
+	 * Returns a string list of NPCs
+	 */
+	public String getNPCList() {
+		ArrayList<NPC> npcs = getNPCs();
+		if (npcs.size() == 0) {
+			return "nobody is here";
+		}
+		String ret = "";
+		for (NPC npc : npcs) {
+			ret += "\n- " + npc;
+		}
+		return ret;
 	}
 
 }

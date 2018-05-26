@@ -130,7 +130,8 @@ public class Player {
 	 * Searches the room
 	 */
 	private void searchRoom() {
-		System.out.println("There is " + currentRoom.inventory);
+		System.out.println("Items: " + currentRoom.inventory);
+		System.out.println("People: " + currentRoom.entities.getNPCList());
 	}
 
 	/**
