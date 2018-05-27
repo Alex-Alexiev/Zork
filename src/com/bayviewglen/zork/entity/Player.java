@@ -299,16 +299,31 @@ public class Player extends Entity{
 
 		if (item != null) {
 			if (item instanceof Weapon) {
+				
+				// Removes item from inventory
 				inventory.removeItem(itemId);
+				
+				// Ensure BareHands is not added to inventory
 				if (!(equippedWeapon instanceof BareHands))
 					inventory.addToInventory(equippedWeapon, 1);
+				
+				// Equips weapon
 				equippedWeapon = (Weapon) item;
 				System.out.println("You equipped " + equippedWeapon);
+				
 			} else if (item instanceof Armor) {
+				
+				// Removes item from inventory
 				inventory.removeItem(itemId);
-				inventory.addToInventory(equippedArmor, 1);
+				
+				// Makes sure armor is equipped before returning it to inventory
+				if (equippedArmor != null)
+					inventory.addToInventory(equippedArmor, 1);
+				
+				// Equips armor
 				equippedArmor = (Armor) item;
 				System.out.println("You equipped " + equippedArmor);
+				
 			} else {
 				System.out.println("You cannot equip that");
 			}
