@@ -33,16 +33,13 @@ public class Combat {
 		} else {
 			System.out.println("\nYou return to the previous room");
 		}
+		System.out.println();
+		
 		return false;
 	}
 
 	public boolean engageInCombat() {
 		if (Math.random() >= 0.5 && !(player.getWeapon() instanceof Bow)) {
-			for(Entity e : enemies) {
-				if (e.canGivePoison()) {
-					player.addPoison(e.getPoison());
-				}
-			}
 			enemiesAttack();
 		}
 		
@@ -64,9 +61,15 @@ public class Combat {
 		return false;
 	}
 
+	/*
+	 * Enemies attack
+	 */
 	private void enemiesAttack() {
 		for (Entity e : enemies) {
+			// Damages monsters with poison
 			e.poison();
+			
+			// Attacks player
 			if (!(e instanceof Monster && ((Monster) e).isStunned())) {
 				e.attack(player);
 			}
@@ -74,6 +77,9 @@ public class Combat {
 		System.out.println();
 	}
 
+	/*
+	 * Prints the stats of the player and all monsters
+	 */
 	private void printStats() {
 		System.out.println(player);
 		System.out.println();
@@ -83,8 +89,15 @@ public class Combat {
 		System.out.println();
 	}
 
+	/*
+	 * Player attack
+	 */
 	private boolean playerAttack() {
+		
+		// Damages player with poison
 		player.poison();
+		
+		// Prompts player
 		System.out.println("Which monster would you like to attack? Or would you like to walk away?\n");
 		Command playerCommand = Parser.getCommand();
 		System.out.println();
@@ -97,8 +110,8 @@ public class Combat {
 			return false;
 		}
 
+		// Legs of Lass special case
 		Weapon weapon = player.getWeapon();
-
 		if (weapon instanceof LegsOfLass) {
 			int monstersLength = enemies.size();
 			for (Entity e : enemies) {
@@ -109,6 +122,7 @@ public class Combat {
 			return true;
 		}
 
+		// Normal attack
 		String monsterName = Command.mergeFinalWords(playerCommand, 1);
 		String monsterId = monsterName.replaceAll("\\s+", "");
 
@@ -118,9 +132,13 @@ public class Combat {
 				return true;
 			}
 		}
+		
 		return true;
 	}
 
+	/*
+	 * Removes all dead monsters from the list
+	 */
 	private void removeDeadEnemies() {
 		for (int i = 0; i < enemies.size(); i++) {
 			if (enemies.get(i).getHealth() <= 0) {

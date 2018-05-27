@@ -13,19 +13,21 @@ public class EldritchInfected extends Monster {
 	}
 
 	public void attack(Entity e) {
-		int num = (int) (Math.random() * 8);
+		
 		int initHealth = e.getHealth();
 
-		if (num > 6) {
-			if (e.hasArmor) {
-				((Player) e).hit(getDamage());
-				if (initHealth > e.getHealth()) {
-					//monster gains half the health that the opponent lost from this hit
-					setHealth(getHealth() + (initHealth - e.getHealth()) / 2);
-				} else {
-					System.out.println("Eldritch Infected has missed the hit!");
-				}
+		if (Math.random() < (getHitOdds()/100.0)) {
+			((Player) e).hit(getDamage());
+			System.out.println(this.getName() + " has attacked you (-" + this.getDamage() + ")");
+			if (initHealth > e.getHealth()) {
+				//monster gains half the health that the opponent lost from this hit
+				int lifesteal = (initHealth - e.getHealth()) / 2;
+				setHealth(getHealth() + lifesteal);
+				System.out.println(this.getName() + " stole " + lifesteal + " life points");
 			}
+		} else {
+			System.out.println(getId() + " has missed the hit!");
 		}
+		
 	}
 }

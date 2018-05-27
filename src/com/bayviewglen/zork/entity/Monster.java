@@ -17,10 +17,8 @@ abstract public class Monster extends Entity {
 
 	public void attack(Entity e) {
 		if (Math.random() < (hitOdds/100.0)) {
-			if (e.hasArmor) {
-				System.out.println(this.getName() + " has attacked you (-" + this.getDamage() + ")");
-				((Player) e).hit(getDamage());
-			}
+			System.out.println(this.getName() + " has attacked you (-" + this.getDamage() + ")");
+			((Player) e).hit(getDamage());
 		} else {
 			System.out.println(getId() + " has missed the hit!");
 		}
@@ -28,6 +26,10 @@ abstract public class Monster extends Entity {
 
 	public int getDamage() {
 		return this.damage;
+	}
+	
+	public int getHitOdds() {
+		return this.hitOdds;
 	}
 
 	public String toString() {

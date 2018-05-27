@@ -33,7 +33,6 @@ public class Player extends Entity{
 		health = 500;
 		equippedWeapon = new BareHands();
 		equippedArmor = null;
-		hasArmor = true;
 	}
 
 	/**
