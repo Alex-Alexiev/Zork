@@ -116,7 +116,7 @@ public class Player extends Entity{
 	 * Prints equipment()
 	 */
 	private void printEquipment() {
-		String weapon = equippedWeapon == null ? "No sword equipped" : "Sword: " + equippedWeapon.longDescription();
+		String weapon = "Weapon: " + equippedWeapon.longDescription();
 		String armor = equippedArmor == null ? "No armor equipped" : "Armor: " + equippedArmor.longDescription();
 		System.out.println(weapon);
 		System.out.println();
@@ -382,6 +382,9 @@ public class Player extends Entity{
 		if (equippedArmor != null) {
 			ret += "\nArmor: " + equippedArmor + "\n Shield Points: " + equippedArmor.getShieldPoints();
 		}
+		if (isPoisoned()) {
+			ret += "\nPoison: " + getPoisonDamage();
+		}
 		return ret;
 	}
 
@@ -411,9 +414,6 @@ public class Player extends Entity{
 	 */
 
 	public void attack(Entity e) {
-		equippedWeapon.ability(e);
-		System.out.println(
-				"You attack " + e.getName() + " with " + equippedWeapon.getName() + " (-" + equippedWeapon.getDamage() + ")");
-		
+		equippedWeapon.ability(e, this);
 	}
 }
