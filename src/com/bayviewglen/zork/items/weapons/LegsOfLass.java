@@ -14,7 +14,9 @@ public class LegsOfLass extends Weapon {
 	}
 
 	public void ability(Entity e, int monsters) {
-		if (didHit())
+		if (didHit()) {
 			e.setHealth(e.getHealth() - getDamage() / monsters);
+			System.out.println("You attack " + e.getName() + " with " + getName() + " (-" + getDamage() + ")");
+		}
 	}
 }
