@@ -52,8 +52,8 @@ public class Entities {
 	/*
 	 * Returns list of monsters
 	 */
-	public ArrayList<Monster> getMonsters() {
-		ArrayList<Monster> monsters = new ArrayList<Monster>();
+	public ArrayList<Entity> getMonsters() {
+		ArrayList<Entity> monsters = new ArrayList<Entity>();
 		for (Entity e : entities.values()) {
 			if (e instanceof Monster) {
 				monsters.add((Monster)e);

@@ -3,80 +3,88 @@ package com.bayviewglen.zork;
 
 import java.util.ArrayList;
 
+import com.bayviewglen.zork.entity.Entity;
 import com.bayviewglen.zork.entity.Monster;
+import com.bayviewglen.zork.entity.Player;
 import com.bayviewglen.zork.items.Weapon;
 import com.bayviewglen.zork.items.weapons.Bow;
 import com.bayviewglen.zork.items.weapons.LegsOfLass;
-import com.bayviewglen.zork.player.Player;
 
 public class Combat {
-	
-	private ArrayList<Monster> monsters;
+
+	private ArrayList<Entity> enemies;
 	private Player player;
-	
-	public Combat(Player player, ArrayList<Monster> monsters) {
-		this.monsters = monsters;
+
+	public Combat(Player player, ArrayList<Entity> enemies) {
+		this.enemies = enemies;
 		this.player = player;
 	}
-	
+
 	public boolean chooseEngage() {
 		System.out.println("Monsters guard the room:");
-		for (Monster m : monsters) {
-			System.out.println(m);
+		for (Entity e : enemies) {
+			System.out.println(e);
 		}
 		System.out.println();
 		System.out.println("Would you like to fight these monsters or walk away?\n");
 		String response = Parser.getCommand().getCommandWord();
-		if (response.equals("yes") || response.equals("fight")){
+		if (response.equals("yes") || response.equals("fight")) {
 			return true;
 		} else {
 			System.out.println("\nYou return to the previous room");
 		}
 		return false;
 	}
-	
+
 	public boolean engageInCombat() {
 		if (Math.random() >= 0.5 && !(player.getWeapon() instanceof Bow)) {
-			monstersAttack();
+			for(Entity e : enemies) {
+				if (e.canGivePoison()) {
+					player.addPoison(e.getPoison());
+				}
+			}
+			enemiesAttack();
 		}
-		while(monsters.size() > 0 && player.getHealth() > 0) {
+		
+		while (enemies.size() > 0 && player.getHealth() > 0) {
 			printStats();
 			if (!playerAttack()) {
 				System.out.println("Back to the previous room\n");
 				return false;
 			}
-			removeDeadMonsters();
-			monstersAttack();
+			removeDeadEnemies();
+			enemiesAttack();
 		}
-		if (monsters.size() <= 0) {
+		if (enemies.size() <= 0) {
 			System.out.println("The monsters are slain\n");
 			return true;
-		}
-		else {
+		} else {
 			System.out.println("Oops, try again next time...");
 		}
 		return false;
 	}
-	
-	private void monstersAttack() {
-		for (Monster m : monsters) {
-			if (!m.isStunned()) {
-				m.ability(player);
+
+	private void enemiesAttack() {
+		for (Entity e : enemies) {
+			e.poison();
+			if (!(e instanceof Monster && ((Monster) e).isStunned())) {
+				e.attack(player);
 			}
 		}
 		System.out.println();
 	}
-	
+
 	private void printStats() {
 		System.out.println(player);
 		System.out.println();
-		for (Monster m : monsters) {
-			System.out.println(m.getName()+ " health: " + m.getHealth());
+		for (Entity e : enemies) {
+			System.out.println(e.getName() + " health: " + e.getHealth());
 		}
 		System.out.println();
 	}
-	
+
 	private boolean playerAttack() {
+		player.poison();
 		System.out.println("Which monster would you like to attack? Or would you like to walk away?\n");
 		Command playerCommand = Parser.getCommand();
 		System.out.println();
@@ -88,38 +96,38 @@ public class Combat {
 			System.out.println("\nWimp\n");
 			return false;
 		}
-		
+
 		Weapon weapon = player.getWeapon();
-		
+
 		if (weapon instanceof LegsOfLass) {
-			int monstersLength = monsters.size();
-			for (Monster m : monsters) {
-				System.out.println("You attack " + m.getName() + " with " + weapon.getName() + " (-" + weapon.getDamage() + ")");
-				((LegsOfLass) weapon).ability(m, monstersLength);
+			int monstersLength = enemies.size();
+			for (Entity e : enemies) {
+				System.out.println(
+						"You attack " + e.getName() + " with " + weapon.getName() + " (-" + weapon.getDamage() + ")");
+				((LegsOfLass) weapon).ability(e, monstersLength);
 			}
 			return true;
 		}
-		
+
 		String monsterName = Command.mergeFinalWords(playerCommand, 1);
-		String monsterId = monsterName.replaceAll("\\s+","");
-		
-		for (Monster m : monsters) {
-			if (m.getId().equals(monsterId)) {
-				System.out.println("You attack " + m.getName() + " with " + weapon.getName() + " (-" + weapon.getDamage() + ")");
-				weapon.ability(m, player);
+		String monsterId = monsterName.replaceAll("\\s+", "");
+
+		for (Entity e : enemies) {
+			if (e.getId().equals(monsterId)) {
+				player.attack(e);
 				return true;
 			}
 		}
 		return true;
 	}
-	
-	private void removeDeadMonsters() {
-		for (int i = 0; i < monsters.size(); i++) {
-			if (monsters.get(i).getHealth() <= 0) {
-				monsters.remove(i);
+
+	private void removeDeadEnemies() {
+		for (int i = 0; i < enemies.size(); i++) {
+			if (enemies.get(i).getHealth() <= 0) {
+				enemies.remove(i);
 				i--;
 			}
 		}
 	}
-	
+
 }

@@ -1,7 +1,8 @@
 package com.bayviewglen.zork.items;
 
+import com.bayviewglen.zork.entity.Entity;
 import com.bayviewglen.zork.entity.Monster;
-import com.bayviewglen.zork.player.Player;
+import com.bayviewglen.zork.entity.Player;
 
 abstract public class Weapon extends Item{
 	
@@ -72,6 +73,9 @@ abstract public class Weapon extends Item{
 	/*
 	 * Attack method
 	 */
-	abstract public void ability(Monster monster, Player player);
+	public void ability(Entity e){
+		if (didHit())
+			e.setHealth(e.getHealth() - getDamage() - criticalHit());
+	}
 
 }

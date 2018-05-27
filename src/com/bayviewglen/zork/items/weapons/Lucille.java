@@ -1,8 +1,9 @@
 package com.bayviewglen.zork.items.weapons;
+import com.bayviewglen.zork.Poison;
+import com.bayviewglen.zork.entity.Entity;
 import com.bayviewglen.zork.entity.Monster;
+import com.bayviewglen.zork.entity.Player;
 import com.bayviewglen.zork.items.Weapon;
-import com.bayviewglen.zork.player.Player;
-import com.bayviewglen.zork.player.Poison;
 
 public class Lucille extends Weapon{
 	
@@ -11,18 +12,19 @@ public class Lucille extends Weapon{
 
 	public Lucille() {
 		super("Lucille", "Barbed wire baseball bat. Highly effective against asians and zombies.", 200, 80);
-		// TODO Auto-generated constructor stub
 	}
 	
-	public void ability(Monster monster, Player player){
+	public void ability(Entity e, Player player){
 		if (didHit()) {
-			monster.setHealth(monster.getHealth() - getDamage() - criticalHit());
-			monster.poisoned(new Poison(POISON_INC, new int[POISON_LENGTH]));
-			
+			e.setHealth(e.getHealth() - getDamage() - criticalHit());
 			int stun = (int) (Math.random() * 2);
 			if (stun == 0) {
-				monster.stun(true);
+				e.stun(true);
 			}
 		}
+	}
+	
+	public Poison getPoison() {
+		return new Poison(POISON_INC, POISON_LENGTH);
 	}
 }

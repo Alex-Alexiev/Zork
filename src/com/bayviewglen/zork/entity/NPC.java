@@ -23,4 +23,8 @@ public class NPC extends Entity {
 	public String toString() {
 		return this.getName();
 	}
+
+	public void attack(Entity e) {
+		e.damage(0);
+	}
 }

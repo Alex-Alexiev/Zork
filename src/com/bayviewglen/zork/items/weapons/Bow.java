@@ -1,7 +1,8 @@
 package com.bayviewglen.zork.items.weapons;
+import com.bayviewglen.zork.entity.Entity;
 import com.bayviewglen.zork.entity.Monster;
+import com.bayviewglen.zork.entity.Player;
 import com.bayviewglen.zork.items.Weapon;
-import com.bayviewglen.zork.player.Player;
 
 public class Bow extends Weapon{
 
@@ -10,9 +11,4 @@ public class Bow extends Weapon{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void ability(Monster monster, Player player){
-		if (didHit())
-			monster.setHealth(monster.getHealth() - getDamage() - criticalHit());
-	}
-
 }

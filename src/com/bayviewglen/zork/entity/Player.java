@@ -1,4 +1,4 @@
-package com.bayviewglen.zork.player;
+package com.bayviewglen.zork.entity;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -8,8 +8,8 @@ import com.bayviewglen.zork.Command;
 import com.bayviewglen.zork.CommandWords;
 import com.bayviewglen.zork.Inventory;
 import com.bayviewglen.zork.Parser;
+import com.bayviewglen.zork.Poison;
 import com.bayviewglen.zork.Room;
-import com.bayviewglen.zork.entity.NPC;
 import com.bayviewglen.zork.items.Armor;
 import com.bayviewglen.zork.items.Food;
 import com.bayviewglen.zork.items.Item;
@@ -17,25 +17,23 @@ import com.bayviewglen.zork.items.Weapon;
 import com.bayviewglen.zork.items.armor.BasicArmor;
 import com.bayviewglen.zork.items.weapons.BareHands;
 
-public class Player {
+public class Player extends Entity{
 
 	private Room currentRoom;
 	private Inventory inventory;
 	private Armor equippedArmor;
 	private Weapon equippedWeapon;
-
-	public int health;
 	private int maxHealth;
-	
-	private ArrayList<Poison> poisons = new ArrayList<Poison>();
 
 	public Player(Room startingRoom) {
+		super("");
 		currentRoom = startingRoom;
 		inventory = new Inventory();
 		maxHealth = 500;
 		health = 500;
 		equippedWeapon = new BareHands();
 		equippedArmor = null;
+		hasArmor = true;
 	}
 
 	/**
@@ -43,8 +41,8 @@ public class Player {
 	 * the game, true is returned, otherwise false is returned.
 	 */
 	public boolean act() {
+		poison();		
 		Command command = Parser.getCommand();
-
 		System.out.println();
 
 		if (command.isUnknown()) {
@@ -388,14 +386,6 @@ public class Player {
 		return ret;
 	}
 
-	public int getHealth() {
-		return health;
-	}
-	
-	public void affectHealth(int h) {
-		health += h;
-	}
-	
 	public Weapon getWeapon() {
 		return equippedWeapon;
 	}
@@ -403,41 +393,28 @@ public class Player {
 	/*
 	 * Normal damage (hits armor before health)
 	 */
-	public void normalDamage(int damage) {
+	public void hit(int damage) {
 		if (equippedArmor != null && equippedArmor.getShieldPoints() > 0) {
 			int unblockedDamage = equippedArmor.getShieldPoints() - damage;
 			equippedArmor.damage(damage);
 			if (equippedArmor.getShieldPoints() <= 0) {
 				equippedArmor = null;
-				specialDamage(unblockedDamage);
+				damage(unblockedDamage);
 				System.out.println("Your " + equippedArmor.getName() + " got annihilated.");
 			}
 		} else {
-			specialDamage(damage);
+			damage(damage);
 		}
 	}
 
 	/*
 	 * Directly decreases health
 	 */
-	public void specialDamage(int damage) {
-		health -= damage;
-	}
-	
-	/*
-	 *Poison Method
-	 */
-	public void addPoison(Poison poison) {
-		poison.poisoned();
-		this.poisons.add(poison);
-	}
-	
-	/*
-	 * Poison tick method
-	 */
-	public void poison() {
-		for (Poison p : poisons) {
-			specialDamage(p.tick());
-		}
+
+	public void attack(Entity e) {
+		equippedWeapon.ability(e);
+		System.out.println(
+				"You attack " + e.getName() + " with " + equippedWeapon.getName() + " (-" + equippedWeapon.getDamage() + ")");
+		
 	}
 }
