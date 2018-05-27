@@ -32,7 +32,7 @@ public class Combat {
 		if (response.equals("yes") || response.equals("fight")) {
 			return true;
 		} else {
-			System.out.println("\nYou return to the previous room");
+			System.out.println("You return to the previous room");
 		}
 		
 		return false;
