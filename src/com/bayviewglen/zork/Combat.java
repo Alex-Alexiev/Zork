@@ -28,12 +28,12 @@ public class Combat {
 		System.out.println();
 		System.out.println("Would you like to fight these monsters or walk away?\n");
 		String response = Parser.getCommand().getCommandWord();
+		System.out.println();
 		if (response.equals("yes") || response.equals("fight")) {
 			return true;
 		} else {
 			System.out.println("\nYou return to the previous room");
 		}
-		System.out.println();
 		
 		return false;
 	}
@@ -85,6 +85,9 @@ public class Combat {
 		System.out.println();
 		for (Entity e : enemies) {
 			System.out.println(e.getName() + " health: " + e.getHealth());
+			if (e.isPoisoned()) {
+				System.out.println("Poison: " + e.getPoisonDamage());
+			}
 		}
 		System.out.println();
 	}
@@ -114,9 +117,7 @@ public class Combat {
 		Weapon weapon = player.getWeapon();
 		if (weapon instanceof LegsOfLass) {
 			int monstersLength = enemies.size();
-			for (Entity e : enemies) {
-				System.out.println(
-						"You attack " + e.getName() + " with " + weapon.getName() + " (-" + weapon.getDamage() + ")");
+			for (Entity e : enemies) {				
 				((LegsOfLass) weapon).ability(e, monstersLength);
 			}
 			return true;

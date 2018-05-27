@@ -27,9 +27,10 @@ public class PlagueRat extends Monster {
 			System.out.println(this.getName() + " has attacked you (-" + this.getDamage() + ")");
 			if (initHealth > e.getHealth()) {
 				e.addPoison(getPoison());
+				System.out.println(this.getName() + " has inflicted poison");
 			}
 		} else {
-			System.out.println(getId() + " has missed the hit!");
+			System.out.println(this.getName() + " has missed the hit!");
 		}
 	}
 

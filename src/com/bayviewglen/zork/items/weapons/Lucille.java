@@ -16,9 +16,17 @@ public class Lucille extends Weapon{
 	
 	public void ability(Entity e, Player player){
 		if (didHit()) {
+			// Attack
 			e.setHealth(e.getHealth() - getDamage() - criticalHit());
+			System.out.println("You attack " + e.getName() + " with " + getName() + " (-" + getDamage() + ")");
+			
+			// Poison
+			e.addPoison(getPoison());
+			
+			// Stun
 			int stun = (int) (Math.random() * 2);
 			if (stun == 0) {
+				System.out.println(e.getName() + " has been stunned by Lucille");
 				e.stun(true);
 			}
 		}
