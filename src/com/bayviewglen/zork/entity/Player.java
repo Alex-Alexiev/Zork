@@ -8,13 +8,11 @@ import com.bayviewglen.zork.Command;
 import com.bayviewglen.zork.CommandWords;
 import com.bayviewglen.zork.Inventory;
 import com.bayviewglen.zork.Parser;
-import com.bayviewglen.zork.Poison;
 import com.bayviewglen.zork.Room;
 import com.bayviewglen.zork.items.Armor;
 import com.bayviewglen.zork.items.Food;
 import com.bayviewglen.zork.items.Item;
 import com.bayviewglen.zork.items.Weapon;
-import com.bayviewglen.zork.items.armor.BasicArmor;
 import com.bayviewglen.zork.items.weapons.BareHands;
 
 public class Player extends Entity{
@@ -301,12 +299,15 @@ public class Player extends Entity{
 
 		if (item != null) {
 			if (item instanceof Weapon) {
-				equippedWeapon = (Weapon) item;
 				inventory.removeItem(itemId);
+				if (!(equippedWeapon instanceof BareHands))
+					inventory.addToInventory(equippedWeapon, 1);
+				equippedWeapon = (Weapon) item;
 				System.out.println("You equipped " + equippedWeapon);
 			} else if (item instanceof Armor) {
-				equippedArmor = (Armor) item;
 				inventory.removeItem(itemId);
+				inventory.addToInventory(equippedArmor, 1);
+				equippedArmor = (Armor) item;
 				System.out.println("You equipped " + equippedArmor);
 			} else {
 				System.out.println("You cannot equip that");
@@ -328,14 +329,15 @@ public class Player extends Entity{
 		String secondWord = command.getSecondWord();
 
 		if ((secondWord.equals("armor") && equippedArmor != null)
-				|| Command.mergeFinalWords(command, 1).equals(equippedArmor.getId())) {
+				|| (equippedArmor != null && Command.mergeFinalWords(command, 1).equals(equippedArmor.getId()))) {
 			inventory.addToInventory(equippedArmor, 1);
 			equippedArmor = null;
 			System.out.println("You unequiped your " + secondWord);
 		} else if ((secondWord.equals("weapon") && equippedWeapon != null)
 				|| Command.mergeFinalWords(command, 1).equals(equippedWeapon.getId())) {
-			inventory.addToInventory(equippedWeapon, 1);
-			equippedWeapon = null;
+			if (!(equippedWeapon instanceof BareHands))
+				inventory.addToInventory(equippedWeapon, 1);
+			equippedWeapon = new BareHands();
 			System.out.println("You unequiped your " + secondWord);
 		} else {
 			System.out.println(
