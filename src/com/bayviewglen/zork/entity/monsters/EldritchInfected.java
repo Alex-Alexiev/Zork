@@ -26,7 +26,7 @@ public class EldritchInfected extends Monster {
 				System.out.println(this.getName() + " stole " + lifesteal + " life points");
 			}
 		} else {
-			System.out.println(getId() + " has missed the hit!");
+			System.out.println(this.getName() + " has missed the hit!");
 		}
 		
 	}
