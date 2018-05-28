@@ -4,7 +4,7 @@ import com.bayviewglen.zork.entity.Entity;
 import com.bayviewglen.zork.entity.Monster;
 import com.bayviewglen.zork.entity.Player;
 
-abstract public class Weapon extends Item{
+public class Weapon extends Item{
 	
 	/*
 	 * Data fields
@@ -73,9 +73,11 @@ abstract public class Weapon extends Item{
 	/*
 	 * Attack method
 	 */
-	public void ability(Entity e){
-		if (didHit())
+	public void ability(Entity e, Player p){
+		if (didHit()) {
 			e.setHealth(e.getHealth() - getDamage() - criticalHit());
+			System.out.println("You attack " + e.getName() + " with " + getName() + " (-" + getDamage() + ")");
+		}
 	}
 
 }
