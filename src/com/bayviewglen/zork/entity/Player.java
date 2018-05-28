@@ -38,6 +38,10 @@ public class Player extends Entity{
 	 * the game, true is returned, otherwise false is returned.
 	 */
 	public boolean act() {
+		if (getHealth() <= 0) {
+			return false;
+		}
+		
 		poison();		
 		Command command = Parser.getCommand();
 		System.out.println();
@@ -164,13 +168,16 @@ public class Player extends Entity{
 					if (entranceFight.engageInCombat()) {
 						currentRoom = nextRoom;
 						currentRoom.entities.removeMonsters();
+						System.out.println(currentRoom.longDescription());
+					} else {
+						return;
 					}
 				}
 			} else {
 				currentRoom = nextRoom;
+				System.out.println(currentRoom.longDescription());
 			}
 		}
-		System.out.println(currentRoom.longDescription());
 	}
 
 	/**

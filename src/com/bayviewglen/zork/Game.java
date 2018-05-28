@@ -235,6 +235,8 @@ class Game {
 			System.out.println();
 		}
 		System.out.println("Thank you for playing.  Good bye.");
+		player = new Player(masterRoomMap.get("CABIN_1"));
+		play();
 	}
 
 	/**
