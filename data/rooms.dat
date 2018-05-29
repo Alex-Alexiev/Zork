@@ -437,31 +437,31 @@ Exit Rooms: S-West Forest Crossroads 1, W-Placebo Room 1, N-West Side Gorge 1
 Room Name: West Side Gorge 1
 Room Description: A large scar separates the land. On the other side of the gorge, <br>you see another path.
 Room Inventory: 
-Room Entity: Monster Eldritch Infected
+Room Entity: Monster EldritchInfected
 Exit Rooms: S-Rocky West Path 1, N-Centerpoint 2
 
 /s Eastcomplex
 
 Room Name: East Complex 1
-Room Description: fgweqfg
+Room Description: A tangled maze of trees and tall grass sits in front of you.
 Room Inventory:
 Room Entity:
 Exit Rooms: W-East Meadow 1, N-East Complex 2
 
 Room Name: East Complex 2
-Room Description: qwefdq
+Room Description: The forest envelopes you.
 Room Inventory:
 Room Entity:
 Exit Rooms: S-East Complex 1, W-East Complex 3
 
 Room Name: East Complex 3
-Room Description: qwdqw
+Room Description: The scent of rotten flesh fills your nostrils.
 Room Inventory:
 Room Entity:
 Exit Rooms: E-East Complex 2, N-Trisplit Path 1
 
 Room Name: Trisplit Path 1
-Room Description: qwdwqd
+Room Description: The path splits into 3 directions.
 Room Inventory: 
 Room Entity: 
 Exit Rooms: S-East Complex 3, W-Crimson Field 1, E-Decaying Marsh 1, N-Twilight Graveyard 1

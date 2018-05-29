@@ -4,11 +4,11 @@ import com.bayviewglen.zork.entity.Entity;
 import com.bayviewglen.zork.entity.Monster;
 import com.bayviewglen.zork.entity.Player;
 
-public class DesecratedCorpse extends Monster {
-
-	public DesecratedCorpse() {
-		super("Desecrated Corpse", "A rotten corpse, with its flesh <br>flayed to emulate twisted cult symbols", 55,
-				70, 550);
+public class RabidHag extends Monster {
+	
+	public RabidHag() {
+		super("Rabid Hag", "Old filthy elderly woman, wearing clothing made of human skin. Her earrings and necklace are derived from human parts. (Fingers, nose, ears, eyeballs, etc.)\r\n" + 
+				"Salivating greatly, she looks hungry.", 30,50, 300);
 	}
 public void attack(Entity e) {
 		
@@ -23,4 +23,5 @@ public void attack(Entity e) {
 		}
 		
 	}
+	
 }
