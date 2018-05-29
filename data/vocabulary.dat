@@ -1,4 +1,4 @@
-move: go, move, walk, run
+move: go, move, walk, run, hop
 location: room, place, spot, location
 search: search, find, look
 inventory: inventory, items, things, supply

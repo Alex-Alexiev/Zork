@@ -42,7 +42,7 @@ public class CommandWords {
 			while (vocabScanner.hasNext()) {
 				String firstLine = vocabScanner.nextLine();
 				for (String word : firstLine.split(":")[1].trim().split(",")) {
-					allCommands.add(word);
+					allCommands.add(word.trim());
 				}
 			}
 			//make array of word synonyms 
@@ -51,6 +51,9 @@ public class CommandWords {
 				String firstLine = vocabScanner.nextLine();
 				String key = firstLine.split(":")[0];
 				String[] values = firstLine.split(":")[1].trim().split(",");
+				for (int i = 0; i < values.length; i++) {
+					values[i] = values[i].trim();
+				}
 				wordGroups.put(key, values);
 			}
 			vocabScanner.close();
