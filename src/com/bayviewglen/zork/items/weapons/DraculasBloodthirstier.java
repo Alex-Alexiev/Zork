@@ -18,7 +18,7 @@ public class DraculasBloodthirstier extends Weapon {
 		player.damage(specialDamage);
 		if (didHit()) {
 			// Attack
-			int damage = getDamage() * player.getDamageScaler() + criticalHit();
+			int damage = (int) (getDamage() * player.getDamageScaler() + criticalHit());
 			e.setHealth(e.getHealth() - damage);
 			System.out.println("You attack " + e.getName() + " with " + getName() + " (-" + getDamage() + ")");
 			
