@@ -7,9 +7,9 @@ import com.bayviewglen.zork.entity.Player;
 public class SulfuricCrawler extends Monster {
 	
 	public SulfuricCrawler() {
-		super("Rabid Hag", "Old filthy elderly woman, wearing clothing made of human skin. Her earrings and necklace are derived from human parts. (Fingers, nose, ears, eyeballs, etc.)\r\n" + 
-				"Salivating greatly, she looks hungry.", 40, 70, 150);
+		super("Sulfuric Crawler", "Large spider made of twisted, mutated human remains. \n Pustules cover its body, filled with fluorescent green liquid.", 40, 70, 150);
 	}
+	
 	
 	
 
