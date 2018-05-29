@@ -25,7 +25,7 @@ Exit Rooms: E-Cabin 2, W-Captains Deck 2, N-Docks 1
 Room Name: Captains Deck 1
 Room Description: The Captain is barking orders, while turning the wheel.
 Room Inventory: Food rottensteak -3
-Room Entity: NPC Captain Morgan
+Room Entity: NPC CaptainMorgan
 Exit Rooms: E-Main Deck 2
 
 Room Name: Captains Deck 2
@@ -37,7 +37,7 @@ Exit Rooms: E-Main Deck 2
 Room Name: Docks 1
 Room Description: You are on the docks. Old rotten wood creaks under your feet.
 Room Inventory: 
-Room Entity: NPC Herr Harker
+Room Entity: NPC HerrHarker
 Exit Rooms: N-Shore 1, S-Main Deck 2
 
 Room Name: Shore 1
@@ -297,7 +297,7 @@ Exit Rooms: E-Cabin 2, W-Captains Deck 2, N-Docks 1
 Room Name: Captains Deck 1
 Room Description: The Captain is barking orders, while turning the wheel.
 Room Inventory: Food rottensteak -3
-Room Entity: NPC Captain Morgan
+Room Entity: NPC CaptainMorgan
 Exit Rooms: E-Main Deck 2
 
 Room Name: Captains Deck 2
@@ -309,7 +309,7 @@ Exit Rooms: E-Main Deck 2
 Room Name: Docks 1
 Room Description: You are on the docks. Old rotten wood creaks under your feet.
 Room Inventory: 
-Room Entity: NPC Herr Harker
+Room Entity: NPC HerrHarker
 Exit Rooms: N-Shore 1, S-Main Deck 2
 
 Room Name: Shore 1
