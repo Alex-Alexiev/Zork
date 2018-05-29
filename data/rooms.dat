@@ -13,7 +13,7 @@ Exit Rooms: W-Main Deck 2
 Room Name: Main Deck 1
 Room Description: The salty briny air fills your nostrils.<br>The ship's crew works tirelessly, scrubbing the deck clean.<br>Shouting can be heard (west) from the captian's deck.
 Room Inventory: Food rat -4
-Room Entity: Monster RavingLunatic
+Room Entity: Monster RabidHag
 Exit Rooms: E-Cabin 2, W-Captains Deck 1
 
 Room Name: Main Deck 2

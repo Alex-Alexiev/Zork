@@ -24,7 +24,7 @@ public class Player extends Entity{
 	private Weapon equippedWeapon;
 	private int maxHealth;
 	private HashMap<String, Runnable> methods = new HashMap<String, Runnable>();
-	private int damageScaler;
+	private double damageScaler;
 
 	public Player(Room startingRoom) {
 		super("");
@@ -440,14 +440,14 @@ public class Player extends Entity{
 	public Weapon getWeapon() {
 		return equippedWeapon;
 	}
-	public int getDamageScaler() {
+	public double getDamageScaler() {
 		return damageScaler;
 	}
 	
 	/*
 	 * Setters
 	 */
-	public void setDamageScaler(int scaler) {
+	public void setDamageScaler(double scaler) {
 		damageScaler = scaler;
 	}
 
