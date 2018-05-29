@@ -41,7 +41,7 @@ public class Player extends Entity{
 	 */
 	public boolean act() {
 		if (getHealth() <= 0) {
-			return false;
+			return true;
 		}
 		
 		poison();		

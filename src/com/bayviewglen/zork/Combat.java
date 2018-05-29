@@ -117,13 +117,13 @@ public class Combat {
 		System.out.println("Which monster would you like to attack? Or would you like to leave?\n");
 		Command playerCommand = Parser.getCommand();
 		System.out.println();
-		if (playerCommand.numOfWords() < 2) {
-			System.out.println("Attack what?");
-			return true;
-		}
 		if (playerCommand.is("leave")) {
 			System.out.println("\nWimp\n");
 			return false;
+		}
+		if (playerCommand.numOfWords() < 2) {
+			System.out.println("Attack what?");
+			return true;
 		}
 
 		// Legs of Lass special case
