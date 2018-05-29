@@ -88,21 +88,25 @@ class Game {
 						String[] roomItems = roomInventory.split(",");
 						for (String item : roomItems) {
 							item = item.substring(1);
-							String type = item.split(" ")[0];
+							String[] itemInfo = item.split(" ");
+							String type = itemInfo[0];
+							String name = "";
+							for (int i = 1; i < itemInfo.length - 1; i++)
+								name += itemInfo[i];
 							if (type.equals("Food")) {
-								Food food = new Food(item.split(" ")[1], Integer.parseInt(item.split(" ")[2]));
+								Food food = new Food(name, Integer.parseInt(itemInfo[itemInfo.length - 1]));
 								room.inventory.addToInventory(food, 1);
 							}
 							if (type.equals("Armor")) {
 								Class<?> clazz = Class
-										.forName("com.bayviewglen.zork.items.armor." + item.split(" ")[1].trim());
+										.forName("com.bayviewglen.zork.items.armor." + itemInfo[1].trim());
 								Constructor<?> ctor = clazz.getConstructor();
 								Item object = (Item) ctor.newInstance();
 								room.inventory.addToInventory(object, 1);
 							}
 							if (type.equals("Weapon")) {
 								Class<?> clazz = Class
-										.forName("com.bayviewglen.zork.items.weapons." + item.split(" ")[1].trim());
+										.forName("com.bayviewglen.zork.items.weapons." + itemInfo[1].trim());
 								Constructor<?> ctor = clazz.getConstructor();
 								Item object = (Item) ctor.newInstance();
 								room.inventory.addToInventory(object, 1);
