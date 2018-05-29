@@ -29,7 +29,7 @@ public class Combat {
 		System.out.println("Would you like to fight these monsters or walk away?\n");
 		Command response = Parser.getCommand();
 		System.out.println();
-		if (response.is("yes")) {
+		if (response.is("yes") || response.is("fight")) {
 			return true;
 		} else {
 			System.out.println("You return to the previous room");
@@ -101,14 +101,14 @@ public class Combat {
 		player.poison();
 		
 		// Prompts player
-		System.out.println("Which monster would you like to attack? Or would you like to walk away?\n");
+		System.out.println("Which monster would you like to attack? Or would you like to leave?\n");
 		Command playerCommand = Parser.getCommand();
 		System.out.println();
 		if (playerCommand.numOfWords() < 2) {
 			System.out.println("Attack what?");
 			return true;
 		}
-		if (playerCommand.getWordAtIndex(0).toLowerCase().equals("walk")) {
+		if (playerCommand.is("leave")) {
 			System.out.println("\nWimp\n");
 			return false;
 		}

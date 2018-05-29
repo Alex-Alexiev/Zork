@@ -12,3 +12,6 @@ drop: drop
 equip: equip
 talk: talk
 quit: quit
+fight: fight, engage, destroy
+leave: leave
+yes: yes, yeah, sure, okay
