@@ -24,6 +24,7 @@ public class Player extends Entity{
 	private Weapon equippedWeapon;
 	private int maxHealth;
 	private HashMap<String, Runnable> methods = new HashMap<String, Runnable>();
+	private int damageScaler;
 
 	public Player(Room startingRoom) {
 		super("");
@@ -33,6 +34,7 @@ public class Player extends Entity{
 		health = 500;
 		equippedWeapon = new BareHands();
 		equippedArmor = null;
+		damageScaler = 1;
 	}
 
 	/**
@@ -411,10 +413,6 @@ public class Player extends Entity{
 		}
 		return ret;
 	}
-
-	public Weapon getWeapon() {
-		return equippedWeapon;
-	}
 	
 	/*
 	 * Normal damage (hits armor before health)
@@ -433,14 +431,29 @@ public class Player extends Entity{
 		}
 	}
 	
+	/*
+	 * Getters
+	 */
 	public int getArmorStrength() {
 		return this.equippedArmor.getShieldPoints();
 	}
+	public Weapon getWeapon() {
+		return equippedWeapon;
+	}
+	public int getDamageScaler() {
+		return damageScaler;
+	}
+	
+	/*
+	 * Setters
+	 */
+	public void setDamageScaler(int scaler) {
+		damageScaler = scaler;
+	}
 
 	/*
-	 * Directly decreases health
+	 * Attacks
 	 */
-
 	public void attack(Entity e) {
 		equippedWeapon.ability(e, this);
 	}

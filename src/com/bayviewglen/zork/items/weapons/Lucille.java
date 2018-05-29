@@ -17,7 +17,7 @@ public class Lucille extends Weapon{
 	public void ability(Entity e, Player player){
 		if (didHit()) {
 			// Attack
-			e.setHealth(e.getHealth() - getDamage() - criticalHit());
+			e.setHealth(e.getHealth() - getDamage()* player.getDamageScaler() - criticalHit());
 			System.out.println("You attack " + e.getName() + " with " + getName() + " (-" + getDamage() + ")");
 			
 			// Poison

@@ -132,7 +132,7 @@ public class Combat {
 		if (weapon instanceof LegsOfLass) {
 			int monstersLength = enemies.size();
 			for (Entity e : enemies) {				
-				((LegsOfLass) weapon).ability(e, monstersLength);
+				((LegsOfLass) weapon).ability(e, monstersLength, player);
 			}
 			return true;
 		}

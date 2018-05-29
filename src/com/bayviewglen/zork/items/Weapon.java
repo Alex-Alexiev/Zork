@@ -13,6 +13,7 @@ public class Weapon extends Item{
 	private int chance;
 	private double CRIT_PERCENT = 0.5;
 	private int CRIT_CHANCE = 20;
+	private int scaler;
 	
 	/*
 	 * Constructor
@@ -21,6 +22,7 @@ public class Weapon extends Item{
 		super(name, 1, false);
 		this.damage = damage;
 		this.chance = chance;
+		this.scaler = 1;
 		setDescription(description);
 	}
 	
@@ -75,7 +77,7 @@ public class Weapon extends Item{
 	 */
 	public void ability(Entity e, Player p){
 		if (didHit()) {
-			e.setHealth(e.getHealth() - getDamage() - criticalHit());
+			e.setHealth(e.getHealth() - getDamage() * p.getDamageScaler() - criticalHit());
 			System.out.println("You attack " + e.getName() + " with " + getName() + " (-" + getDamage() + ")");
 		}
 	}
