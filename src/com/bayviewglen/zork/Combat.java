@@ -39,6 +39,11 @@ public class Combat {
 	}
 
 	public boolean engageInCombat() {
+		
+		Sound.stop();
+		Sound mainThemeMusic = new Sound("data\\battle.wav");
+		mainThemeMusic.loop();
+		
 		if (Math.random() >= 0.5 && !(player.getWeapon() instanceof Bow)) {
 			enemiesAttack();
 		}
@@ -53,12 +58,20 @@ public class Combat {
 			enemiesAttack();
 		}
 		if (enemies.size() <= 0) {
+			restartMainMusic();
 			System.out.println("The monsters are slain\n");
 			return true;
 		} else {
+			restartMainMusic();
 			System.out.println("Oops, try again next time...");
 		}
 		return false;
+	}
+	
+	private void restartMainMusic() {
+		Sound.stop();
+		Sound mainThemeMusic = new Sound("data\\mainmusic.wav");
+		mainThemeMusic.loop();
 	}
 
 	/*
