@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.bayviewglen.zork.entity.Entity;
 import com.bayviewglen.zork.entity.Monster;
 import com.bayviewglen.zork.entity.Player;
+import com.bayviewglen.zork.entity.monsters.SulfuricCrawler;
 import com.bayviewglen.zork.items.Weapon;
 import com.bayviewglen.zork.items.weapons.Bow;
 import com.bayviewglen.zork.items.weapons.LegsOfLass;
@@ -156,6 +157,9 @@ public class Combat {
 	private void removeDeadEnemies() {
 		for (int i = 0; i < enemies.size(); i++) {
 			if (enemies.get(i).getHealth() <= 0) {
+				if (enemies.get(i) instanceof SulfuricCrawler) {
+					((SulfuricCrawler)enemies.get(i)).deadMove(player);
+				}
 				enemies.remove(i);
 				i--;
 			}

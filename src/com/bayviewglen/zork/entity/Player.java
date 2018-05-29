@@ -432,6 +432,10 @@ public class Player extends Entity{
 			damage(damage);
 		}
 	}
+	
+	public int getArmorStrength() {
+		return this.equippedArmor.getShieldPoints();
+	}
 
 	/*
 	 * Directly decreases health

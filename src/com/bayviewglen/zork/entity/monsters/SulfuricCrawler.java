@@ -10,7 +10,9 @@ public class SulfuricCrawler extends Monster {
 		super("Sulfuric Crawler", "Large spider made of twisted, mutated human remains. \n Pustules cover its body, filled with fluorescent green liquid.", 40, 70, 150);
 	}
 	
-	
+	public void deadMove(Player p) {
+		p.hit(p.getArmorStrength());
+	}
 	
 
 }
