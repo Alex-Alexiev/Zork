@@ -212,6 +212,10 @@ class Game {
 	 * Create the game and initialize its internal map.
 	 */
 	public Game() {
+		initialize();
+	}
+	
+	private void initialize() {
 		try {
 			initNPCs("data/npc.dat");
 			initRooms("data/Rooms.dat");
@@ -239,7 +243,7 @@ class Game {
 			System.out.println();
 		}
 		System.out.println("Thank you for playing.  Good bye.");
-		player = new Player(masterRoomMap.get("CABIN_1"));
+		initialize();
 		play();
 	}
 
