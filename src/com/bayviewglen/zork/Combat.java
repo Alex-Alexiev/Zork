@@ -60,10 +60,12 @@ public class Combat {
 		}
 		if (enemies.size() <= 0) {
 			restartMainMusic();
+			player.setDamageScaler(1);
 			System.out.println("The monsters are slain\n");
 			return true;
 		} else {
 			restartMainMusic();
+			player.setDamageScaler(1);
 			System.out.println("Oops, try again next time...");
 		}
 		return false;
