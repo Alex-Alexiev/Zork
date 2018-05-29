@@ -51,34 +51,33 @@ public class Player extends Entity{
 			return false;
 		}
 
-		String commandWord = command.getCommandWord();
-		if (commandWord.equals("help"))
+		if (command.is("help"))
 			printHelp();
-		else if (CommandWords.is("location", commandWord))
+		else if (command.is("location"))
 			printLocation();
-		else if (commandWord.equals("welfare"))
+		else if (command.is("welfare"))
 			System.out.println(this);
-		else if (CommandWords.is("move", commandWord))
+		else if (command.is("move"))
 			goRoom(command);
-		else if (CommandWords.is("search", commandWord))
+		else if (command.is("search"))
 			searchRoom();
-		else if (CommandWords.is("inventory", commandWord))
+		else if (command.is("inventory"))
 			printInventory();
-		else if (CommandWords.is("eat", commandWord))
+		else if (command.is("eat"))
 			eat(command);
-		else if (CommandWords.is("pickup", commandWord))
+		else if (command.is("pickup"))
 			pickupItem(command);
-		else if (commandWord.equals("drop"))
+		else if (command.is("drop"))
 			dropItem(command);
-		else if (commandWord.equals("equip"))
+		else if (command.is("equip"))
 			equipItem(command);
-		else if (CommandWords.is("equipment", commandWord))
+		else if (command.is("equipment"))
 			printEquipment();
-		else if (CommandWords.is("unequip", commandWord))
+		else if (command.is("unequip"))
 			unequip(command);
-		else if (commandWord.equals("talk"))
+		else if (command.is("talk"))
 			talk(command);
-		else if (commandWord.equals("quit")) {
+		else if (command.is("quit")) {
 			if (command.hasManyWords(2))
 				System.out.println("Quit what?");
 			else

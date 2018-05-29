@@ -38,6 +38,10 @@ public class Command
     {
         this.words = words;
     }
+    
+    public boolean is(String word) {
+    	return CommandWords.is(word, getCommandWord());
+    }
 
     /**
      * Return the command word (the first word) of this command. If the
