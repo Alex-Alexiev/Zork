@@ -10,30 +10,56 @@ package com.bayviewglen.zork;
  * This class is part of the "Zork" game.
  */
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class CommandWords {
-	// a constant array that returns the main valid command words
-	private static final String showCommands[] = { "go/move", "help", "quit", "search", "room", "equip", "equipment",
-			"welfare", "eat", "take", "drop", "inventory", "unequip", };
 
 	private static HashMap<String, String[]> wordGroups = new HashMap<String, String[]>();
-	private static boolean first = true;
+	private static ArrayList<String> mainCommands;
+	private static ArrayList<String> allCommands;
+	
+	static {
+		CommandWords.initVocab("data/vocabulary.dat");
+	}
+	
+	public static void initVocab(String fileName) {
+		Scanner vocabScanner;
+		try {
+			//make array of main command words 
+			vocabScanner = new Scanner(new File(fileName));
+			mainCommands = new ArrayList<String>();
+			while (vocabScanner.hasNext()) {
+				String firstLine = vocabScanner.nextLine();
+				mainCommands.add(firstLine.split(":")[0]);
+			}
+			//make array of all valid command words
+			vocabScanner = new Scanner(new File(fileName));
+			allCommands = new ArrayList<String>();
+			while (vocabScanner.hasNext()) {
+				String firstLine = vocabScanner.nextLine();
+				for (String word : firstLine.split(":")[1].trim().split(",")) {
+					allCommands.add(word);
+				}
+			}
+			//make array of word synonyms 
+			vocabScanner = new Scanner(new File(fileName));
+			while (vocabScanner.hasNext()) {
+				String firstLine = vocabScanner.nextLine();
+				String key = firstLine.split(":")[0];
+				String[] values = firstLine.split(":")[1].trim().split(",");
+				wordGroups.put(key, values);
+			}
+			vocabScanner.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public static boolean is(String commandGroup, String command) {
-		if (first) {
-			first = false;
-			wordGroups.put("move", new String[] { "go", "move", "walk", "run" });
-			wordGroups.put("location", new String[] { "room", "place", "location", "spot" });
-			wordGroups.put("search", new String[] { "search", "find", "look" });
-			wordGroups.put("inventory", new String[] { "inventory", "items", "things", "supply" });
-			wordGroups.put("eat", new String[] { "eat", "consume", "bite", "chew", "ingest", "snack", "munch", "gorge",
-					"dine", "lunch" });
-			wordGroups.put("pickup", new String[] { "take", "retrieve", "aquire", "recieve", "snag", "grab" });
-			wordGroups.put("equipment", new String[] { "weapons", "armor", "equipment", "shield", "apparatus",
-					"devices", "attachments", "gadgets", "outfit", "tools" });
-			wordGroups.put("unequip", new String[] { "unequip", "holster" });
-		}
 		for (String s : wordGroups.get(commandGroup)) {
 			if (s.equals(command)) {
 				return true;
@@ -41,14 +67,6 @@ public class CommandWords {
 		}
 		return false;
 	}
-
-	// a constant array that holds all valid command words
-	private static final String validCommands[] = { "go", "move", "walk", "run", "help", "quit", "search", "find",
-			"look", "room", "place", "location", "spot", "equip", "equipment", "welfare", "eat", "consume", "bite",
-			"chew", "ingest", "snack", "munch", "gorge", "dine", "lunch", "ingest", "take", "retrieve", "aquire",
-			"recieve", "snag", "grab", "drop", "inventory", "items", "things", "supply", "weapons", "armor",
-			"equipment", "shield", "apparatus", "devices", "attachments", "gadgets", "outfit", "tools", "unequip",
-			"holster", "talk" };
 
 	/**
 	 * Constructor - initialise the command words.
@@ -62,8 +80,8 @@ public class CommandWords {
 	 * false if it isn't.
 	 **/
 	public static boolean isCommand(String aString) {
-		for (int i = 0; i < validCommands.length; i++) {
-			if (validCommands[i].split(" ")[0].equals(aString))
+		for (int i = 0; i < allCommands.size(); i++) {
+			if (allCommands.get(i).split(" ")[0].equals(aString))
 				return true;
 		}
 		// if we get here, the string was not found in the commands
@@ -74,8 +92,8 @@ public class CommandWords {
 	 * Print all valid commands to System.out.
 	 */
 	public void showAll() {
-		for (int i = 0; i < showCommands.length; i++) {
-			System.out.print(showCommands[i] + " | ");
+		for (int i = 0; i < mainCommands.size(); i++) {
+			System.out.print(mainCommands.get(i) + " | ");
 			if (i % 8 == 0 && i != 0)
 				System.out.println();
 		}

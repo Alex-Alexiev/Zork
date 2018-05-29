@@ -84,7 +84,6 @@ public class Player extends Entity{
 			else
 				return true; // signal that we want to quit
 		}
-
 		return false;
 	}
 
