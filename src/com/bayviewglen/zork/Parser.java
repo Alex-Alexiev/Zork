@@ -21,41 +21,37 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Parser 
-{
+public class Parser {
 
-    private static CommandWords commands = new CommandWords();  // holds all valid command words
+	public static Command getCommand() {
+		String inputLine = ""; // will hold the full input line
+		String[] words;
 
-    public static Command getCommand() 
-    {
-        String inputLine = "";   // will hold the full input line
-        String[] words;
+		System.out.print("> "); // print prompt
 
-        System.out.print("> ");     // print prompt
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		try {
+			inputLine = reader.readLine();
+		} catch (java.io.IOException exc) {
+			System.out.println("There was an error during reading: " + exc.getMessage());
+		}
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        try {
-            inputLine = reader.readLine();
-        }
-        catch(java.io.IOException exc) {
-            System.out.println ("There was an error during reading: "
-                                + exc.getMessage());
-        }
+		words = inputLine.split(" ");
+		
+		words = Command.removeDeterminers(words);
 
-        words = inputLine.split(" ");
-        
-        for (int i = 0; i < words.length; i++) {
-        	words[i] = words[i].toLowerCase();
-        }
+		for (int i = 0; i < words.length; i++) {
+			words[i] = words[i].toLowerCase();
+		}
 
-        return new Command(words);
-    }
+		return new Command(words);
+	}
 
-    /**
-     * Print out a list of valid command words.
-     */
-    public static void showCommands()
-    {
-        commands.showAll();
-    }
+	/**
+	 * Print out a list of valid command words.
+	 */
+	public static void showCommands() {
+		CommandWords.showAll();
+	}
+	
 }

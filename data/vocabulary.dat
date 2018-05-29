@@ -1,9 +1,10 @@
 move: go, move, walk, run, hop
-location: room, place, spot, location
+location: room, place, spot, location, where
+excrete: excrete, poop, poo
 search: search, find, look
 inventory: inventory, items, things, supply
 eat: eat, consume, bite, chew, ingest, snack, dine, lunch, munch, gorge
-pickup: take, retrieve, aquire, receive, snag, grab
+pickup: take, retrieve, aquire, receive, snag, grab, pick up, collect
 equipment: weapons, armor, equipment, shield, apparatus, devices, attachments, gadgets, outfit, tools
 unequip: unequip, holster
 help: help
@@ -15,3 +16,4 @@ quit: quit
 fight: fight, engage, destroy
 leave: leave
 yes: yes, yeah, sure, okay
+determiner: the, a, some, this, that, every, each, their, to

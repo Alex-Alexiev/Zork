@@ -94,7 +94,7 @@ public class CommandWords {
 	/*
 	 * Print all valid commands to System.out.
 	 */
-	public void showAll() {
+	public static void showAll() {
 		for (int i = 0; i < mainCommands.size(); i++) {
 			System.out.print(mainCommands.get(i) + " | ");
 			if (i % 8 == 0 && i != 0)

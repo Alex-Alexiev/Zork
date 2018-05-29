@@ -1,4 +1,7 @@
 package com.bayviewglen.zork;
+
+import java.util.ArrayList;
+
 /**
  * Class Command - Part of the "Zork" game.
  * 
@@ -107,5 +110,19 @@ public class Command
     		ret += command.getWordAtIndex(i) + " ";
     	}
     	return ret.trim();
+    }
+    
+    public static String[] removeDeterminers(String[] words) {
+    	ArrayList<String> ret = new ArrayList<String>();
+    	for (int i = 0; i < words.length; i++) {
+    		if (!CommandWords.is("determiner", words[i])) {
+    			ret.add(words[i]);
+    		}
+    	}
+    	String[] retArr = new String[ret.size()];
+    	for (int i = 0; i < retArr.length; i++) {
+    		retArr[i] = ret.get(i);
+    	}
+    	return retArr;
     }
 }
