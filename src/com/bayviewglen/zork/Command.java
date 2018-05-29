@@ -112,6 +112,12 @@ public class Command
     	return ret.trim();
     }
     
+    public void generalize() {
+    	for (int i = 0; i < words.length; i++) {
+    		words[i] = CommandWords.getWordKey(words[i]);
+    	}
+    }
+    
     public static String[] removeDeterminers(String[] words) {
     	ArrayList<String> ret = new ArrayList<String>();
     	for (int i = 0; i < words.length; i++) {

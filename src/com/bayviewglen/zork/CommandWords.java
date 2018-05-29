@@ -61,6 +61,17 @@ public class CommandWords {
 			e.printStackTrace();
 		}
 	}
+	
+	public static String getWordKey(String word) {
+		for (HashMap.Entry<String, String[]> mapEntry: wordGroups.entrySet()) {
+			for (String s : mapEntry.getValue()) {
+				if (s.equals(word)) {
+					return mapEntry.getKey();
+				}
+			}
+		}
+		return null;
+	}
 
 	public static boolean is(String commandGroup, String command) {
 		for (String s : wordGroups.get(commandGroup)) {

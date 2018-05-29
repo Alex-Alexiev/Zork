@@ -1,6 +1,7 @@
 package com.bayviewglen.zork.entity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 import com.bayviewglen.zork.Combat;
@@ -22,6 +23,7 @@ public class Player extends Entity{
 	private Armor equippedArmor;
 	private Weapon equippedWeapon;
 	private int maxHealth;
+	private HashMap<String, Runnable> methods = new HashMap<String, Runnable>();
 
 	public Player(Room startingRoom) {
 		super("");
@@ -101,7 +103,7 @@ public class Player extends Entity{
 		System.out.println("You are lost? Are you dumb? You need help?");
 		System.out.println("Don't worry. I got you buddy.");
 		System.out.println();
-		System.out.println("Your command words are:");
+		System.out.println("Your actions are:");
 		Parser.showCommands();
 	}
 
