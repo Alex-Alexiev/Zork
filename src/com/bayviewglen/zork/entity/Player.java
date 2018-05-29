@@ -422,7 +422,7 @@ public class Player extends Entity{
 	public void hit(int damage) {
 		if (equippedArmor != null && equippedArmor.getShieldPoints() > 0) {
 			int unblockedDamage = equippedArmor.getShieldPoints() - damage;
-			equippedArmor.damage(damage);
+			equippedArmor.damage(damage, this);
 			if (equippedArmor.getShieldPoints() <= 0) {
 				equippedArmor = null;
 				damage(unblockedDamage);

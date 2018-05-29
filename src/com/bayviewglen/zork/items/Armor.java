@@ -1,5 +1,7 @@
 package com.bayviewglen.zork.items;
 
+import com.bayviewglen.zork.entity.Player;
+
 abstract public class Armor extends Item {
 	
 	private int shieldPoints;
@@ -14,11 +16,15 @@ abstract public class Armor extends Item {
 		return shieldPoints;
 	}
 	
-	public void damage(int damage) {
-		shieldPoints -= damage;
+	public void setShieldPoints(int i) {
+		shieldPoints = i;
 	}
 	
-	abstract public void ability();
+	public void damage(int damage, Player player) {
+		shieldPoints -= ability(damage, player);
+	}
+	
+	abstract public int ability(int damage, Player player);
 	
 	public String toString() {
 		return super.getName();
