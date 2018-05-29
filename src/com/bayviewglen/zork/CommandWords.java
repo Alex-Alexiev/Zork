@@ -10,186 +10,75 @@ package com.bayviewglen.zork;
  * This class is part of the "Zork" game.
  */
 
-public class CommandWords
-{
+import java.util.HashMap;
+
+public class CommandWords {
 	// a constant array that returns the main valid command words
-	private static final String showCommands[] = {
-			"go/move", "help", "quit", "search", "room",
-			"equip", "equipment", "welfare", "eat",
-			"take", "drop", "inventory", "unequip",
-	};
-    // a constant array that holds all valid command words
-    private static final String validCommands[] = {
-        "go", "move", "walk", "run", "help", "quit", "search", "find",
-        "look", "room", "place", "location", "spot", "equip", "equipment",
-        "welfare", "eat", "consume", "bite", "chew",
-        "ingest", "snack", "munch", "gorge", "dine", "lunch",
-        "ingest", "take", "retrieve", "aquire", "recieve",
-        "snag", "grab", "drop", "inventory", "items", "things", "supply",
-        "weapons", "armor", "equipment", "shield", "apparatus",
-		"devices", "attachments", "gadgets", "outfit",
-		"tools", "unequip", "holster", "talk"
-    };
-    
-    private static final String locationCommands[] = {
-    		"room", "place", "location", "spot"
-    };
-    
-    private static final String moveCommands[] = {
-    		"go", "move", "walk", "run"
-    };
-    
-    private static final String searchCommands[] = {
-    		"search", "find", "look"
-    };
-    
-    private static final String inventoryCommands[] = {
-    		"inventory", "items", "things", "supply"
-    };
-    
-    private static final String eatCommands[] = {
-    		"eat", "consume", "bite", "chew", "ingest",
-    		"snack", "munch", "gorge", "dine", "lunch"
-    };
-    
-    private static final String pickupCommands[] = {
-    		"take", "retrieve", "aquire", "recieve", "snag", "grab",
-    };
-    
-    private static final String equipmentCommands[] = {
-    		"weapons", "armor", "equipment", "shield", "apparatus",
-    		"devices", "attachments", "gadgets", "outfit",
-    		"tools",
-    };
-    
-    private static final String unequipCommands[] = {
-    		"unequip", "holster",
-    };
-    
-    
-    
-    /**
-     * Constructor - initialise the command words.
-     */
-    public CommandWords()
-    {
-        // nothing to do at the moment...
-    }
+	private static final String showCommands[] = { "go/move", "help", "quit", "search", "room", "equip", "equipment",
+			"welfare", "eat", "take", "drop", "inventory", "unequip", };
 
-    /**
-     * Check whether a given String is a valid command word. 
-     * Return true if it is, false if it isn't.
-     **/
-    public static boolean isCommand(String aString)
-    {
-        for(int i = 0; i < validCommands.length; i++)
-        {
-            if(validCommands[i].split(" ")[0].equals(aString))
-                return true;
-        }
-        // if we get here, the string was not found in the commands
-        return false;
-    }
+	private static HashMap<String, String[]> wordGroups = new HashMap<String, String[]>();
+	private static boolean first = true;
 
-    /*
-     * Print all valid commands to System.out.
-     */
-    public void showAll() 
-    {
-        for(int i = 0; i < showCommands.length; i++)
-        {
-            System.out.print(showCommands[i] + " | ");
-            if (i % 8 == 0 && i != 0) 
-            	System.out.println();
-        }
-        System.out.println();
-    }
-    
-    /* 
-     * Checks location commands
-     */
-    public static boolean isLocationCommand(String command) {
-    	for (String validCommand : locationCommands) {
-    		if (validCommand.equals(command))
-    			return true;
-    	}
-    	return false;
-    }
-    
-    /* 
-     * Checks move commands
-     */
-    public static boolean isMoveCommand(String command) {
-    	for (String validCommand : moveCommands) {
-    		if (validCommand.equals(command))
-    			return true;
-    	}
-    	return false;
-    }
-    
-    /* 
-     * Checks search commands
-     */
-    public static boolean isSearchCommand(String command) {
-    	for (String validCommand : searchCommands) {
-    		if (validCommand.equals(command))
-    			return true;
-    	}
-    	return false;
-    }
-    
-    /* 
-     * Checks inventory commands
-     */
-    public static boolean isInventoryCommand(String command) {
-    	for (String validCommand : inventoryCommands) {
-    		if (validCommand.equals(command))
-    			return true;
-    	}
-    	return false;
-    }
-    
-    /* 
-     * Checks eat commands
-     */
-    public static boolean isEatCommand(String command) {
-    	for (String validCommand : eatCommands) {
-    		if (validCommand.equals(command))
-    			return true;
-    	}
-    	return false;
-    }
-    
-    /* 
-     * Checks pickup commands
-     */
-    public static boolean isPickupCommand(String command) {
-    	for (String validCommand : pickupCommands) {
-    		if (validCommand.equals(command))
-    			return true;
-    	}
-    	return false;
-    }
-    
-    /* 
-     * Checks equipment commands
-     */
-    public static boolean isEquipmentCommand(String command) {
-    	for (String validCommand : equipmentCommands) {
-    		if (validCommand.equals(command))
-    			return true;
-    	}
-    	return false;
-    }
-    
-    /* 
-     * Checks unequip commands
-     */
-    public static boolean isUnequipCommand(String command) {
-    	for (String validCommand : unequipCommands) {
-    		if (validCommand.equals(command))
-    			return true;
-    	}
-    	return false;
-    }
+	public static boolean is(String commandGroup, String command) {
+		if (first) {
+			first = false;
+			wordGroups.put("move", new String[] { "go", "move", "walk", "run" });
+			wordGroups.put("location", new String[] { "room", "place", "location", "spot" });
+			wordGroups.put("search", new String[] { "search", "find", "look" });
+			wordGroups.put("inventory", new String[] { "inventory", "items", "things", "supply" });
+			wordGroups.put("eat", new String[] { "eat", "consume", "bite", "chew", "ingest", "snack", "munch", "gorge",
+					"dine", "lunch" });
+			wordGroups.put("pickup", new String[] { "take", "retrieve", "aquire", "recieve", "snag", "grab" });
+			wordGroups.put("equipment", new String[] { "weapons", "armor", "equipment", "shield", "apparatus",
+					"devices", "attachments", "gadgets", "outfit", "tools" });
+			wordGroups.put("unequip", new String[] { "unequip", "holster" });
+		}
+		for (String s : wordGroups.get(commandGroup)) {
+			if (s.equals(command)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	// a constant array that holds all valid command words
+	private static final String validCommands[] = { "go", "move", "walk", "run", "help", "quit", "search", "find",
+			"look", "room", "place", "location", "spot", "equip", "equipment", "welfare", "eat", "consume", "bite",
+			"chew", "ingest", "snack", "munch", "gorge", "dine", "lunch", "ingest", "take", "retrieve", "aquire",
+			"recieve", "snag", "grab", "drop", "inventory", "items", "things", "supply", "weapons", "armor",
+			"equipment", "shield", "apparatus", "devices", "attachments", "gadgets", "outfit", "tools", "unequip",
+			"holster", "talk" };
+
+	/**
+	 * Constructor - initialise the command words.
+	 */
+	public CommandWords() {
+		// nothing to do at the moment...
+	}
+
+	/**
+	 * Check whether a given String is a valid command word. Return true if it is,
+	 * false if it isn't.
+	 **/
+	public static boolean isCommand(String aString) {
+		for (int i = 0; i < validCommands.length; i++) {
+			if (validCommands[i].split(" ")[0].equals(aString))
+				return true;
+		}
+		// if we get here, the string was not found in the commands
+		return false;
+	}
+
+	/*
+	 * Print all valid commands to System.out.
+	 */
+	public void showAll() {
+		for (int i = 0; i < showCommands.length; i++) {
+			System.out.print(showCommands[i] + " | ");
+			if (i % 8 == 0 && i != 0)
+				System.out.println();
+		}
+		System.out.println();
+	}
 }
