@@ -48,13 +48,14 @@ public class Player extends Entity {
 
 		update();
 		if (getHealth() <= 0) {
-			return true;
-		}
+            System.out.println("Something oddly warm and viscous seeps down your chest, yet you start feel cold.\nRight before your view fades to black, you get the feeling that you've been here before.");
+            return true;
+        }
 
-		if (command.isUnknown()) {
-			System.out.println("I don't know what you mean...");
-			return false;
-		}
+        if (command.isUnknown()&&!inCombat) {
+            System.out.println("I don't know what you mean...");
+            return false;
+        }
 
 		/*
 		 * Non combat actions
@@ -144,6 +145,7 @@ public class Player extends Entity {
 	private void searchRoom() {
 		System.out.println("Items: " + currentRoom.inventory);
 		System.out.println("People: " + currentRoom.entities.getNPCList());
+		System.out.println(currentRoom.exitString());
 	}
 
 	/**
