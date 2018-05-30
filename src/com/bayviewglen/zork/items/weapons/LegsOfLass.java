@@ -14,10 +14,11 @@ public class LegsOfLass extends Weapon {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void ability(Entity e, int monsters, Player player) {
+	public void ability(Entity e, int monsters, Player p) {
 		if (didHit()) {
-			e.setHealth((int)(e.getHealth() - getDamage() * player.getDamageScaler() / monsters));
-			System.out.println("You attack " + e.getName() + " with " + getName() + " (-" + getDamage() + ")");
+			int dam = (int)(getDamage() * p.getDamageScaler() + criticalHit());
+			e.setHealth(e.getHealth() - dam);
+			System.out.println("You attack " + e.getName() + " with " + getName() + " (-" + dam + ")");
 		}
 	}
 }

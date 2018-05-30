@@ -14,11 +14,12 @@ public class Lucille extends Weapon{
 		super("Lucille", "Barbed wire baseball bat. Highly effective against asians and zombies.", 200, 80);
 	}
 	
-	public void ability(Entity e, Player player){
+	public void ability(Entity e, Player p){
 		if (didHit()) {
 			// Attack
-			e.setHealth((int)(e.getHealth() - getDamage()* player.getDamageScaler() - criticalHit()));
-			System.out.println("You attack " + e.getName() + " with " + getName() + " (-" + getDamage() + ")");
+			int dam = (int)(getDamage() * p.getDamageScaler() + criticalHit());
+			e.setHealth(e.getHealth() - dam);
+			System.out.println("You attack " + e.getName() + " with " + getName() + " (-" + dam + ")");
 			
 			// Poison
 			e.addPoison(getPoison());
