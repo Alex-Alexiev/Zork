@@ -27,7 +27,7 @@ public class Player extends Entity {
 	private boolean inCombat;
 
 	public Player(Room startingRoom) {
-		super("");
+		super("you");
 		currentRoom = startingRoom;
 		inventory = new Inventory();
 		maxHealth = 500;
