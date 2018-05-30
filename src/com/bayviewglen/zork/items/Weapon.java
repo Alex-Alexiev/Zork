@@ -77,8 +77,9 @@ public class Weapon extends Item{
 	 */
 	public void ability(Entity e, Player p){
 		if (didHit()) {
-			e.setHealth((int)(e.getHealth() - getDamage() * p.getDamageScaler() - criticalHit()));
-			System.out.println("You attack " + e.getName() + " with " + getName() + " (-" + getDamage() + ")");
+			int dam = (int)(getDamage() * p.getDamageScaler() - criticalHit());
+			e.setHealth(e.getHealth() - dam);
+			System.out.println("You attack " + e.getName() + " with " + getName() + " (-" + dam + ")");
 		}
 	}
 
