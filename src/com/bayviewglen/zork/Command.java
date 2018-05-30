@@ -73,12 +73,14 @@ public class Command {
 	 * Return true if this command was not understood.
 	 */
 	public boolean isUnknown() {
+		/*
 		for (String word : words) {
 			if (!CommandWords.isCommand(word))
 				return true;
 		}
 		return false;
-		// return (words[0] == null) || !CommandWords.isCommand(words[0]);
+		*/
+		return (words[0] == null) || !CommandWords.isCommand(words[0]);
 	}
 
 	/**
