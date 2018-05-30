@@ -35,22 +35,22 @@ public class Combat {
 		} else {
 			System.out.println("You return to the previous room");
 		}
-		
+
 		return false;
 	}
 
 	public boolean engageInCombat() {
-		
+
 		player.combat(true);
-		
+
 		Sound.stop();
 		Sound mainThemeMusic = new Sound("data\\battle.wav");
 		mainThemeMusic.loop();
-		
+
 		if (Math.random() >= 0.5 && !(player.getWeapon() instanceof Bow)) {
 			enemiesAttack();
 		}
-		
+
 		while (enemies.size() > 0 && player.getHealth() > 0) {
 			printStats();
 			if (!playerAttack()) {
@@ -74,7 +74,7 @@ public class Combat {
 		}
 		return false;
 	}
-	
+
 	private void restartMainMusic() {
 		Sound.stop();
 		Sound mainThemeMusic = new Sound("data\\mainmusic.wav");
@@ -88,7 +88,7 @@ public class Combat {
 		for (Entity e : enemies) {
 			// Damages monsters with poison
 			e.poison();
-			
+
 			// Attacks player
 			if (!(e instanceof Monster && ((Monster) e).isStunned())) {
 				e.attack(player);
@@ -106,7 +106,7 @@ public class Combat {
 		for (Entity e : enemies) {
 			System.out.println(e.getName() + " health: " + e.getHealth());
 			if (e.isPoisoned()) {
-				System.out.println("Poison: " + e.getPoisonDamage());
+				System.out.println(e.getName() +" is bleeding for " + e.getPoisonDamage() + "damage per turn");
 			}
 		}
 		System.out.println();
@@ -116,14 +116,14 @@ public class Combat {
 	 * Player attack
 	 */
 	private boolean playerAttack() {
-		
+
 		System.out.println("Which monster would you like to attack?");
 		System.out.println();
 		Command command = Parser.getCommand();
 		player.act(command);
-		
+
 		if (command.is("leave")) {
-			System.out.println("\nWimp\n");
+			System.out.println("\nYou barely escaped.\n");
 			return false;
 		}
 		if (command.numOfWords() < 2) {
@@ -135,7 +135,7 @@ public class Combat {
 		Weapon weapon = player.getWeapon();
 		if (weapon instanceof LegsOfLass) {
 			int monstersLength = enemies.size();
-			for (Entity e : enemies) {				
+			for (Entity e : enemies) {
 				((LegsOfLass) weapon).ability(e, monstersLength, player);
 			}
 			return true;
@@ -143,16 +143,17 @@ public class Combat {
 
 		// Normal attack
 		String monsterId = findMonsterId(command);
-		
-		if (monsterId == null) return true;
-		
+
+		if (monsterId == null)
+			return true;
+
 		for (Entity e : enemies) {
 			if (e.getId().equals(monsterId.trim().toLowerCase())) {
 				player.attack(e);
 				return true;
 			}
 		}
-		
+
 		return true;
 	}
 
@@ -160,7 +161,8 @@ public class Combat {
 		String merged = Command.mergeFinalWords(playerCommand, 0);
 		String[] monsters = CommandWords.getRelatedWords("monsters");
 		for (String monster : monsters) {
-			if (merged.indexOf(monster.trim()) != -1) return monster;
+			if (merged.indexOf(monster.trim()) != -1)
+				return monster;
 		}
 		return null;
 	}
@@ -172,7 +174,7 @@ public class Combat {
 		for (int i = 0; i < enemies.size(); i++) {
 			if (enemies.get(i).getHealth() <= 0) {
 				if (enemies.get(i) instanceof SulfuricCrawler) {
-					((SulfuricCrawler)enemies.get(i)).deadMove(player);
+					((SulfuricCrawler) enemies.get(i)).deadMove(player);
 				}
 				enemies.remove(i);
 				i--;

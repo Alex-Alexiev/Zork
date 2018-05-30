@@ -16,7 +16,7 @@ import com.bayviewglen.zork.items.Item;
 import com.bayviewglen.zork.items.Weapon;
 import com.bayviewglen.zork.items.weapons.BareHands;
 
-public class Player extends Entity{
+public class Player extends Entity {
 
 	private Room currentRoom;
 	private Inventory inventory;
@@ -43,19 +43,19 @@ public class Player extends Entity{
 	 * the game, true is returned, otherwise false is returned.
 	 */
 	public boolean act(Command command) {
-		
+
 		System.out.println();
-		
+
 		update();
 		if (getHealth() <= 0) {
 			return true;
 		}
-		
+
 		if (command.isUnknown()) {
 			System.out.println("I don't know what you mean...");
 			return false;
 		}
-		
+
 		/*
 		 * Non combat actions
 		 */
@@ -97,10 +97,9 @@ public class Player extends Entity{
 			else
 				return true; // signal that we want to quit
 		}
-		
+
 		return false;
 	}
-
 
 	/**
 	 * Prints location of the player
@@ -204,7 +203,7 @@ public class Player extends Entity{
 		}
 
 		String foodName = Command.mergeFinalWords(command, 1);
-		String foodId = foodName.replaceAll("\\s","");
+		String foodId = foodName.replaceAll("\\s", "");
 		Food food = (Food) inventory.getItem(foodId);
 
 		if (food != null) {
@@ -249,7 +248,7 @@ public class Player extends Entity{
 		}
 
 		String itemName = Command.mergeFinalWords(command, 1);
-		String itemId = itemName.replaceAll("\\s","");
+		String itemId = itemName.replaceAll("\\s", "");
 		Item item = inventory.getItem(itemId);
 
 		if (item != null) {
@@ -283,7 +282,7 @@ public class Player extends Entity{
 		}
 
 		String itemName = Command.mergeFinalWords(command, 1);
-		String itemId = itemName.replaceAll("\\s","");
+		String itemId = itemName.replaceAll("\\s", "");
 		Item item = currentRoom.inventory.getItem(itemId);
 
 		if (item != null) {
@@ -315,36 +314,36 @@ public class Player extends Entity{
 		}
 
 		String itemName = Command.mergeFinalWords(command, 1);
-		String itemId = itemName.replaceAll("\\s","");
+		String itemId = itemName.replaceAll("\\s", "");
 		Item item = inventory.getItem(itemId);
 
 		if (item != null) {
 			if (item instanceof Weapon) {
-				
+
 				// Removes item from inventory
 				inventory.removeItem(itemId);
-				
+
 				// Ensure BareHands is not added to inventory
 				if (!(equippedWeapon instanceof BareHands))
 					inventory.addToInventory(equippedWeapon, 1);
-				
+
 				// Equips weapon
 				equippedWeapon = (Weapon) item;
 				System.out.println("You equipped " + equippedWeapon);
-				
+
 			} else if (item instanceof Armor) {
-				
+
 				// Removes item from inventory
 				inventory.removeItem(itemId);
-				
+
 				// Makes sure armor is equipped before returning it to inventory
 				if (equippedArmor != null)
 					inventory.addToInventory(equippedArmor, 1);
-				
+
 				// Equips armor
 				equippedArmor = (Armor) item;
 				System.out.println("You equipped " + equippedArmor);
-				
+
 			} else {
 				System.out.println("You cannot equip that");
 			}
@@ -380,7 +379,7 @@ public class Player extends Entity{
 					secondWord.substring(0, 1).toUpperCase() + secondWord.substring(1) + " is not currently equiped");
 		}
 	}
-	
+
 	/*
 	 * Talks to NPC
 	 */
@@ -396,7 +395,7 @@ public class Player extends Entity{
 		}
 
 		String npcName = Command.mergeFinalWords(command, 1);
-		String npcId = npcName.replaceAll("\\s","");
+		String npcId = npcName.replaceAll("\\s", "");
 		ArrayList<NPC> npcs = currentRoom.entities.getNPCs();
 		boolean didTalk = false;
 		for (NPC npc : npcs) {
@@ -405,14 +404,15 @@ public class Player extends Entity{
 				didTalk = true;
 			}
 		}
-		
+
 		if (!didTalk) {
 			System.out.println(npcName + " is not here");
 		}
 	}
-	
+
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
@@ -421,11 +421,15 @@ public class Player extends Entity{
 			ret += "\nArmor: " + equippedArmor + "\n Shield Points: " + equippedArmor.getShieldPoints();
 		}
 		if (isPoisoned()) {
-			ret += "\nPoison: " + getPoisonDamage();
+			if (hasRabies()) {
+				ret += "\nYou have Rabies. You deal 40% more damage, but take 250 damage in " + "number" + " turns.";
+			} else {
+				ret += "\nPoison: " + getPoisonDamage();
+			}
 		}
 		return ret;
 	}
-	
+
 	/*
 	 * Normal damage (hits armor before health)
 	 */
@@ -442,26 +446,29 @@ public class Player extends Entity{
 			damage(damage);
 		}
 	}
-	
+
 	/*
 	 * Getters
 	 */
 	public int getArmorStrength() {
 		return this.equippedArmor.getShieldPoints();
 	}
+
 	public Weapon getWeapon() {
 		return equippedWeapon;
 	}
+
 	public double getDamageScaler() {
 		return damageScaler;
 	}
-	
+
 	/*
 	 * Setters
 	 */
 	public void setDamageScaler(double scaler) {
 		damageScaler = scaler;
 	}
+
 	public void combat(boolean b) {
 		inCombat = b;
 	}
