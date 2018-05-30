@@ -106,7 +106,7 @@ public class Room
      * Return a string describing the room's exits, for example
      * "Exits: north west ".
      */
-    private String exitString()
+    public String exitString()
     {
         String returnString = "Exits:";
 		Set keys = exits.keySet();

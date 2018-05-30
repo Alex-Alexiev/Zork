@@ -38,6 +38,7 @@ public abstract class Entity {
 	 * Poison
 	 */
 	public void addPoison(Poison poison) {
+		System.out.println(this.getName()+" has been poisoned with "+poison.getId()+"!");
 		this.poisons.add(poison);
 	}
 

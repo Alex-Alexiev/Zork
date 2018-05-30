@@ -118,43 +118,51 @@ public class Combat {
 	private boolean playerAttack() {
 
 		System.out.println("Which monster would you like to attack?");
-		System.out.println();
-		Command command = Parser.getCommand();
-		player.act(command);
+        Command command = null;
 
-		if (command.is("leave")) {
-			System.out.println("\nYou barely escaped.\n");
-			return false;
-		}
-		if (command.numOfWords() < 2) {
-			System.out.println("Attack what?");
-			return true;
-		}
+        while (2>1) {
+            command = Parser.getCommand();
+            System.out.println();
 
-		// Legs of Lass special case
-		Weapon weapon = player.getWeapon();
-		if (weapon instanceof LegsOfLass) {
-			int monstersLength = enemies.size();
-			for (Entity e : enemies) {
-				((LegsOfLass) weapon).ability(e, monstersLength, player);
-			}
-			return true;
-		}
+            player.act(command);
 
-		// Normal attack
-		String monsterId = findMonsterId(command);
+            if (command.is("leave")) {
+                System.out.println("You barely escaped!");
+                return false;
+            }
+            if (command.numOfWords() < 2) {
+                System.out.println("Attack what?");
+            }
 
-		if (monsterId == null)
-			return true;
 
-		for (Entity e : enemies) {
-			if (e.getId().equals(monsterId.trim().toLowerCase())) {
-				player.attack(e);
-				return true;
-			}
-		}
+            // Legs of Lass special case
+            Weapon weapon = player.getWeapon();
+            if (weapon instanceof LegsOfLass) {
+                int monstersLength = enemies.size();
+                for (Entity e : enemies) {
+                    ((LegsOfLass) weapon).ability(e, monstersLength, player);
+                }
+                return true;
+            }
 
-		return true;
+            // Normal attack
+            String monsterId = findMonsterId(command);
+            if (monsterId != null) {
+
+                for (Entity e : enemies) {
+                    if (e.getId().equals(monsterId.trim().toLowerCase())) {
+                        player.attack(e);
+                        return true;
+                    }
+                    else {
+                        System.out.println("No enemy by that name, try again!");
+                    }
+                }
+            }
+            else if (monsterId == null&&!(command.numOfWords() < 2)) {
+                System.out.println("No enemy by that name, try again!");
+            }
+        }
 	}
 
 	private String findMonsterId(Command playerCommand) {
