@@ -110,10 +110,11 @@ public class CommandWords {
 	 */
 	public static void showAll() {
 		int i = 0;
-		while (!mainCommands.get(i).equals("determiner")) {
+		while (!mainCommands.get(i).trim().equals("determiner")) {
 			System.out.print(mainCommands.get(i) + " | ");
 			if (i % 8 == 0 && i != 0)
 				System.out.println();
+			i++;
 		}
 		System.out.println();
 	}
