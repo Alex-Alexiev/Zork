@@ -93,6 +93,15 @@ public abstract class Entity {
 		}
 		return poisonDamage;
 	}
+	
+	public int getRabiesTicks() {
+		for (Poison p : poisons) {
+			if (p.getId().equals("rabies")) {
+				return p.getLength();
+			}
+		}
+		return 0;
+	}
 
 	public boolean isPoisoned() {
 		if (poisons.size() > 0)

@@ -422,7 +422,7 @@ public class Player extends Entity {
 		}
 		if (isPoisoned()) {
 			if (hasRabies()) {
-				ret += "\nYou have Rabies. You deal 40% more damage, but take 250 damage in " + "number" + " turns.";
+				ret += "\nYou have Rabies. You deal 40% more damage, but take 250 damage in " + getRabiesTicks() + " turns.";
 			} else {
 				ret += "\nPoison: " + getPoisonDamage();
 			}

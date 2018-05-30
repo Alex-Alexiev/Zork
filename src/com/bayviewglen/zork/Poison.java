@@ -54,4 +54,8 @@ public class Poison {
 		}
 		return false;
 	}
+	
+	public int getLength() {
+		return length;
+	}
 }
