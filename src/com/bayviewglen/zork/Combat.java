@@ -118,8 +118,8 @@ public class Combat {
 	private boolean playerAttack() {
 		
 		System.out.println("Which monster would you like to attack?");
-		Command command = Parser.getCommand();
 		System.out.println();
+		Command command = Parser.getCommand();
 		player.act(command);
 		
 		if (command.is("leave")) {
@@ -130,7 +130,6 @@ public class Combat {
 			System.out.println("Attack what?");
 			return true;
 		}
-
 
 		// Legs of Lass special case
 		Weapon weapon = player.getWeapon();
