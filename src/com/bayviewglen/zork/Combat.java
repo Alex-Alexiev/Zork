@@ -41,6 +41,8 @@ public class Combat {
 
 	public boolean engageInCombat() {
 		
+		player.combat(true);
+		
 		Sound.stop();
 		Sound mainThemeMusic = new Sound("data\\battle.wav");
 		mainThemeMusic.loop();
@@ -62,11 +64,13 @@ public class Combat {
 			restartMainMusic();
 			player.setDamageScaler(1);
 			System.out.println("The monsters are slain\n");
+			player.combat(false);
 			return true;
 		} else {
 			restartMainMusic();
 			player.setDamageScaler(1);
 			System.out.println("Oops, try again next time...");
+			player.combat(false);
 		}
 		return false;
 	}
@@ -113,17 +117,20 @@ public class Combat {
 	 */
 	private boolean playerAttack() {
 		
-		// Damages player with poison
-		player.poison();
-		
-		// Prompts player
-		System.out.println("Which monster would you like to attack? Or would you like to leave?\n");
-		Command playerCommand = Parser.getCommand();
+		System.out.println("Which monster would you like to attack?");
+		Command command = Parser.getCommand();
 		System.out.println();
-		if (playerCommand.is("leave")) {
+		player.act(command);
+		
+		if (command.is("leave")) {
 			System.out.println("\nWimp\n");
 			return false;
 		}
+		if (command.numOfWords() < 2) {
+			System.out.println("Attack what?");
+			return true;
+		}
+
 
 		// Legs of Lass special case
 		Weapon weapon = player.getWeapon();
@@ -136,7 +143,7 @@ public class Combat {
 		}
 
 		// Normal attack
-		String monsterId = findMonsterId(playerCommand);
+		String monsterId = findMonsterId(command);
 		
 		if (monsterId == null) return true;
 		

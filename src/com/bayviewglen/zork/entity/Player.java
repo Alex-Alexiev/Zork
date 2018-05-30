@@ -23,8 +23,8 @@ public class Player extends Entity{
 	private Armor equippedArmor;
 	private Weapon equippedWeapon;
 	private int maxHealth;
-	private HashMap<String, Runnable> methods = new HashMap<String, Runnable>();
 	private double damageScaler;
+	private boolean inCombat;
 
 	public Player(Room startingRoom) {
 		super("");
@@ -35,57 +35,72 @@ public class Player extends Entity{
 		equippedWeapon = new BareHands();
 		equippedArmor = null;
 		damageScaler = 1;
+		inCombat = false;
 	}
 
 	/**
 	 * Parse command, process (that is: execute) the command. If this command ends
 	 * the game, true is returned, otherwise false is returned.
 	 */
-	public boolean act() {
+	public boolean act(Command command) {
+		
+		System.out.println();
+		
+		update();
 		if (getHealth() <= 0) {
 			return true;
 		}
 		
-		poison();		
-		Command command = Parser.getCommand();
-		System.out.println();
-
+		if (command.isUnknown()) {
+			System.out.println("I don't know what you mean...");
+			return false;
+		}
 		
+		/*
+		 * Non combat actions
+		 */
+		if (!inCombat) {
+			if (command.is("location"))
+				printLocation();
+			else if (command.is("welfare"))
+				System.out.println(this);
+			else if (command.is("move"))
+				goRoom(command);
+			else if (command.is("search"))
+				searchRoom();
+			else if (command.is("inventory"))
+				printInventory();
+			else if (command.is("pickup"))
+				pickupItem(command);
+			else if (command.is("drop"))
+				dropItem(command);
+			else if (command.is("talk"))
+				talk(command);
+		}
 
+		/*
+		 * Always available actions
+		 */
 		if (command.is("help"))
 			printHelp();
-		else if (command.is("location"))
-			printLocation();
-		else if (command.is("welfare"))
-			System.out.println(this);
-		else if (command.is("move"))
-			goRoom(command);
-		else if (command.is("search"))
-			searchRoom();
-		else if (command.is("inventory"))
-			printInventory();
 		else if (command.is("eat"))
 			eat(command);
-		else if (command.is("pickup"))
-			pickupItem(command);
-		else if (command.is("drop"))
-			dropItem(command);
 		else if (command.is("equip"))
 			equipItem(command);
 		else if (command.is("equipment"))
 			printEquipment();
 		else if (command.is("unequip"))
 			unequip(command);
-		else if (command.is("talk"))
-			talk(command);
 		else if (command.is("quit")) {
 			if (command.hasManyWords(2))
 				System.out.println("Quit what?");
 			else
 				return true; // signal that we want to quit
 		}
+		
 		return false;
 	}
+
 
 	/**
 	 * Prints location of the player
@@ -446,6 +461,9 @@ public class Player extends Entity{
 	 */
 	public void setDamageScaler(double scaler) {
 		damageScaler = scaler;
+	}
+	public void combat(boolean b) {
+		inCombat = b;
 	}
 
 	/*

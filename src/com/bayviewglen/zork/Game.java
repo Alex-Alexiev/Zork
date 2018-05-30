@@ -239,7 +239,8 @@ class Game {
 
 		boolean finished = false;
 		while (!finished) {
-			finished = player.act();
+			Command command = Parser.getCommand();
+			finished = player.act(command);
 			System.out.println();
 		}
 		System.out.println("Thank you for playing.  Good bye.");

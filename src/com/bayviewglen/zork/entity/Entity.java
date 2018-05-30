@@ -16,6 +16,14 @@ public abstract class Entity {
 		this.name = name;
 		this.id = name.replaceAll("\\s", "").toLowerCase();
 	}
+	
+	/*
+	 * Update function
+	 */
+	public void update() {
+		poison();
+	}
+
 
 	/*
 	 * Damage methods
