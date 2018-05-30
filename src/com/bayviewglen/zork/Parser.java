@@ -43,8 +43,12 @@ public class Parser {
 		for (int i = 0; i < words.length; i++) {
 			words[i] = words[i].toLowerCase();
 		}
+		
+		Command command = new Command(words);
+		
+		//command.check();
 
-		return new Command(words);
+		return command;
 	}
 
 	/**

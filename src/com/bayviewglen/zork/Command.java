@@ -78,7 +78,11 @@ public class Command
      */
     public boolean isUnknown()
     {
-        return (words[0] == null) || !CommandWords.isCommand(words[0]);
+    	for (String word : words) {
+    		if (!CommandWords.isCommand(word)) return true;
+    	}
+    	return false;
+        //return (words[0] == null) || !CommandWords.isCommand(words[0]);
     }
 
     /**
@@ -107,7 +111,7 @@ public class Command
     public static String mergeFinalWords(Command command, int index) {
     	String ret = "";
     	for (int i = index; i < command.numOfWords(); i++) {
-    		ret += command.getWordAtIndex(i) + " ";
+    		ret += command.getWordAtIndex(i);
     	}
     	return ret.trim();
     }
@@ -115,6 +119,25 @@ public class Command
     public void generalize() {
     	for (int i = 0; i < words.length; i++) {
     		words[i] = CommandWords.getWordKey(words[i]);
+    	}
+    }
+    
+    public void check() {
+    	if (this.isUnknown()) {
+    		makeSuggestion();
+    	}
+    }
+    
+    public void makeSuggestion() {
+    	System.out.print("Did you mean: ");
+    	String[] suggestion = new String[words.length];
+    	for (int i = 0; i < words.length; i++) {
+    		suggestion[i] = CommandWords.getClosest(words[i]);
+    		System.out.print(suggestion[i] + " ");
+    	}
+    	System.out.println();
+    	if (Parser.getCommand().is("yes")) {
+    		words = suggestion;
     	}
     }
     

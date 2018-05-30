@@ -50,10 +50,7 @@ public class Player extends Entity{
 		Command command = Parser.getCommand();
 		System.out.println();
 
-		if (command.isUnknown()) {
-			System.out.println("I don't know what you mean...");
-			return false;
-		}
+		
 
 		if (command.is("help"))
 			printHelp();

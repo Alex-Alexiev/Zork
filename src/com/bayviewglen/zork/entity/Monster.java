@@ -14,7 +14,6 @@ abstract public class Monster extends Entity {
 		this.stunned = false;
 		this.hitOdds = hitOdds;
 	}
-
 	public void attack(Entity e) {
 		if (Math.random() < (hitOdds/100.0)) {
 			System.out.println(this.getName() + " has attacked you (-" + this.getDamage() + ")");

@@ -124,10 +124,6 @@ public class Combat {
 			System.out.println("\nWimp\n");
 			return false;
 		}
-		if (playerCommand.numOfWords() < 2) {
-			System.out.println("Attack what?");
-			return true;
-		}
 
 		// Legs of Lass special case
 		Weapon weapon = player.getWeapon();
@@ -140,17 +136,27 @@ public class Combat {
 		}
 
 		// Normal attack
-		String monsterName = Command.mergeFinalWords(playerCommand, 1);
-		String monsterId = monsterName.replaceAll("\\s+", "");
-
+		String monsterId = findMonsterId(playerCommand);
+		
+		if (monsterId == null) return true;
+		
 		for (Entity e : enemies) {
-			if (e.getId().equals(monsterId)) {
+			if (e.getId().equals(monsterId.trim().toLowerCase())) {
 				player.attack(e);
 				return true;
 			}
 		}
 		
 		return true;
+	}
+
+	private String findMonsterId(Command playerCommand) {
+		String merged = Command.mergeFinalWords(playerCommand, 0);
+		String[] monsters = CommandWords.getRelatedWords("monsters");
+		for (String monster : monsters) {
+			if (merged.indexOf(monster.trim()) != -1) return monster;
+		}
+		return null;
 	}
 
 	/*

@@ -1,13 +1,12 @@
 move: go, move, walk, run, hop
 location: room, place, spot, location, where
-excrete: excrete, poop, poo
 search: search, find, look
 inventory: inventory, items, things, supply
 eat: eat, consume, bite, chew, ingest, snack, dine, lunch, munch, gorge
 pickup: take, retrieve, aquire, receive, snag, grab, pick, collect
 equipment: weapons, armor, equipment, shield, apparatus, devices, attachments, gadgets, outfit, tools
 unequip: unequip, holster
-help: help
+help: help, commands
 welfare: welfare
 drop: drop
 equip: equip
@@ -15,5 +14,8 @@ talk: talk
 quit: quit
 fight: fight, engage, destroy
 leave: leave
+determiner: the, a, some, this, that, every, each, their, to, up, them
+directions: north, south, east, west
 yes: yes, yeah, sure, okay
-determiner: the, a, some, this, that, every, each, their, to, up
+no: no, nah, ney
+monsters: bloodpriest, desecratedcorpse, eldritchinfected, hearthoftheisland, plaguerat, rabidhag, ravinglunatic, sulfuriccrawler
