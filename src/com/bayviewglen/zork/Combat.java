@@ -56,7 +56,8 @@ public class Combat {
 			setPreviousHealths();
 			printStats();
 			if (!playerAttack()) {
-				System.out.println("Back to the previous room\n");
+				System.out.println("Back to the previous room");
+				combatEnded();
 				return false;
 			}
 			removeDeadEnemies();
@@ -64,16 +65,12 @@ public class Combat {
 			player.turnEnded();
 		}
 		if (enemies.size() <= 0) {
-			restartMainMusic();
-			player.setDamageScaler(1);
+			combatEnded();
 			System.out.println("The monsters are slain\n");
-			player.combat(false);
 			return true;
 		} else {
-			restartMainMusic();
-			player.setDamageScaler(1);
+			combatEnded();
 			System.out.println("Oops, try again next time...");
-			player.combat(false);
 		}
 		return false;
 	}
@@ -82,6 +79,12 @@ public class Combat {
 		Sound.stop();
 		Sound mainThemeMusic = new Sound("data\\mainmusic.wav");
 		mainThemeMusic.loop();
+	}
+	
+	private void combatEnded() {
+		restartMainMusic();
+		player.setDamageScaler(1);
+		player.combat(false);
 	}
 
 	/*
