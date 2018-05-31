@@ -254,9 +254,17 @@ class Game {
 	
 	private void printWelcome() {
 		System.out.println();
-		System.out.println("Welcome to Zork!");
-		System.out.println("Zork is a new, incredibly boring adventure game.");
-		System.out.println("Type 'help' if you need help.");
+		System.out.println("Hello adventurer!");
+		System.out.println("This is the beginning of a long and perilous journey.");
+		System.out.println("Your village has been suffering from an intense famine.");
+		System.out.println("All the crops are dying, rotten and diseased.");
+		System.out.println("The village elders say this is a curse from an island far off the coast.");
+		System.out.println("It is there that a most unholy force imposes itself on all within its proximity.");
+		System.out.println("Tearing the minds of the living, and distorting the flesh of the dead.");
+		System.out.println("This is the beginning of a long and perilous journey.");
+		System.out.println("You must end this curse once and for all.");
+		System.out.println("You must slay the Heart Of The Island");
+		System.out.println("Of course, if you need help, type 'help' and the great spirit will guide you.");
 		System.out.println();
 		player.printLocation();
 		System.out.println();
