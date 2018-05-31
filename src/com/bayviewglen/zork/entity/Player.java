@@ -300,6 +300,7 @@ public class Player extends Entity {
 					System.out.println("You picked up " + amount + " " + item.getName());
 			} else {
 				System.out.println("You picked up a " + item.getName());
+				System.out.println(item.getDescription());
 			}
 		} else {
 			System.out.println("The room has no " + itemName + "s");
