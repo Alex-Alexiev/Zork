@@ -7,7 +7,7 @@ import com.bayviewglen.zork.items.Weapon;
 public class CleaverOfGiants extends Weapon{
 
 	public CleaverOfGiants() {
-		super("Cleaver of Giants", "Not just for cutting the beanstalk.", 0, 50);
+		super("Cleaver of Giants", "Not just for cutting the beanstalk.", 0, 50, 10);
 	}
 	
 	public void ability(Entity e, Player player){

@@ -10,8 +10,8 @@ public class DraculasBloodthirstier extends Weapon {
 	private int specialDamage = 30;
 
 	public DraculasBloodthirstier() {
-		super("Dracula�s Bloodthirstier", "Forged by the famous Lord Dracula. "
-				+ "This version is an improvement upon his earlier sword: The Bloodthirster.", 400, 50);
+		super("Dracula's Bloodthirstier", "Forged by the famous Lord Dracula. "
+				+ "This version is an improvement upon his earlier sword: The Bloodthirster.", 400, 50, 25);
 	}
 
 	public void ability(Entity e, Player player) {

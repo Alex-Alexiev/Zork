@@ -3,6 +3,7 @@ package com.bayviewglen.zork.items;
 import com.bayviewglen.zork.entity.Entity;
 import com.bayviewglen.zork.entity.Monster;
 import com.bayviewglen.zork.entity.Player;
+import com.bayviewglen.zork.items.weapons.BareHands;
 
 public class Weapon extends Item{
 	
@@ -14,15 +15,19 @@ public class Weapon extends Item{
 	private double CRIT_PERCENT = 0.5;
 	private int CRIT_CHANCE = 20;
 	private int scaler;
+	private int durability;
+	private int maxDur;
 	
 	/*
 	 * Constructor
 	 */
-	public Weapon(String name, String description, int damage, int chance) {
+	public Weapon(String name, String description, int damage, int chance, int dur) {
 		super(name, 1, false);
 		this.damage = damage;
 		this.chance = chance;
 		this.scaler = 1;
+		this.durability = dur;
+		this.maxDur = dur;
 		setDescription(description);
 	}
 	
@@ -69,17 +74,33 @@ public class Weapon extends Item{
 	}
 	
 	public String longDescription() {
-		return super.getName() + "\n" + getDescription() + "\n Damage: " + this.damage;
+		if (this instanceof BareHands) {
+			return super.getName() + "\n" + getDescription() + "\n Damage: " + this.damage + "\n Durability: " + this.durability + "/infinity";
+		}
+		return super.getName() + "\n" + getDescription() + "\n Damage: " + this.damage + "\n Durability: " + this.durability + "/" + this.maxDur;
 	}
 	
 	/*
 	 * Attack method
 	 */
-	public void ability(Entity e, Player p){
+	private void ability(Entity e, Player p){
 		if (didHit()) {
 			int dam = (int)(getDamage() * p.getDamageScaler() + criticalHit());
 			e.setHealth(e.getHealth() - dam);
 			System.out.println("You attack " + e.getName() + " with " + getName() + " (-" + dam + ")");
+		}
+	}
+	
+	/*
+	 * Use
+	 */
+	public void use(Entity e, Player p) {
+		ability(e, p);
+		if (durability > 0)
+			durability--;
+		if (durability == 0) {
+			System.out.println(this.getName() + " has worn out");
+			p.removeWeapon();
 		}
 	}
 

@@ -10,7 +10,7 @@ public class LegsOfLass extends Weapon {
 	public LegsOfLass() {
 		super("Legs of Lass",
 				"Who knew the legs of some Scottish lady would make such fantastic bow arms? Such flexibility! Such Finesse!",
-				300, 60);
+				300, 60, 35);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -7,7 +7,7 @@ import com.bayviewglen.zork.items.Weapon;
 public class Bow extends Weapon{
 
 	public Bow() {
-		super("Bow", "Now you can fight, WITHOUT having to fight!", 75, 50);
+		super("Bow", "Now you can fight, WITHOUT having to fight!", 75, 50, 30);
 		// TODO Auto-generated constructor stub
 	}
 	

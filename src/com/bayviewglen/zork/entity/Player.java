@@ -486,11 +486,14 @@ public class Player extends Entity {
 	public void removeArmor() {
 		equippedArmor = null;
 	}
+	public void removeWeapon() {
+		equippedWeapon = new BareHands();
+	}
 
 	/*
 	 * Attacks
 	 */
 	public void attack(Entity e) {
-		equippedWeapon.ability(e, this);
+		equippedWeapon.use(e, this);
 	}
 }
