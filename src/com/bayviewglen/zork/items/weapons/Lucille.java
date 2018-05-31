@@ -11,7 +11,7 @@ public class Lucille extends Weapon{
 	private int POISON_LENGTH = 4;
 
 	public Lucille() {
-		super("Lucille", "Barbed wire baseball bat. Highly effective against asians and zombies.", 200, 80);
+		super("Lucille", "Barbed wire baseball bat. Highly effective against asians and zombies.", 200, 80, 50);
 	}
 	
 	public void ability(Entity e, Player p){
@@ -34,6 +34,8 @@ public class Lucille extends Weapon{
 	}
 	
 	public Poison getPoison() {
-		return new Poison(POISON_INC, POISON_LENGTH);
+		Poison ret = new Poison(POISON_INC, POISON_LENGTH);
+		ret.setId("poison");
+		return ret;
 	}
 }

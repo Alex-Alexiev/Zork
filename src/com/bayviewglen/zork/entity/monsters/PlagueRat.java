@@ -15,7 +15,9 @@ public class PlagueRat extends Monster {
 	}
 	
 	public Poison getPoison() {
-		return new Poison(POISON_INC, POISON_LENGTH);
+		Poison ret = new Poison(POISON_INC, POISON_LENGTH);
+		ret.setId("poison");
+		return ret;
 	}
 	
 	public void attack(Entity e) {

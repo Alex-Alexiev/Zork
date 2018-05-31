@@ -12,7 +12,9 @@ public class LeadArmor extends Armor {
 	private final int POISON_LENGTH = 3;
 	
 	public Poison getPoison() {
-		return new Poison(POISON_INC, POISON_LENGTH);
+		Poison ret = new Poison(POISON_INC, POISON_LENGTH);
+		ret.setId("poison");
+		return ret;
 	}
 	
 	public LeadArmor() {
