@@ -14,7 +14,7 @@ talk: talk
 quit: quit
 fight: fight, engage, destroy
 leave: leave
-determiner: determiner, the, a, some, on, this, that, every, each, their, to, up, them
+determiner: determiner, with, the, a, some, on, this, that, every, each, their, to, up, them
 directions: north, south, east, west
 yes: yes, yeah, sure, okay
 no: no, nah, ney

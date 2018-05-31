@@ -13,7 +13,7 @@ public class NPC extends Entity {
 	}
 	
 	/*
-	 * Returns a random reponse from the NPC's 
+	 * Returns a random response from the NPC's 
 	 * list of responses
 	 */
 	public String getResponse() {

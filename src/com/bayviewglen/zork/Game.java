@@ -183,11 +183,12 @@ class Game {
 		}
 	}
 	
-	private void initNPCs(String fileName) {
+	private void initNPCs(String fileName) throws Exception {
 		npcData = new HashMap<String, ArrayList<String>>();
 		Scanner npcScanner;
 		try {
 			npcScanner = new Scanner(new File(fileName));
+			//System.out.println(npcScanner.next());
 			while (npcScanner.hasNext()) {
 				String[] firstLine = npcScanner.nextLine().split(" ");
 				String name = "";
@@ -220,11 +221,10 @@ class Game {
 	
 	private void initialize() {
 		try {
-			initNPCs("data/npc.dat");
-			initRooms("data/Rooms.dat");
+			initNPCs("data/npcText.dat");
+			initRooms("data/rooms.dat");
 			player = new Player(masterRoomMap.get("CABIN_1"));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
