@@ -28,7 +28,7 @@ public class Combat {
 			System.out.println(e);
 		}
 		System.out.println();
-		System.out.println("Do you chose to fight this monster? If you chose not to fight,\nyou will return to the next room\n");
+		System.out.println("Do you chose to fight this monster? If you chose not to fight, you will return to the next room\n");
 		Command response = Parser.getCommand();
 		System.out.println();
 		if (response.is("yes") || response.is("fight")) {
@@ -132,38 +132,40 @@ public class Combat {
                 System.out.println("You barely escaped!");
                 return false;
             }
-            if (command.numOfWords() < 2) {
-                System.out.println("Attack what?");
-            }
-
-
-            // Legs of Lass special case
-            Weapon weapon = player.getWeapon();
-            if (weapon instanceof LegsOfLass) {
-                int monstersLength = enemies.size();
-                for (Entity e : enemies) {
-                    ((LegsOfLass) weapon).ability(e, monstersLength, player);
+            
+            if (player.wantsToAttack()) {
+                if (command.numOfWords() < 2) {
+                    System.out.println("Attack what?");  
                 }
-                return true;
-            }
-
-            // Normal attack
-            String monsterId = findMonsterId(command);
-            if (monsterId != null) {
-
-                for (Entity e : enemies) {
-                    if (e.getId().equals(monsterId.trim().toLowerCase())) {
-                        player.attack(e);
-                        return true;
+                // Legs of Lass special case
+                Weapon weapon = player.getWeapon();
+                if (weapon instanceof LegsOfLass) {
+                    int monstersLength = enemies.size();
+                    for (Entity e : enemies) {
+                        ((LegsOfLass) weapon).ability(e, monstersLength, player);
                     }
-                    else {
-                        System.out.println("No enemy by that name, try again!");
+                    return true;
+                }
+
+                // Normal attack
+                String monsterId = findMonsterId(command);
+                if (monsterId != null) {
+                    for (Entity e : enemies) {
+                        if (e.getId().equals(monsterId.trim().toLowerCase())) {
+                            player.attack(e);
+                            return true;
+                        }
+                        else {
+                            System.out.println("No enemy by that name, try again!");
+                        }
                     }
                 }
+                else if (monsterId == null && !(command.numOfWords() < 2)) {
+                    System.out.println("No enemy by that name, try again!");
+                }
             }
-            else if (monsterId == null&&!(command.numOfWords() < 2)) {
-                System.out.println("No enemy by that name, try again!");
-            }
+            
+            System.out.println();
         }
 	}
 

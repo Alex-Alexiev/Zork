@@ -38,7 +38,10 @@ public abstract class Entity {
 	 * Poison
 	 */
 	public void addPoison(Poison poison) {
-		System.out.println(this.getName()+" has been poisoned with "+poison.getId()+"!");
+		String verb = "has";
+		if (this instanceof Player)
+			verb = "have";
+		System.out.println(this.getName() + " " + verb + " been poisoned with "+poison.getId()+"!");
 		this.poisons.add(poison);
 	}
 

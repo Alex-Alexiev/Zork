@@ -19,3 +19,4 @@ directions: north, south, east, west
 yes: yes, yeah, sure, okay
 no: no, nah, ney
 monsters: bloodpriest, desecratedcorpse, eldritchinfected, hearthoftheisland, plaguerat, rabidhag, ravinglunatic, sulfuriccrawler
+attack: attack, fight

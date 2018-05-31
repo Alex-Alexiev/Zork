@@ -25,9 +25,10 @@ public class Player extends Entity {
 	private int maxHealth;
 	private double damageScaler;
 	private boolean inCombat;
+	private boolean wantsToAttack;
 
 	public Player(Room startingRoom) {
-		super("you");
+		super("You");
 		currentRoom = startingRoom;
 		inventory = new Inventory();
 		maxHealth = 500;
@@ -36,6 +37,7 @@ public class Player extends Entity {
 		equippedArmor = null;
 		damageScaler = 1;
 		inCombat = false;
+		wantsToAttack = false;
 	}
 
 	/**
@@ -77,6 +79,10 @@ public class Player extends Entity {
 				dropItem(command);
 			else if (command.is("talk"))
 				talk(command);
+		}
+		else {
+			if (command.is("attack"))
+				wantsToAttack = true;
 		}
 
 		/*
@@ -464,6 +470,10 @@ public class Player extends Entity {
 	public double getDamageScaler() {
 		return damageScaler;
 	}
+	
+	public boolean wantsToAttack() {
+		return wantsToAttack;
+	}
 
 	/*
 	 * Setters
@@ -479,7 +489,6 @@ public class Player extends Entity {
 		}
 		damageScaler = scaler;
 	}
-
 	public void combat(boolean b) {
 		inCombat = b;
 	}
@@ -488,6 +497,9 @@ public class Player extends Entity {
 	}
 	public void removeWeapon() {
 		equippedWeapon = new BareHands();
+	}
+	public void turnEnded() {
+		wantsToAttack = false;
 	}
 
 	/*

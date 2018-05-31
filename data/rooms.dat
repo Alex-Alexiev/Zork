@@ -1,6 +1,6 @@
 Room Name: Cabin 1
 Room Description: You in an old ship's quarters. You are sailing to an Island far across the sea. <br>Go out to the deck and explore.
-Room Inventory: Food steak 5, Food egg 4, Armor BasicArmor, Weapon Dagger
+Room Inventory: Food steak 50, Food egg 20, Armor BasicArmor, Weapon Dagger
 Room Entity: 
 Exit Rooms: W-Main Deck 1
 
@@ -12,8 +12,8 @@ Exit Rooms: W-Main Deck 2
 
 Room Name: Main Deck 1
 Room Description: The salty briny air fills your nostrils.<br>The ship's crew works tirelessly, scrubbing the deck clean of blood.<br>Shouting can be heard from the captian's deck.
-Room Inventory: Food rat -4
-Room Entity: Monster RavingLunatic
+Room Inventory: Food rat -10
+Room Entity: Monster PlagueRat, Monster DesecratedCorpse
 Exit Rooms: E-Cabin 2, W-Captains Deck 1
 
 Room Name: Main Deck 2
@@ -22,27 +22,39 @@ Room Inventory:
 Room Entity: 
 Exit Rooms: E-Cabin 2, W-Captains Deck 2, N-Docks 1
 
+Room Name: Main Deck 3
+Room Description: The crew relaxes on the ship's deck. Though you can tell they are restless.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: N-Docks 2, W-Captains Deck 2, N-Docks 1
+
 Room Name: Captains Deck 1
 Room Description: The Captain is barking orders, while turning the wheel.
-Room Inventory: Food rottensteak -3
-Room Entity: NPC CaptainMorgan
+Room Inventory: 
+Room Entity: NPC Captain Morgan
 Exit Rooms: E-Main Deck 2
 
 Room Name: Captains Deck 2
 Room Description: The Captain is standing still. He looks stoic as ever.
 Room Inventory: 
-Room Entity: NPC CaptainMorgan
+Room Entity: 
 Exit Rooms: E-Main Deck 2
 
 Room Name: Docks 1
 Room Description: You are on the docks. Old rotten wood creaks under your feet.
 Room Inventory: 
-Room Entity: NPC HerrHarker
+Room Entity: NPC Herr Harker
 Exit Rooms: N-Shore 1, S-Main Deck 2
+
+Room Name: Docks 2
+Room Description: You return to the docks. The crew looks at you with admiration.
+Room Inventory: 
+Room Entity: 
+Exit Rooms: N-Shore 1, S-Main Deck 3
 
 Room Name: Shore 1
 Room Description: You are on the shore of the Island.
-Room Inventory: 
+Room Inventory: Weapon ShortSword
 Room Entity: NPC Sailor
 Exit Rooms: S-Docks 1, N-Forest Entrance 1
 
@@ -61,40 +73,40 @@ Room Entity:
 Exit Rooms: S-Misty Path 2, N-Forest Intersection 1
 
 Room Name: Misty Path 2
-Room Description: There is no Shore in sight. <br>The air is as still as a corpse. The mist is all encompassing.
+Room Description: There is no Shore in sight. <br>The air is as still as a corpse. The mist is all encompassing. <br>You sense something is amiss and know you will return here.
 Room Inventory: 
 Room Entity: 
 Exit Rooms: S-Misty Path 2, N-Forest Intersection 1
 
 Room Name: Misty Path 3
-Room Description: You feel you have been here before.
+Room Description: You feel you have been here before. 
 Room Inventory: 
 Room Entity: 
-Exit Rooms: S-Misty Path 2, N-Forest Intersection 1
+Exit Rooms: N-Forest Intersection 1
 
 Room Name: Forest Intersection 1
 Room Description:  The path splits off into three directions. <br>The mist prevents looking farther without further exploration.
-Room Inventory: Food Rotten Apple 1
-Room Entity: Monster RavingLunatic, Monster BloodPriest
+Room Inventory: Food rotten apple -20
+Room Entity: Monster RavingLunatic
 Exit Rooms: S-Misty Path 2, N-Silent Hill 1, W-West Forest Crossroads 1, E-East Forest Crossroads 1
 
 Room Name: Silent Hill 1
-Room Description: A small hill lies in the center of a clearing. <br>There is no sound, only silence. 
-Room Inventory: 
-Room Entity: Monster EldritchInfected, Monster RavingLunatic
+Room Description: A small hill lies in the center of a clearing. <br>There is no sound, only silence. A corpse lies on the ground<.
+Room Inventory: Armor SteelArmor, Food meaty bone 20, Weapon Bow
+Room Entity: 
 Exit Rooms: S-Forest Intersection 1, N-Misty Path 3
 
 /s First roads
 
 Room Name: West Forest Crossroads 1
 Room Description: The path splits off into two directions. <br>The mist prevents looking farther without further exploration.
-Room Inventory: 
-Room Entity: Monster BloodPriest
+Room Inventory: Armor BasicArmor
+Room Entity: Monster PlagueRat
 Exit Rooms: E-Forest Intersection 1, W-Abandoned Trench 1, N-Rocky West Path 1
 
 Room Name: East Forest Crossroads 1
 Room Description: The path splits off into two directions (north and west). <br>The mist prevents looking farther without further exploration.
-Room Inventory: 
+Room Inventory: Weapon ShortSword
 Room Entity: Monster BloodPriest, EldritchInfected
 Exit Rooms: W-Forest Intersection 1, E-Beaten Path 1, N-Rocky East Path 1
 
@@ -102,7 +114,7 @@ Exit Rooms: W-Forest Intersection 1, E-Beaten Path 1, N-Rocky East Path 1
 
 Room Name: Beaten Path 1
 Room Description: The humid air clings to your lungs. Felled, festering trees<br>litter the path, and fungus flourishes in their remains.<br> Flies swarm the fetid stumps, feeding on the sap.
-Room Inventory: 
+Room Inventory: Armor BasicArmor
 Room Entity: Monster DesecratedCorpse, Monster PlagueRat
 Exit Rooms: W-East Forest Crossroads 1, E-Rotten Road 1
 
@@ -120,19 +132,19 @@ Exit Rooms: S-East Forest Crossroads 1, E-East Meadow 1, N-East Side Gorge 1
 
 Room Name: East Side Gorge 1
 Room Description: A large scar separates the land. On the other side of the gorge, <br>you see another path.
-Room Inventory: 
+Room Inventory: Weapon DraculasBloodthirstier
 Room Entity: Monster SulfuricCrawler
 Exit Rooms: S-Rocky East Path 1, N-Centerpoint 1
 
 Room Name: Centerpoint 1
 Room Description: The gorge ends. You see the West Side Gorge Path begin.
 Room Inventory: 
-Room Entity: 
+Room Entity: Monster RabidHag, Monster PlagueRat
 Exit Rooms: S-East Side Gorge 1, W-West Side Gorge 1
 
 Room Name: East Meadow 1
 Room Description: You come across small patch of low lying plants. <br>They crinkle under your feet. They are all dead.
-Room Inventory: 
+Room Inventory: Weapon LegsOfLass
 Room Entity: 
 Exit Rooms: W-Rocky East Path 1, N-Undead End 1, E-East Complex 1
 
@@ -144,15 +156,9 @@ Exit Rooms: S-East Meadow 1, N-Misty Path 3
 
 /s West
 
-Room Name: Centerpoint 2
-Room Description: The gorge ends. You see the East Side Gorge Path begin.
-Room Inventory: 
-Room Entity: Monster RabidHag, Monster PlagueRat
-Exit Rooms: S-East Side Gorge 1, W-West Side Gorge 1
-
 Room Name: Abandoned Trench 1
 Room Description: In the place of the path is a scar across the ground, filled with<br>the remains of a group of explorers long gone, impaled upon tree branches. <br>Saplings are sprouting from their bones, and out their eye sockets.
-Room Inventory: 
+Room Inventory: Weapon LongSword
 Room Entity: Monster SulfuricCrawler
 Exit Rooms: E-West Forest Crossroads 1, N-Misty Path 3
 
@@ -166,33 +172,33 @@ Room Name: West Side Gorge 1
 Room Description: A large scar separates the land. On the other side of the gorge, <br>you see another path.
 Room Inventory: 
 Room Entity: Monster EldritchInfected
-Exit Rooms: S-Rocky West Path 1, N-Centerpoint 2
+Exit Rooms: S-Rocky West Path 1, E-Centerpoint 1
 
 /s Eastcomplex
 
-Room Name: East Complex 1
+Room Name: East Complex One 1
 Room Description: A tangled maze of trees and tall grass sits in front of you.
-Room Inventory:
+Room Inventory: Food grapes 20
 Room Entity:
 Exit Rooms: W-East Meadow 1, N-East Complex 2
 
-Room Name: East Complex 2
+Room Name: East Complex Two 1
 Room Description: The forest envelopes you.
-Room Inventory:
+Room Inventory: Food rotting flesh -10
 Room Entity:
-Exit Rooms: S-East Complex 1, W-East Complex 3
+Exit Rooms: S-East Complex One 1, W-East Complex Three 1
 
-Room Name: East Complex 3
+Room Name: East Complex Three 1
 Room Description: The scent of rotten flesh fills your nostrils.
-Room Inventory:
+Room Inventory: Food rotten flesh -20
 Room Entity:
-Exit Rooms: E-East Complex 2, N-Trisplit Path 1
+Exit Rooms: E-East Complex Two 1, N-Trisplit Path 1
 
 Room Name: Trisplit Path 1
-Room Description: The path splits into 3 directions.
-Room Inventory: 
+Room Description: The path splits into 3 directions. A corpse sits on a stump.
+Room Inventory: Weapon ShortSword, Armor AncientArmour
 Room Entity: 
-Exit Rooms: S-East Complex 3, W-Crimson Field 1, E-Decaying Marsh 1, N-Twilight Graveyard 1
+Exit Rooms: S-East Complex Three 1, W-Crimson Field 1, E-Decaying Marsh 1, N-Twilight Graveyard 1
 
 Room Name: Crimson Field 1
 Room Description: The field is covered in dark red flowers. The smell of iron stains the air.
@@ -215,69 +221,49 @@ Exit Room: S-Trisplit Path 1, N-Haunted Mausoleum 1
 Room Name: Haunted Mausoleum 1
 Room Description: You shouldn't be here.
 Room Inventory: 
-Room Entity: 
-Exit Rooms: N-Misty Path 3, W-Ivy Ridden Path 1, E-Forgotten Treeline 1
+Room Entity: Monster EldritchInfected
+Exit Rooms: W-Ivy Ridden Path 1, E-Forgotten Treeline 1
 
 Room Name: Forgotten Treeline 1
 Room Description: Ancient twisted trunks line the sides of this path. 
-Room Inventory: 
-Room Entity: 
-Exit Rooms: N-Misty Path 3, W-Haunted Mausoleum 1
+Room Inventory: Armor SteelArmor
+Room Entity: Monster SulfuricCrawler
+Exit Rooms: W-Haunted Mausoleum 1
 
 Room Name: Ivy Ridden Path 1
 Room Description: Spiraling ivy vines cover a stone wall.
-Room Inventory: Food Poison Ivy -3
-Room Entity: 
-Exit Rooms: N-Misty Path 3, E-Haunted Mausoleum 1, W-Forest Exit 1
-
-/s westcomplex
-
-Room Name: West Complex 1
-Room Description: qwdqw
-Room Inventory: 
-Room Entity: 
-Exit Rooms: N-West Complex 2
-
-Room Name: West Complex 2
-Room Description: qwdqw
-Room Inventory: 
-Room Entity: 
-Exit Rooms: E-West Complex 3, S-West Complex 1
-
-Room Name: West Complex 3
-Room Description: qwdqw
-Room Inventory: 
-Room Entity: 
-Exit Rooms: W-West Complex 2
+Room Inventory: Food Poison Ivy -30, Food potion 100
+Room Entity: Monster PlagueRat, Monster DesecratedCorpse
+Exit Rooms: E-Haunted Mausoleum 1, W-Forest Exit 1
 
 /s end
 
 Room Name: Forest Exit 1
 Room Description: You have found the exit!
-Room Inventory: 
+Room Inventory: Food super potion 200
 Room Entity: 
 Exit Rooms: E-Ivy Ridden Path 1, N-Cave Clearing 1
 
 Room Name: Cave Clearing 1
-Room Description: A light breeze blows agaisnt you. A cave mouth is ahead.
+Room Description: A light breeze blows against you. A cave mouth is ahead.
 Room Inventory: 
 Room Entity: 
 Exit Rooms: S-Forest Exit 1, N-Cave Entrance 1
 
 Room Name: Cave Entrance 1
-Room Description: You shouldn't be here. A dreaded beating can be heard.
-Room Inventory: 
+Room Description: You shouldn't be here. A dreaded beating can be heard. A god killing<br>weapon rests before you.
+Room Inventory: Weapon CleaverOfGiants
 Room Entity: 
 Exit Rooms: S-Cave Clearing 1, N-Cave 1
 
 Room Name: Cave 1
-Room Description: Blood pools at you feet.
+Room Description: Blood pools at you feet and the drumming rings your ears.
 Room Inventory: 
 Room Entity: Monster HeartOfTheIsland
 Exit Rooms: S-Cave Entrance 1
 
 Room Name: Placebo Room 1
 Room Description: You shouldn't be here.
-Room Inventory: 
+Room Inventory: Weapon ShortSword
 Room Entity: 
 Exit Rooms: N-Misty Path 3
