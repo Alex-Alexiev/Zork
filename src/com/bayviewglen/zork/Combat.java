@@ -61,6 +61,7 @@ public class Combat {
 			}
 			removeDeadEnemies();
 			enemiesAttack();
+			player.turnEnded();
 		}
 		if (enemies.size() <= 0) {
 			restartMainMusic();

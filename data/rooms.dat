@@ -13,7 +13,7 @@ Exit Rooms: W-Main Deck 2
 Room Name: Main Deck 1
 Room Description: The salty briny air fills your nostrils.<br>The ship's crew works tirelessly, scrubbing the deck clean of blood.<br>Shouting can be heard from the captian's deck.
 Room Inventory: Food rat -10
-Room Entity: Monster PlagueRat, Monster DesecratedCorpse
+Room Entity: 
 Exit Rooms: E-Cabin 2, W-Captains Deck 1
 
 Room Name: Main Deck 2
@@ -179,7 +179,7 @@ Exit Rooms: S-Rocky West Path 1, E-Centerpoint 1
 Room Name: East Complex One 1
 Room Description: A tangled maze of trees and tall grass sits in front of you.
 Room Inventory: Food grapes 20
-Room Entity:
+Room Entity: Monster EldritchInfected
 Exit Rooms: W-East Meadow 1, N-East Complex 2
 
 Room Name: East Complex Two 1
@@ -196,19 +196,19 @@ Exit Rooms: E-East Complex Two 1, N-Trisplit Path 1
 
 Room Name: Trisplit Path 1
 Room Description: The path splits into 3 directions. A corpse sits on a stump.
-Room Inventory: Weapon ShortSword, Armor AncientArmour
-Room Entity: 
+Room Inventory: Weapon ShortSword, Armor AncientArmour, Food big potion 300
+Room Entity: Monster DesecratedCorpse
 Exit Rooms: S-East Complex Three 1, W-Crimson Field 1, E-Decaying Marsh 1, N-Twilight Graveyard 1
 
 Room Name: Crimson Field 1
 Room Description: The field is covered in dark red flowers. The smell of iron stains the air.
-Room Inventory: 
+Room Inventory: Food flower 50
 Room Entity: 
 Exit Rooms: E-Trispilt Path 1, N-Misty Path 3
 
 Room Name: Decaying Marsh 1
-Room Description: 
-Room Inventory: The rotten plant life sloushes around your legs as you wade through the swamp.
+Room Description: The rotten plant life sloushes around your legs as you wade through the swamp.
+Room Inventory: Food plant 100
 Room Entity: 
 Exit Rooms: W-Trisplit Path 1, N-Misty Path 3
 
@@ -220,7 +220,7 @@ Exit Room: S-Trisplit Path 1, N-Haunted Mausoleum 1
 
 Room Name: Haunted Mausoleum 1
 Room Description: You shouldn't be here.
-Room Inventory: 
+Room Inventory: Food small potion 40
 Room Entity: Monster EldritchInfected
 Exit Rooms: W-Ivy Ridden Path 1, E-Forgotten Treeline 1
 
@@ -246,7 +246,7 @@ Exit Rooms: E-Ivy Ridden Path 1, N-Cave Clearing 1
 
 Room Name: Cave Clearing 1
 Room Description: A light breeze blows against you. A cave mouth is ahead.
-Room Inventory: 
+Room Inventory: Food mini potion 10
 Room Entity: 
 Exit Rooms: S-Forest Exit 1, N-Cave Entrance 1
 
