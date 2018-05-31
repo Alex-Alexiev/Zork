@@ -41,7 +41,12 @@ public abstract class Entity {
 		String verb = "has";
 		if (this instanceof Player)
 			verb = "have";
-		System.out.println(this.getName() + " " + verb + " been poisoned with "+poison.getId()+"!");
+		System.out.println(this.getName() + " " + verb + " been poisoned with "+poison.getId()+"!" );
+		if (poison.isFinalAction()) {
+			System.out.println("Lose "+poison.getDamage()+" health after "+poison.getLength()+" moves.");
+		} else {
+			System.out.println("Lose "+poison.getDamage()+" health after each turn for "+poison.getLength()+" turns.");
+		}
 		this.poisons.add(poison);
 	}
 

@@ -223,7 +223,9 @@ class Game {
 		try {
 			initNPCs("data/npcText.dat");
 			initRooms("data/rooms.dat");
-			player = new Player(masterRoomMap.get("CABIN_1"));
+			//player = new Player(masterRoomMap.get("CABIN_1"));
+
+			player = new Player(masterRoomMap.get("EAST_FOREST_CROSSROADS_1"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

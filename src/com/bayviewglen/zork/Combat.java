@@ -159,9 +159,6 @@ public class Combat {
                             player.attack(e);
                             return true;
                         }
-                        else {
-                            System.out.println("No enemy by that name, try again!");
-                        }
                     }
                 }
                 else if (monsterId == null && !(command.numOfWords() < 2)) {
