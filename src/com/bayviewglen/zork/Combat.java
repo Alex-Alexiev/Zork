@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.bayviewglen.zork.entity.Entity;
 import com.bayviewglen.zork.entity.Monster;
 import com.bayviewglen.zork.entity.Player;
+import com.bayviewglen.zork.entity.monsters.HeartOfTheIsland;
 import com.bayviewglen.zork.entity.monsters.SulfuricCrawler;
 import com.bayviewglen.zork.items.Weapon;
 import com.bayviewglen.zork.items.weapons.Bow;
@@ -183,6 +184,10 @@ public class Combat {
 			if (enemies.get(i).getHealth() <= 0) {
 				if (enemies.get(i) instanceof SulfuricCrawler) {
 					((SulfuricCrawler) enemies.get(i)).deadMove(player);
+				}
+				if (enemies.get(i) instanceof HeartOfTheIsland) {
+					System.out.println("Congratulations! You have beaten the Heart Of The Island and have *__insert rest of game winning message here__*");
+					System.exit(0);
 				}
 				enemies.remove(i);
 				i--;
