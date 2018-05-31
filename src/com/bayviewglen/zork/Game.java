@@ -190,7 +190,10 @@ class Game {
 			npcScanner = new Scanner(new File(fileName));
 			while (npcScanner.hasNext()) {
 				String[] firstLine = npcScanner.nextLine().split(" ");
-				String name = firstLine[0];
+				String name = "";
+				for (int i = 0; i < firstLine.length - 1; i++)
+					name += firstLine[i] + " ";
+				name = name.trim();
 				int numResponses = Integer.parseInt(firstLine[firstLine.length - 1]);
 				
 				npcData.put(name, new ArrayList<String>());

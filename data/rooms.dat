@@ -1,7 +1,7 @@
 Room Name: Cabin 1
 Room Description: You in an old ship's quarters. You are sailing to an Island far across the sea. <br>Go out to the deck and explore.
 Room Inventory: Food steak 50, Food egg 20, Armor BasicArmor, Weapon Dagger
-Room Entity: 
+Room Entity: NPC Helpful Helper
 Exit Rooms: W-Main Deck 1
 
 Room Name: Cabin 2
@@ -63,7 +63,7 @@ Exit Rooms: S-Docks 1, N-Forest Entrance 1
 Room Name: Forest Entrance 1 
 Room Description: The entrance to the "Forest of the Lost". <br>Beyond the endless labyrinth of trees lies a cave, leading to the heart of the island.
 Room Inventory: 
-Room Entity: 
+Room Entity: NPC Priest
 Exit Rooms: S-Shore 1, N-Misty Path 1
 
 Room Name: Misty Path 1
@@ -81,7 +81,7 @@ Exit Rooms: S-Misty Path 2, N-Forest Intersection 1
 Room Name: Misty Path 3
 Room Description: You feel you have been here before. 
 Room Inventory: 
-Room Entity: 
+Room Entity: NPC Helpful Helper
 Exit Rooms: N-Forest Intersection 1
 
 Room Name: Forest Intersection 1
@@ -93,7 +93,7 @@ Exit Rooms: S-Misty Path 2, N-Silent Hill 1, W-West Forest Crossroads 1, E-East 
 Room Name: Silent Hill 1
 Room Description: A small hill lies in the center of a clearing. <br>There is no sound, only silence. A corpse lies on the ground<.
 Room Inventory: Armor SteelArmor, Food meaty bone 20, Weapon Bow
-Room Entity: 
+Room Entity: NPC Lost Man
 Exit Rooms: S-Forest Intersection 1, N-Misty Path 3
 
 /s First roads
@@ -145,7 +145,7 @@ Exit Rooms: S-East Side Gorge 1, W-West Side Gorge 1
 Room Name: East Meadow 1
 Room Description: You come across small patch of low lying plants. <br>They crinkle under your feet. They are all dead.
 Room Inventory: Weapon LegsOfLass
-Room Entity: 
+Room Entity: NPC Helpful Helper
 Exit Rooms: W-Rocky East Path 1, N-Undead End 1, E-East Complex 1
 
 Room Name: Undead End 1
@@ -191,7 +191,7 @@ Exit Rooms: S-East Complex One 1, W-East Complex Three 1
 Room Name: East Complex Three 1
 Room Description: The scent of rotten flesh fills your nostrils.
 Room Inventory: Food rotten flesh -20
-Room Entity:
+Room Entity: NPC Soldier
 Exit Rooms: E-East Complex Two 1, N-Trisplit Path 1
 
 Room Name: Trisplit Path 1
@@ -215,7 +215,7 @@ Exit Rooms: W-Trisplit Path 1, N-Misty Path 3
 Room Name: Twilight Graveyard 1
 Room Description: A light mist faintly covers the ground. Tombstones unevenly cover the path.
 Room Inventory: 
-Room Entity:
+Room Entity: NPC Helpful Helper
 Exit Room: S-Trisplit Path 1, N-Haunted Mausoleum 1
 
 Room Name: Haunted Mausoleum 1
