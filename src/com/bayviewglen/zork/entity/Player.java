@@ -469,11 +469,22 @@ public class Player extends Entity {
 	 * Setters
 	 */
 	public void setDamageScaler(double scaler) {
+		if (damageScaler != scaler) {
+			if (scaler > 1) 
+				System.out.println("You are raged");
+			else if (scaler == 1) 
+				System.out.println("You are normal");
+			else if (scaler < 1) 
+				System.out.println("You are weakened");
+		}
 		damageScaler = scaler;
 	}
 
 	public void combat(boolean b) {
 		inCombat = b;
+	}
+	public void removeArmor() {
+		equippedArmor = null;
 	}
 
 	/*

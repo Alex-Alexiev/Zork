@@ -19,7 +19,7 @@ public class RabidHag extends Monster {
 			System.out.println(this.getName() + " has attacked you (-" + this.getDamage() + ")");
 			if (!e.hasRabies()) {
 				((Player)e).setDamageScaler(1.4);
-				Poison p = new Poison(250, 3);
+				Poison p = new Poison(50, 3);
 				p.setFinalAction(true);
 				p.setId("rabies");
 				e.addPoison(p);

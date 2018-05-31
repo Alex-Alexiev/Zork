@@ -11,7 +11,8 @@ public class SulfuricCrawler extends Monster {
 	}
 	
 	public void deadMove(Player p) {
-		p.hit(p.getArmorStrength());
+		p.removeArmor();
+		System.out.println("Your armor whithers away");
 	}
 	
 

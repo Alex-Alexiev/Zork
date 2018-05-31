@@ -53,6 +53,7 @@ public class Combat {
 		}
 
 		while (enemies.size() > 0 && player.getHealth() > 0) {
+			setPreviousHealths();
 			printStats();
 			if (!playerAttack()) {
 				System.out.println("Back to the previous room\n");
@@ -174,6 +175,19 @@ public class Combat {
 				return monster;
 		}
 		return null;
+	}
+	
+	/*
+	 * This is primarily for the BloodPriest 
+	 * Previous health is the health at the beginning of the turn
+	 */
+	private void setPreviousHealths() {
+		for (int i = 0; i < enemies.size(); i++) {
+			if (enemies.get(i) instanceof Monster) {
+				Monster m = (Monster) enemies.get(i);
+				m.setPrevHealth(m.getHealth());
+			}
+		}
 	}
 
 	/*

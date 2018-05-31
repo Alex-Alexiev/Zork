@@ -5,11 +5,13 @@ abstract public class Monster extends Entity {
 	private int damage;
 	private String description;
 	private int hitOdds;
+	private int prevHealth;
 
 	public Monster(String id, String description, int damage, int hitOdds, int health) {
 		super(id);
 		this.damage = damage;
 		this.health = health;
+		this.prevHealth = health;
 		this.description = description;
 		this.stunned = false;
 		this.hitOdds = hitOdds;
@@ -33,5 +35,13 @@ abstract public class Monster extends Entity {
 
 	public String toString() {
 		return getName() + ": " + description;
+	}
+	
+	public int getPrevHealth() {
+		return prevHealth;
+	}
+	
+	public void setPrevHealth(int i) {
+		prevHealth = i;
 	}
 }
