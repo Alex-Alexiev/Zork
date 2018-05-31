@@ -11,7 +11,7 @@ public class PlagueRat extends Monster {
 	private final int POISON_LENGTH = 3;
 
 	public PlagueRat() {
-		super("Plague Rat", "A giant rat, with rotten flesh, \nexposed ribcage and visible viscera", 10, 60, 350);
+		super("Plague Rat", "A giant rat, with rotten flesh, exposed ribcage and visible viscera", 10, 60, 350);
 	}
 	
 	public Poison getPoison() {
