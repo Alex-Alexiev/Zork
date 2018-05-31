@@ -24,6 +24,8 @@ public class RabidHag extends Monster {
 				p.setId("rabies");
 				e.addPoison(p);
 			}
+		}else{
+			System.out.println(getId() + " has missed the hit!");
 		}
 	}
 }
