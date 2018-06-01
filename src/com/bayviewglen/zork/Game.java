@@ -221,7 +221,7 @@ class Game {
 	 */
 	public Game() {
 		try {
-			initNPCs("data/npcText.dat");
+			initNPCs("data/npcTexty.dat");
 			initRooms("data/rooms.dat");
 			player = new Player(masterRoomMap.get("CABIN_1"));
 		} catch (Exception e) {
