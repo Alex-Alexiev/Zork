@@ -55,7 +55,7 @@ Exit Rooms: N-Shore 1, S-Main Deck 3
 Room Name: Shore 1
 Room Description: You are on the shore of the Island.
 Room Inventory: Weapon ShortSword
-Room Entity: NPC Sailor
+Room Entity: NPC Sailor, NPC Shopkeeper
 Exit Rooms: S-Docks 1, N-Forest Entrance 1
 
 /s Forest Of The Lost
@@ -185,7 +185,7 @@ Exit Rooms: W-East Meadow 1, N-East Complex 2
 Room Name: East Complex Two 1
 Room Description: The forest envelopes you.
 Room Inventory: Food rotting flesh -10
-Room Entity:
+Room Entity: NPC Lizardman
 Exit Rooms: S-East Complex One 1, W-East Complex Three 1
 
 Room Name: East Complex Three 1
