@@ -1,5 +1,7 @@
 package com.bayviewglen.zork;
 
+import java.awt.event.KeyListener;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Constructor;
@@ -263,6 +265,8 @@ class Game {
 		resetRooms();
 		play();
 	}
+	
+	
 
 	/**
 	 * Print out the opening message for the player.
@@ -281,6 +285,9 @@ class Game {
 		System.out.println("You must slay the Heart Of The Island");
 		System.out.println("Of course, if you need help, type 'help' and the great spirit will guide you.");
 		System.out.println();
+		System.out.println("Some tips that may be useful:\nWhen you pick up a weapon or armor make sure to equip it\n"
+				+ "Trying talking to the other characters in the room\n"
+				+ "At any time, just press 'p' to use the previous command. Could be useful during a battle.\n");
 		player.printLocation();
 		System.out.println();
 	}

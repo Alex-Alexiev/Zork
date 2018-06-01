@@ -22,6 +22,8 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Parser {
+	
+	private static Command prevCommand;
 
 	public static Command getCommand() {
 		String inputLine = ""; // will hold the full input line
@@ -35,6 +37,12 @@ public class Parser {
 		} catch (java.io.IOException exc) {
 			System.out.println("There was an error during reading: " + exc.getMessage());
 		} 
+		
+		if (inputLine.equals("p")) {
+			if (prevCommand != null) {
+				return prevCommand;
+			}
+		}
 
 		words = inputLine.split(" ");
 		
@@ -47,7 +55,7 @@ public class Parser {
 		Command command = new Command(words);
 		
 		//command.check();
-
+		prevCommand = command;
 		return command;
 	}
 
