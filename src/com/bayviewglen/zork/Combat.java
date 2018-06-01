@@ -203,7 +203,9 @@ public class Combat {
 					((SulfuricCrawler) enemies.get(i)).deadMove(player);
 				}
 				if (enemies.get(i) instanceof HeartOfTheIsland) {
-					System.out.println("Congratulations! You have beaten the Heart Of The Island and have *__insert rest of game winning message here__*");
+					System.out.println("Congratulations! You have beaten the Heart Of The Island");
+					System.out.println("Peace is restored so you sit back on a rock and crack open a cold one");
+					System.out.println("T H E E N D");
 					System.exit(0);
 				}
 				enemies.remove(i);
