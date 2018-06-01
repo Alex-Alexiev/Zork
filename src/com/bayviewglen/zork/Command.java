@@ -113,6 +113,14 @@ public class Command {
 		return ret.trim();
 	}
 
+	public static String formatFinalWords(Command command, int index) {
+		String ret = "";
+		for (int i = index; i < command.numOfWords(); i++) {
+			ret += command.getWordAtIndex(i) + " ";
+		}
+		return ret.trim();
+	}
+	
 	public void generalize() {
 		for (int i = 0; i < words.length; i++) {
 			words[i] = CommandWords.getWordKey(words[i]);

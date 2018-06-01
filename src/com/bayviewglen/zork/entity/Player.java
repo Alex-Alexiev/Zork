@@ -210,7 +210,7 @@ public class Player extends Entity {
 			return;
 		}
 
-		String foodName = Command.mergeFinalWords(command, 1);
+		String foodName = Command.formatFinalWords(command, 1);
 		String foodId = foodName.replaceAll("\\s", "");
 		Food food = (Food) inventory.getItem(foodId);
 
@@ -255,7 +255,7 @@ public class Player extends Entity {
 			return;
 		}
 
-		String itemName = Command.mergeFinalWords(command, 1);
+		String itemName = Command.formatFinalWords(command, 1);
 		String itemId = itemName.replaceAll("\\s", "");
 		Item item = inventory.getItem(itemId);
 
@@ -289,7 +289,7 @@ public class Player extends Entity {
 			return;
 		}
 
-		String itemName = Command.mergeFinalWords(command, 1);
+		String itemName = Command.formatFinalWords(command, 1);
 		String itemId = itemName.replaceAll("\\s", "");
 		Item item = currentRoom.inventory.getItem(itemId);
 
@@ -322,7 +322,7 @@ public class Player extends Entity {
 			return;
 		}
 
-		String itemName = Command.mergeFinalWords(command, 1);
+		String itemName = Command.formatFinalWords(command, 1);
 		String itemId = itemName.replaceAll("\\s", "");
 		Item item = inventory.getItem(itemId);
 
@@ -403,7 +403,7 @@ public class Player extends Entity {
 			return;
 		}
 
-		String npcName = Command.mergeFinalWords(command, 1);
+		String npcName = Command.formatFinalWords(command, 1);
 		String npcId = npcName.replaceAll("\\s", "");
 		ArrayList<NPC> npcs = currentRoom.entities.getNPCs();
 		boolean didTalk = false;

@@ -2,7 +2,7 @@ move: go, move, walk, run, hop
 location: room, place, spot, location, where
 search: search, find, look, inspect
 inventory: inventory, items, things, supply
-eat: eat, consume, bite, chew, ingest, snack, dine, lunch, munch, gorge
+eat: eat, consume, bite, chew, ingest, snack, dine, lunch, munch, gorge, drink
 pickup: pickup, take, retrieve, aquire, receive, snag, grab, pick, collect
 equipment: weapons, armor, equipment, shield, apparatus, devices, attachments, gadgets, outfit, tools
 unequip: unequip, holster, remove

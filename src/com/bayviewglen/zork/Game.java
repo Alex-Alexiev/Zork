@@ -90,10 +90,11 @@ class Game {
 							item = item.substring(1);
 							String[] itemInfo = item.split(" ");
 							String type = itemInfo[0];
-							String name = "";
-							for (int i = 1; i < itemInfo.length - 1; i++)
-								name += itemInfo[i];
 							if (type.equals("Food")) {
+								String name = "";
+								for (int i = 1; i < itemInfo.length - 1; i++)
+									name += itemInfo[i] + " ";
+								name = name.trim();
 								Food food = new Food(name, Integer.parseInt(itemInfo[itemInfo.length - 1]));
 								room.inventory.addToInventory(food, 1);
 							}
