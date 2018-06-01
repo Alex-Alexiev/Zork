@@ -455,9 +455,9 @@ public class Player extends Entity {
 			int unblockedDamage = equippedArmor.getShieldPoints() - damage;
 			equippedArmor.damage(damage, this);
 			if (equippedArmor.getShieldPoints() <= 0) {
-				equippedArmor = null;
 				damage(unblockedDamage);
 				System.out.println("Your " + equippedArmor.getName() + " got annihilated.");
+				equippedArmor = null;
 			}
 		} else {
 			damage(damage);

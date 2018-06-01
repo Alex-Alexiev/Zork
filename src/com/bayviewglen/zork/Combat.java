@@ -23,7 +23,7 @@ public class Combat {
 	}
 
 	public boolean chooseEngage() {
-		System.out.println("Monsters guard the room:");
+		System.out.println("Monsters stand in the way:");
 		for (Entity e : enemies) {
 			System.out.println(e);
 		}

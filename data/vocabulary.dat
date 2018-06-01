@@ -12,9 +12,9 @@ drop: drop
 equip: equip, put
 talk: talk
 quit: quit
-fight: fight, engage, destroy
+fight: fight, engage, destroy, attack
 leave: leave
-attack: attack, fight
+attack: attack, fight, hit
 everything: all, everything
 determiner: determiner, with, the, a, some, on, this, that, every, each, their, to, up, them
 directions: north, south, east, west

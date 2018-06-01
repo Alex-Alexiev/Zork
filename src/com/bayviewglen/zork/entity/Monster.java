@@ -21,7 +21,7 @@ abstract public class Monster extends Entity {
 			System.out.println(this.getName() + " has attacked you (-" + this.getDamage() + ")");
 			((Player) e).hit(getDamage());
 		} else {
-			System.out.println(getId() + " has missed the hit!");
+			System.out.println(getName() + " has missed the hit!");
 		}
 	}
 
