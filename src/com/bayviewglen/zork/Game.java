@@ -183,6 +183,9 @@ class Game {
 		}
 	}
 	
+	/*
+	 * Reads the responses for NPCs
+	 */
 	private void initNPCs(String fileName) throws Exception {
 		npcData = new HashMap<String, ArrayList<String>>();
 		Scanner npcScanner;
@@ -216,16 +219,22 @@ class Game {
 	 * Create the game and initialize its internal map.
 	 */
 	public Game() {
-		initialize();
-	}
-	
-	private void initialize() {
 		try {
 			initNPCs("data/npcText.dat");
 			initRooms("data/rooms.dat");
-			//player = new Player(masterRoomMap.get("CABIN_1"));
-
-			player = new Player(masterRoomMap.get("EAST_FOREST_CROSSROADS_1"));
+			player = new Player(masterRoomMap.get("CABIN_1"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/*
+	 * Sets up the stat
+	 */
+	private void resetRooms() {
+		try {
+			initRooms("data/rooms.dat");
+			player = new Player(masterRoomMap.get("CABIN_1"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -235,28 +244,28 @@ class Game {
 	 * Main play routine. Loops until end of play.
 	 */
 	public void play() {
+		
+		// Welcomes the player
 		printWelcome();
 		Sound mainThemeMusic = new Sound("data\\mainmusic.wav");
 		mainThemeMusic.loop();
 
 		// Enter the main command loop. Here we repeatedly read commands and
 		// execute them until the game is over.
-
 		boolean finished = false;
 		while (!finished) {
 			Command command = Parser.getCommand();
 			finished = player.act(command);
 			System.out.println();
 		}
-		System.out.println("Thank you for playing.  Good bye.");
-		initialize();
+		System.out.println("Thank you for playing. Good bye.");
+		resetRooms();
 		play();
 	}
 
 	/**
 	 * Print out the opening message for the player.
 	 */
-	
 	private void printWelcome() {
 		System.out.println();
 		System.out.println("Hello adventurer!");
