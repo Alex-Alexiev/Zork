@@ -28,7 +28,7 @@ public class Combat {
 			System.out.println(e);
 		}
 		System.out.println();
-		System.out.println("Do you chose to fight this monster? If you chose not to fight, you will return to the next room\n");
+		System.out.println("Do you choose to fight this monster? If you  not to fight, you will return to the next room\n");
 		Command response = Parser.getCommand();
 		System.out.println();
 		if (response.is("yes") || response.is("fight")) {
