@@ -288,9 +288,17 @@ public class Player extends Entity {
 			System.out.println("Pickup what?");
 			return;
 		}
+		
+		if (command.has("everything")) {
+			for (Item i : currentRoom.inventory.getInventory()) {
+				inventory.addToInventory(i, i.getAmount());
+			}
+			System.out.println("You picked up all the items in the room.");
+			return;
+		}
 
 		String itemName = Command.formatFinalWords(command, 1);
-		String itemId = itemName.replaceAll("\\s", "");
+		String itemId = itemName.replaceAll("\\s", "");	
 		Item item = currentRoom.inventory.getItem(itemId);
 
 		if (item != null) {

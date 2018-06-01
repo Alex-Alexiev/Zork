@@ -14,9 +14,10 @@ talk: talk
 quit: quit
 fight: fight, engage, destroy
 leave: leave
+attack: attack, fight
+everything: all, everything
 determiner: determiner, with, the, a, some, on, this, that, every, each, their, to, up, them
 directions: north, south, east, west
 yes: yes, yeah, sure, okay
 no: no, nah, ney
 monsters: bloodpriest, desecratedcorpse, eldritchinfected, hearthoftheisland, plaguerat, rabidhag, ravinglunatic, sulfuriccrawler
-attack: attack, fight

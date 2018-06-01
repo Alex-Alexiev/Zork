@@ -1,4 +1,5 @@
 package com.bayviewglen.zork;
+import java.util.Collection;
 import java.util.HashMap;
 
 import com.bayviewglen.zork.items.Item;
@@ -7,9 +8,6 @@ import com.bayviewglen.zork.items.Item;
  * Inventory class for the player that keeps track of and inventory of items
  * 
  * It uses a HashMap of Items, each referenced by its id
- * 
- * 
- * Matthew Nam (April 12), Alex Alexiev (April 13)
  */
 
 
@@ -87,6 +85,10 @@ public class Inventory {
 		if (items.get(id).getAmount() < 1) {
 			removeItem(id);
 		}
+	}
+	
+	public Collection<Item> getInventory() {
+		return items.values();
 	}
 	
 	/*

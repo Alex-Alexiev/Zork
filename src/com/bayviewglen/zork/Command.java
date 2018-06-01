@@ -41,6 +41,15 @@ public class Command {
 	public boolean is(String word) {
 		return CommandWords.is(word, getCommandWord());
 	}
+	
+	public boolean has(String keyWord) {
+		for (String w: words) {
+			if (CommandWords.is(keyWord, w)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	/**
 	 * Return the command word (the first word) of this command. If the command was
