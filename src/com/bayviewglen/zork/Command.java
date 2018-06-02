@@ -37,11 +37,19 @@ public class Command {
 	public Command(String[] words) {
 		this.words = words;
 	}
-
+	
+	/*
+	 * Checks whether the command is of a specified type such as a "move" command
+	 * or a "pick up" command
+	 * It uses the CommandWords class which manages the vocabulary data file 
+	 */
 	public boolean is(String word) {
 		return CommandWords.is(word, getCommandWord());
 	}
 	
+	/*
+	 * Checks if the command has a keyword or any synonym of that keyword
+	 */
 	public boolean has(String keyWord) {
 		for (String w: words) {
 			if (CommandWords.is(keyWord, w)) {
@@ -82,13 +90,6 @@ public class Command {
 	 * Return true if this command was not understood.
 	 */
 	public boolean isUnknown() {
-		/*
-		for (String word : words) {
-			if (!CommandWords.isCommand(word))
-				return true;
-		}
-		return false;
-		*/
 		return (words[0] == null) || !CommandWords.isCommand(words[0]);
 	}
 
@@ -100,7 +101,7 @@ public class Command {
 	}
 
 	/**
-	 * Reutrns how many command words
+	 * Returns how many command words
 	 */
 	public int numOfWords() {
 		return words.length;
@@ -113,7 +114,10 @@ public class Command {
 		}
 		return ret;
 	}
-
+	
+	/*
+	 * returns all the words past index i inclusive merged into one string
+	 */
 	public static String mergeFinalWords(Command command, int index) {
 		String ret = "";
 		for (int i = index; i < command.numOfWords(); i++) {
@@ -121,7 +125,10 @@ public class Command {
 		}
 		return ret.trim();
 	}
-
+	
+	/*
+	 * returns all the commands after index i as one string with spaces
+	 */
 	public static String formatFinalWords(Command command, int index) {
 		String ret = "";
 		for (int i = index; i < command.numOfWords(); i++) {
@@ -133,25 +140,6 @@ public class Command {
 	public void generalize() {
 		for (int i = 0; i < words.length; i++) {
 			words[i] = CommandWords.getWordKey(words[i]);
-		}
-	}
-
-	public void check() {
-		if (this.isUnknown()) {
-			makeSuggestion();
-		}
-	}
-
-	public void makeSuggestion() {
-		System.out.print("Did you mean: ");
-		String[] suggestion = new String[words.length];
-		for (int i = 0; i < words.length; i++) {
-			suggestion[i] = CommandWords.getClosest(words[i]);
-			System.out.print(suggestion[i] + " ");
-		}
-		System.out.println();
-		if (Parser.getCommand().is("yes")) {
-			words = suggestion;
 		}
 	}
 

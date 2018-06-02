@@ -4,6 +4,12 @@ import java.util.ArrayList;
 
 import com.bayviewglen.zork.Poison;
 
+/*
+ * Any character in the game extends the entity class, including
+ * monsters, NPC's, and even the player
+ * All NPC's have an id, a name, health, and can be poisoned
+ */
+
 public abstract class Entity {
 
 	private String id;
@@ -58,7 +64,12 @@ public abstract class Entity {
 		}
 		return false;
 	}
-
+	
+	/*
+	 * When an entity is poisoned the amount of damage is determined 
+	 * by the poison it has 
+	 * This poisons the entity from every poison that it has
+	 */
 	public void poison() {
 		int index = 0;
 		while (index < poisons.size()) {

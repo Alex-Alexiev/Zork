@@ -4,10 +4,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/*
+ * used to store multiple entities and includes various methods 
+ * that can determine certain things about the list of entities
+ * like if it contains any monsters
+ */
+
 public class Entities {
 	
-	private HashMap<String, Entity> entities = new HashMap<String, Entity>();
 	
+	/*
+	 * stores a map with a common name for the entity associate with the
+	 * entity object
+	 */
+	private HashMap<String, Entity> entities = new HashMap<String, Entity>();
+		
+	/*
+	 * Returns true if the map contains any monsters 
+	 */
 	public boolean hasMonsters() {
 		for (Entity e : entities.values()) {
 			if (e instanceof Monster) {
@@ -17,6 +31,9 @@ public class Entities {
 		return false;
 	}
 	
+	/*
+	 * returns true if the map contains any NPC's
+	 */
 	public boolean hasNPC() {
 		for (Entity e : entities.values()) {
 			if (e instanceof NPC) {

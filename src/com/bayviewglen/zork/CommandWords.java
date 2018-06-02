@@ -16,10 +16,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class CommandWords {
+/*
+ * The class reads data from the vocabulary data file. That file
+ * stores the main command words along with any accepted synonyms.
+ * This class features mostly static methods that are used to check
+ * the validity of commands
+ */
 
+public class CommandWords {
+	
+	//stores the main command word with all its valid synonyms
 	private static HashMap<String, String[]> wordGroups = new HashMap<String, String[]>();
+	
+	//stores the main command words 
 	private static ArrayList<String> mainCommands;
+	
+	//stores all the commands
 	private static ArrayList<String> allCommands;
 
 	static {
@@ -62,10 +74,14 @@ public class CommandWords {
 		}
 	}
 	
+	//returns all the synonyms of a given word
 	public static String[] getRelatedWords(String key) {
 		return wordGroups.get(key);
 	}
-
+	
+	/*
+	 * returns the main command for a given synonym
+	 */
 	public static String getWordKey(String word) {
 		for (HashMap.Entry<String, String[]> mapEntry : wordGroups.entrySet()) {
 			for (String s : mapEntry.getValue()) {
@@ -76,7 +92,10 @@ public class CommandWords {
 		}
 		return null;
 	}
-
+	
+	/*
+	 * checks whether the given String command is a synonym of the main command commandGroup
+	 */
 	public static boolean is(String commandGroup, String command) {
 		for (String s : wordGroups.get(commandGroup)) {
 			if (s.equals(command)) {
@@ -118,24 +137,5 @@ public class CommandWords {
 		}
 		System.out.println();
 	}
-
-	public static String getClosest(String w) {
-		double bestPoints = 0;
-		String bestWord = allCommands.get(0);
-		for (String s : allCommands) {
-			double points = 0;
-			for (char cGuess : s.toCharArray()) {
-				for (char c : w.toCharArray()) {
-					if (cGuess == c)
-						points += 1;
-				}
-			}
-			points *= 1 / (Math.abs(s.length() - w.length()) + 1);
-			if (points > bestPoints) {
-				bestPoints = points;
-				bestWord = s;
-			}
-		}
-		return bestWord;
-	}
+	
 }

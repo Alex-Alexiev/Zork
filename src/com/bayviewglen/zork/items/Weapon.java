@@ -7,25 +7,21 @@ import com.bayviewglen.zork.items.weapons.BareHands;
 
 public class Weapon extends Item{
 	
-	/*
-	 * Data fields
-	 */
+	//default weapon damage
 	private int damage;
+	//chance of hitting
 	private int chance;
-	private double CRIT_PERCENT = 0.5;
-	private int CRIT_CHANCE = 20;
-	private int scaler;
+	//amount damage is increased by when it is a critical hit
+	private final double CRIT_PERCENT = 0.5;
+	//chance of getting a critical hit
+	private final int CRIT_CHANCE = 20;
 	private int durability;
 	private int maxDur;
 	
-	/*
-	 * Constructor
-	 */
 	public Weapon(String name, String description, int damage, int chance, int dur) {
 		super(name, 1, false);
 		this.damage = damage;
 		this.chance = chance;
-		this.scaler = 1;
 		this.durability = dur;
 		this.maxDur = dur;
 		setDescription(description);
@@ -42,7 +38,7 @@ public class Weapon extends Item{
 	}
 	
 	/*
-	 * Decides whether the attack hit
+	 * Decides whether the attack hit based on the chance instance variable
 	 */
 	public boolean didHit() {
 		int num = (int) (Math.random() * 100);
@@ -55,20 +51,18 @@ public class Weapon extends Item{
 	
 	/*
 	 * Decides whether critical hit
+	 * Critical hits are random but they do increase damage by CRIT_PERCENT
 	 */
 	public int criticalHit() {
 		int num = (int) (Math.random() * 100);
 		if (num < CRIT_CHANCE) {
 			System.out.println("Critical Hit!");
-			return (int) (damage + damage * CRIT_PERCENT);
+			return (int) (damage * CRIT_PERCENT);
 		}
 		return 0;
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see com.bayviewglen.zork.items.Item#toString()
-	 */
+	
 	public String toString() {
 		return super.getName();
 	}
@@ -82,6 +76,9 @@ public class Weapon extends Item{
 	
 	/*
 	 * Attack method
+	 * By default, if you hit the monster (likely but random) it damages the entity by the amount of damage by the weapon, 
+	 * multiplied by a scale factor that can change throughout the game, and 
+	 * randomly adds a certain amount of points if it was a critical hit
 	 */
 	private void ability(Entity e, Player p){
 		if (didHit()) {

@@ -1,5 +1,9 @@
 package com.bayviewglen.zork.entity;
 
+/*
+ * Extends entity. Has damage, description, and chances of hitting
+ */
+
 abstract public class Monster extends Entity {
 
 	private int damage;
@@ -16,6 +20,13 @@ abstract public class Monster extends Entity {
 		this.stunned = false;
 		this.hitOdds = hitOdds;
 	}
+	
+	/*
+	 * Default attack method.
+	 * There is a hittOdds percent chance the monster hits the entity
+	 * If it hits it does the default damage.
+	 * This is overriden in many of the individual monster classes 
+	 */
 	public void attack(Entity e) {
 		if (Math.random() < (hitOdds/100.0)) {
 			System.out.println(this.getName() + " has attacked you (-" + this.getDamage() + ")");

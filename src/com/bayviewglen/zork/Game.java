@@ -27,9 +27,6 @@ import com.bayviewglen.zork.items.Item;
  * simple, text based adventure game. Users can walk around some scenery. That's
  * all. It should really be extended to make it more interesting!
  * 
- * To play this game, create an instance of this class and call the "play"
- * routine.
- * 
  * This main class creates and initializes all the others: it creates all rooms,
  * creates the parser and starts the game. It also evaluates the commands that
  * the parser returns.

@@ -2,6 +2,13 @@ package com.bayviewglen.zork.items;
 
 import com.bayviewglen.zork.entity.Player;
 
+/*
+ * Basic item that has more children, but essentially 
+ * provides extra protection to any entity that has an armor.
+ * 
+ * The individual armor's may have unique properties
+ */
+
 abstract public class Armor extends Item {
 	
 	private int shieldPoints;

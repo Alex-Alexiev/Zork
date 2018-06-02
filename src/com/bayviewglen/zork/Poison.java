@@ -1,9 +1,19 @@
 package com.bayviewglen.zork;
 
+/*
+ * A poison object can be added to any entity 
+ * When an entity has a poison, it gets damaged by a certain amount determined by 
+ * its poison each turn. 
+ */
+
 public class Poison {
 	private int damage;
 	private int damageInc;
 	private int length;
+	/*
+	 * if the poison is finalAction then all the damage is incurred on the final turn
+	 * Otherwise the damage is spread evenly across each turn
+	 */
 	private boolean finalAction;
 	private String id;
 
@@ -30,7 +40,10 @@ public class Poison {
 	public boolean isFinalAction() {
 		return finalAction;
 	}
-
+	
+	/*
+	 * Determine the damage that the poison will give 
+	 */
 	public int damage() {
 		this.length--;
 		if (isApplied()) {
@@ -42,6 +55,12 @@ public class Poison {
 	public int getDamage() {
 		return this.damage;
 	}
+	
+	/*
+	 * Determines whether or not the poison should be applied
+	 * If it is final action this only returns true on the last turn
+	 * Otherwise it will do the opposite and only return true if it is not he final turn
+	 */
 
 	public boolean isApplied() {
 		if (!finalAction) {

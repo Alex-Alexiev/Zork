@@ -12,8 +12,13 @@ import com.bayviewglen.zork.items.Weapon;
 import com.bayviewglen.zork.items.weapons.Bow;
 import com.bayviewglen.zork.items.weapons.LegsOfLass;
 
-public class Combat {
+/*
+ * This class is used to let the player fight any number of enemies (Entities)
+ * The class is controlled from the player class
+ */
 
+public class Combat {
+	
 	private ArrayList<Entity> enemies;
 	private Player player;
 
@@ -21,7 +26,10 @@ public class Combat {
 		this.enemies = enemies;
 		this.player = player;
 	}
-
+	
+	/*
+	 * A useful dialogue to decide whether a player wants to engage in combat
+	 */
 	public boolean chooseEngage() {
 		System.out.println("Monsters stand in the way:");
 		for (Entity e : enemies) {
@@ -39,7 +47,11 @@ public class Combat {
 
 		return false;
 	}
-
+	
+	/*
+	 * A loop that cycles between the player attacking and the monsters attacking
+	 * This is ended when all the monster's die, when the player dies, or when the player leaves
+	 */
 	public boolean engageInCombat() {
 
 		player.combat(true);
@@ -119,7 +131,7 @@ public class Combat {
 	}
 
 	/*
-	 * Player attack
+	 * Player attacks the monster of their choosing
 	 */
 	private boolean playerAttack() {
 
@@ -169,7 +181,10 @@ public class Combat {
             System.out.println();
         }
 	}
-
+	
+	/*
+	 * Decides which monster to attack based on the command the player entered
+	 */
 	private String findMonsterId(Command playerCommand) {
 		String merged = Command.mergeFinalWords(playerCommand, 0);
 		String[] monsters = CommandWords.getRelatedWords("monsters");
@@ -194,7 +209,7 @@ public class Combat {
 	}
 
 	/*
-	 * Removes all dead monsters from the list
+	 * Removes all dead monsters from the list enemies
 	 */
 	private void removeDeadEnemies() {
 		for (int i = 0; i < enemies.size(); i++) {

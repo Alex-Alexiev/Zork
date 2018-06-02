@@ -25,7 +25,13 @@ public class Room
 {
 	private String roomName;
     private String description;
+    /*
+     * an inventory of all the items in the room such as food, or weapons
+     */
     public Inventory inventory = new Inventory();
+    /*
+     * all the entities in the room including monsters guarding it an NPC's
+     */
     public Entities entities = new Entities();
     private HashMap<String, Room> exits;
     

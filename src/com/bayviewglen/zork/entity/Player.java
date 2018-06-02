@@ -16,6 +16,14 @@ import com.bayviewglen.zork.items.Item;
 import com.bayviewglen.zork.items.Weapon;
 import com.bayviewglen.zork.items.weapons.BareHands;
 
+/*
+ * This is the class for the player. It decides what to do
+ * with the commands, and has the appropriate methods such as moving
+ * picking things up, eating, etc.
+ * 
+ * A player has an inventory, equipped armor and weapons, and other unique variables 
+ */
+
 public class Player extends Entity {
 
 	private Room currentRoom;
